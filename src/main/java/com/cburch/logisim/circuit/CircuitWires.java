@@ -200,7 +200,9 @@ class CircuitWires {
 
   private BundleMap masterBundleMap = null;
 
-  CircuitWires() {}
+  CircuitWires() {
+    // dummy
+  }
 
   //
   // action methods

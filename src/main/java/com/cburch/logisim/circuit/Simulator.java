@@ -77,7 +77,9 @@ public class Simulator {
       return false;
     }
 
-    default void propagationInProgress(Event e) {}
+    default void propagationInProgress(Event e) {
+      // dummy
+    }
 
     void propagationCompleted(Event e);
 

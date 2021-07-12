@@ -302,6 +302,10 @@ public class Expressions {
     }
   }
 
+  private Expressions() {
+    // dummy
+  }
+
   public static Expression and(Expression a, Expression b) {
     if (a == null) return b;
     if (b == null) return a;
@@ -344,6 +348,4 @@ public class Expressions {
   public static Expression variable(String name) {
     return new Variable(name);
   }
-
-  private Expressions() {}
 }

@@ -43,7 +43,9 @@ import java.awt.Color;
 class WireFactory extends AbstractComponentFactory {
   public static final WireFactory instance = new WireFactory();
 
-  private WireFactory() {}
+  private WireFactory() {
+    // dummy
+  }
 
   @Override
   public AttributeSet createAttributeSet() {

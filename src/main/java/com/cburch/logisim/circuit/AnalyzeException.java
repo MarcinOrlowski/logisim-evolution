@@ -59,7 +59,9 @@ public class AnalyzeException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  public AnalyzeException() {}
+  public AnalyzeException() {
+    // dummy
+  }
 
   public AnalyzeException(String message) {
     super(message);

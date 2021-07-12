@@ -56,7 +56,9 @@ public class SplitterFactory extends AbstractComponentFactory {
 
   private static final Icon toolIcon = Icons.getIcon("splitter.gif");
 
-  private SplitterFactory() {}
+  private SplitterFactory() {
+    // dummy
+  }
 
   @Override
   public AttributeSet createAttributeSet() {

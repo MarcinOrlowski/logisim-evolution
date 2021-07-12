@@ -110,6 +110,9 @@ public class Analyze {
     }
   }
 
+  private Analyze() {
+    // dummy
+  }
   /**
    * Checks whether any of the recently placed expressions in the expression map are
    * self-referential; if so, return it.
@@ -433,5 +436,4 @@ public class Analyze {
 
   private static final int MAX_ITERATIONS = 100;
 
-  private Analyze() {}
 }

@@ -60,7 +60,9 @@ public class CircuitAttributes extends AbstractAttributeSet {
     }
 
     @Override
-    public void attributeListChanged(AttributeEvent e) {}
+    public void attributeListChanged(AttributeEvent e) {
+      // dummy
+    }
 
     @Override
     public void attributeValueChanged(AttributeEvent e) {
