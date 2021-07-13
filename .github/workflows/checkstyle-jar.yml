@@ -69,13 +69,6 @@ jobs:
     - name: foo
       run: java -version
 
-#    - name: Download checkstyle.jar
-#      run: wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.44/checkstyle-8.44-all.jar
-
-    - name: "Install packages..."
-#      run: sudo apt-get install checkstyle unzip libcommons-cli-java
-      run: sudo apt-get install unzip
-
     - name: "Checkout sources"
       uses: actions/checkout@v2
 
@@ -88,13 +81,14 @@ jobs:
         URL="https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${VERSION}/${JAR}"
 
         echo "Downloading ${JAR}..."
-        wget --no-verbose "${URL}"
+        wget --quiet "${URL}"
 
-        # Extracting config file for possible manipulations
+        # Extracting config file for possible manipulations.
         declare -r REPORT_FILE="output.txt"
         declare -r CHECKS_FILE="google_checks.xml"
 
-        unzip -d . "${JAR}" "${CHECKS_FILE}"
+        # Extract built-in config file.
+        unzip -qq -d . "${JAR}" "${CHECKS_FILE}"
 
         # Starting from 8.28, default checkstyle config looks for optional checkstyle-suppressions.xml
         # (See https://github.com/checkstyle/checkstyle/issues/6946) so we just need to link ours
@@ -105,6 +99,7 @@ jobs:
         ln -s "${supp_file}" checkstyle-suppressions.xml
 
         # Let's lint eventually...
+        echo "*********************************************************"
         echo "Linting using $(java -jar "${JAR}" --version)"
         java -jar "${JAR}" -o "${REPORT_FILE}" -c "${CHECKS_FILE}" ${{ needs.analyze_sources.outputs.changed_files }}
 
