@@ -88,7 +88,7 @@ jobs:
         URL="https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${VERSION}/${JAR}"
 
         echo "Downloading ${JAR}..."
-        wget "${URL}"
+        wget --no-verbose "${URL}"
 
         # Extracting config file for possible manipulations
         declare -r REPORT_FILE="output.txt"
@@ -106,7 +106,7 @@ jobs:
 
         # Let's lint eventually...
         echo "Linting using $(java -jar "${JAR}" --version)"
-        java -jar "${JAR} -o "${REPORT_FILE}" -c "${CHECKS_FILE}" ${{ needs.analyze_sources.outputs.changed_files }}
+        java -jar "${JAR}" -o "${REPORT_FILE}" -c "${CHECKS_FILE}" ${{ needs.analyze_sources.outputs.changed_files }}
 
         # Plain output always contains "Starting audit..." and "Audit done." lines. Let's remove them.
         sed -i 's/^Starting audit...$//; s/^Audit done.$//' "${REPORT_FILE}"
