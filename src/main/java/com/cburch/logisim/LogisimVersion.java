@@ -34,6 +34,7 @@ public class LogisimVersion {
   private int minor = 0;
   private int patch = 0;
 
+
   public LogisimVersion(int major, int minor, int patch) {
     this.major = major;
     this.minor = minor;
