@@ -67,7 +67,7 @@ jobs:
 
     steps:
     - name: foo
-       run: java -version
+      run: java -version
 
     - name: "Install packages..."
       run: sudo apt-get install checkstyle unzip libcommons-cli-java
