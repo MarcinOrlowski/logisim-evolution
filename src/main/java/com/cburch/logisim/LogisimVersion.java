@@ -28,7 +28,6 @@
 
 package com.cburch.logisim;
 
-
 /** Logisim follows Semantic Versioning https://semver.org/ */
 public class LogisimVersion {
   private int major = 0;
