@@ -47,9 +47,6 @@ jobs:
       run: |
         found="NO"
         [[ ${{ steps.filter.outputs.src }} == 'true' ]] && found="YES"
-
-        found="YES" 
-
         echo "::set-output name=run_checkstyle::${found}"
         echo -e "\n****************************************\n"
         banner "${found}"
