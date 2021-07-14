@@ -11,8 +11,13 @@ jobs:
     name: "Do we need to build the application?"
     runs-on: ubuntu-latest
 
+    outputs:
+      # Export 'filter' step check result so next step can use it.
+      run_build: ${{ steps.filter.outputs.run_build }}
+
     steps:
     - name: "WILL BUILD STEP BE RUN?"
+      id: filter
       run: |
         found="true"
         echo "::set-output name=run_build::${found}"
