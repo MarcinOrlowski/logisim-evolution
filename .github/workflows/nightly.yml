@@ -7,8 +7,8 @@ on:
     branches: [ develop ]
 
 jobs:
-  analyze_sources:
-    name: "Do we need to build the application?"
+  analyze_activity:
+    name: "Any changes since last nightly?"
     runs-on: ubuntu-latest
 
     outputs:
@@ -16,11 +16,32 @@ jobs:
       run_build: ${{ steps.filter.outputs.run_build }}
 
     steps:
-    - name: "WILL BUILD STEP BE RUN?"
-      id: filter
-      run: |
-        found="true"
-        echo "::set-output name=run_build::${found}"
+      - uses: actions/checkout@v2
+      - name: print latest_commit
+        run: |
+          echo ${{ github.sha }}
+
+      - name: "WILL BUILD STEP BE RUN?"
+        id: filter
+        continue-on-error: true
+        # name: check latest commit is less than a day
+        # if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if [[ -n "$(git rev-list --after="24 hours" ${{ github.sha }})" ]]; then
+            echo "::set-output name=run_build::true"
+          fi
+
+  check_date:
+    runs-on: ubuntu-latest
+    name: Check latest commit
+    outputs:
+      should_run: ${{ steps.should_run.outputs.should_run }}
+    steps:
+      - id: should_run
+        continue-on-error: true
+        name: check latest commit is less than a day
+        if: ${{ github.event_name == 'schedule' }}
+        run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false
 
   # ##################################
 
@@ -29,9 +50,9 @@ jobs:
     name: "Nightly build"
     runs-on: ubuntu-latest
 
-    # Will run only if analyze_sources determined it is needed.
-    needs: analyze_sources
-    if: needs.analyze_sources.outputs.run_build == 'true'
+    # Will run only if analyze_activity determined it is needed.
+    needs: analyze_activity
+    # if: needs.analyze_activity.outputs.run_build == 'true'
 
     steps:
     - name: "Checkout sources"
