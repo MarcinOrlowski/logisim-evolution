@@ -48,8 +48,9 @@ jobs:
     - name: "Generate base name"
       id: vars
       run: |
-        echo "::set-output name=now::$(date +%Y%m%d)"
         echo "::set-output name=base_name::logisim-evolution_develop_$(date +%Y%m%d)"
+
+    # ##################################
 
     - name: "Build sources JAR"
       run: |
@@ -71,15 +72,15 @@ jobs:
       run: |
         chmod +x gradlew
         ./gradlew clean
-        ./gradlew sourcesJar
+        ./gradlew shadowJar
         find . -name "*.jar"
 
     - name: 'Upload binary JAR'
       uses: actions/upload-artifact@v2
       if: success()
       with:
-        path: build/libs/logisim-evolution_3.5.0.jar
-        name: ${{ steps.vars.outputs.base_name }}_jdk14.jar
+        path: build/libs/logisim-evolution_3.5.0-all.jar
+        name: ${{ steps.vars.outputs.base_name }}-all_jdk14.jar
 
     # ##################################
 
