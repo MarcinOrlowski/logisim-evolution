@@ -209,7 +209,7 @@ jobs:
         run: dir
 
       - name: "Build MSI"
-        run: gradlew createMsi
+        run: .\gradlew.bat createMsi
 
       - name: 'Upload binary MSI'
         uses: actions/upload-artifact@v2
