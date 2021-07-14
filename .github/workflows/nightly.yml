@@ -45,4 +45,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         path: build/dist/logisim-evolution_3.5.0-1_amd64.deb
-        name: logisim-evolution_3.5.0-1_amd64_develop_20210714.deb
+        name: logisim-develop_20210714_amd64.deb
