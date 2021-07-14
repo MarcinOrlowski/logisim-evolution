@@ -206,14 +206,13 @@ jobs:
           distribution: 'adopt'
 
       - name: "Build MSI"
-        run: dir
-
-      - name: "Build MSI"
-        run: .\gradlew.bat createMsi
+        run: |
+          .\gradlew.bat createMsi
+          dir .\build\libs
 
       - name: 'Upload binary MSI'
         uses: actions/upload-artifact@v2
         if: success()
         with:
-          path: build/libs/${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}.msi
+          path: build\libs\${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}.msi
           name: ${{ needs.git_check.outputs.out_name }}.msi
