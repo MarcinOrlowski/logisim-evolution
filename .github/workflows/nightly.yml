@@ -22,6 +22,8 @@ jobs:
         found="true"
         echo "::set-output name=run_build::${found}"
 
+  # ##################################
+
   # Build step.
   build:
     name: "Gradle builder"
@@ -41,7 +43,39 @@ jobs:
         java-version: 14
         distribution: 'adopt'
 
-    - name: "Build with Gradle"
+    # ##################################
+
+    - name: "Generate base name"
+      id: vars
+      run: |
+        echo "::set-output name=now::$(date +%Y%m%d)"
+        echo "::set-output name=base_name::logisim-evolution_develop_$(date +%Y%m%d)"
+
+    - name: "Build sources JAR"
+      run: |
+        chmod +x gradlew
+        ./gradlew sourcesJar
+
+    - name: 'Upload sources JAR'
+      uses: actions/upload-artifact@v2
+      with:
+        path: build/libs/logisim-evolution_3.5.0-src.jar
+        name: ${{ steps.vars.outputs.base_name }}-src.jar
+
+    - name: "Build binary JAR"
+      run: |
+        chmod +x gradlew
+        ./gradlew sourcesJar
+
+    - name: 'Upload binary JAR'
+      uses: actions/upload-artifact@v2
+      with:
+        path: build/libs/logisim-evolution_3.5.0.jar
+        name: ${{ steps.vars.outputs.base_name }}.jar
+
+    # ##################################
+
+    - name: "Build DEB"
       run: |
        chmod +x gradlew
        ./gradlew createDeb -x checkstyleMain -x checkstyleTest
@@ -50,4 +84,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         path: build/dist/logisim-evolution_3.5.0-1_amd64.deb
-        name: logisim-develop_20210714_amd64.deb
+        name: ${{ steps.vars.outputs.base_name }}_amd64.deb
