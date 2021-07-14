@@ -16,6 +16,9 @@ on:
   pull_request:
     branches: [ develop ]
 
+  schedule:
+    - cron: '0 0 * * *'  # every day at midnight
+
 jobs:
   analyze_activity:
     name: "Any changes since last nightly?"
