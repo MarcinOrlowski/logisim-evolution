@@ -34,6 +34,7 @@ jobs:
       - name: "WILL BUILD STEP BE RUN?"
         id: filter
         continue-on-error: true
+        if: ${{ github.event_name == 'schedule' }}
         run: |
           # name: check latest commit is less than a day
           result="false"
