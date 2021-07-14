@@ -26,7 +26,7 @@ jobs:
 
   # Build step.
   build:
-    name: "Gradle builder"
+    name: "Nightly build"
     runs-on: ubuntu-latest
 
     # Will run only if analyze_sources determined it is needed.
@@ -54,6 +54,7 @@ jobs:
     - name: "Build sources JAR"
       run: |
         chmod +x gradlew
+        ./gradlew clean
         ./gradlew sourcesJar
 
     - name: 'Upload sources JAR'
@@ -62,22 +63,26 @@ jobs:
         path: build/libs/logisim-evolution_3.5.0-src.jar
         name: ${{ steps.vars.outputs.base_name }}-src.jar
 
+    # ##################################
+
     - name: "Build binary JAR"
       run: |
         chmod +x gradlew
+        ./gradlew clean
         ./gradlew sourcesJar
 
     - name: 'Upload binary JAR'
       uses: actions/upload-artifact@v2
       with:
         path: build/libs/logisim-evolution_3.5.0.jar
-        name: ${{ steps.vars.outputs.base_name }}.jar
+        name: ${{ steps.vars.outputs.base_name }}_jdk14.jar
 
     # ##################################
 
     - name: "Build DEB"
       run: |
        chmod +x gradlew
+       ./gradlew clean
        ./gradlew createDeb -x checkstyleMain -x checkstyleTest
 
     - name: 'Upload *.deb'
