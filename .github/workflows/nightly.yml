@@ -63,7 +63,7 @@ jobs:
       uses: actions/upload-artifact@v2
       if: success()
       with:
-        path: build/libs/logisim-evolution_3.5.0-src.jar
+        path: build/libs/logisim-evolution-3.5.0-src.jar
         name: ${{ steps.vars.outputs.base_name }}-src.jar
 
     # ##################################
@@ -79,7 +79,7 @@ jobs:
       uses: actions/upload-artifact@v2
       if: success()
       with:
-        path: build/libs/logisim-evolution_3.5.0-all.jar
+        path: build/libs/logisim-evolution-3.5.0-all.jar
         name: ${{ steps.vars.outputs.base_name }}-all_jdk14.jar
 
     # ##################################
