@@ -206,7 +206,10 @@ jobs:
           distribution: 'adopt'
 
       - name: "Build MSI"
-        run: gradlew.bat createMsi
+        run: dir
+
+      - name: "Build MSI"
+        run: gradlew createMsi
 
       - name: 'Upload binary MSI'
         uses: actions/upload-artifact@v2
