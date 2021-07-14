@@ -47,13 +47,12 @@ jobs:
         continue-on-error: true
         # if: ${{ github.event_name == 'schedule' }}
         run: |
-          result="false"
           if [[ -n "$(git rev-list --after="24 hours" ${{ github.sha }})" ]]; then
-            result="true"
+            echo "::set-output name=run_build::true"
           else
             echo "*** No code changes since yesterday. Skipping."
           fi
-          echo "::set-output name=run_build::${result}"
+          echo "::set-output name=run_build::true"
 
           declare -r lse_name="$(fgrep name gradle.properties | awk '{print $3}')"
           echo "::set-output name=lse_name::${lse_name}"
@@ -69,7 +68,7 @@ jobs:
 
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'true-XXXXXXXX'
+    if: needs.git_check.outputs.run_build == 'true'
 
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -103,8 +102,8 @@ jobs:
 
       - name: 'Build DEB'
         run: |
-         chmod +x gradlew
-         ./gradlew createDeb -x checkstyleMain -x checkstyleTest
+          chmod +x gradlew
+          ./gradlew createDeb -x checkstyleMain -x checkstyleTest
 
       - name: 'Upload *.deb'
         uses: actions/upload-artifact@v2
@@ -153,7 +152,7 @@ jobs:
 
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'true-XXXXXXXXX'
+    if: needs.git_check.outputs.run_build == 'true'
 
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -173,7 +172,7 @@ jobs:
         run: |
           chmod +x gradlew
           set JAVA_HOME="${JAVA_HOME_14_X64}"
-          ./gradlew createDmg
+          ./gradlew createDmg -x checkstyleMain -x checkstyleTest
 
       - name: 'Upload DMG'
         uses: actions/upload-artifact@v2
@@ -191,8 +190,7 @@ jobs:
 
     # Will run only if git_check determined it is needed.
     needs: git_check
-#    if: needs.git_check.outputs.run_build == 'true'
-    if: always()
+    if: needs.git_check.outputs.run_build == 'true'
 
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -209,8 +207,7 @@ jobs:
           distribution: 'adopt'
 
       - name: "Build MSI"
-        run: |
-          .\gradlew.bat createMsi
+        run: .\gradlew.bat createMsi -x checkstyleMain -x checkstyleTest
 
       - name: 'Upload MSI'
         uses: actions/upload-artifact@v2
