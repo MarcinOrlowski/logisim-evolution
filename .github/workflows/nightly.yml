@@ -42,7 +42,7 @@ jobs:
       - name: "ANY CHANGES SINCE LAST BUILD?"
         id: filter
         continue-on-error: true
-        if: ${{ github.event_name == 'schedule' }}
+#        if: ${{ github.event_name == 'schedule' }}
         run: |
           result="false"
           if [[ -n "$(git rev-list --after="24 hours" ${{ github.sha }})" ]]; then
