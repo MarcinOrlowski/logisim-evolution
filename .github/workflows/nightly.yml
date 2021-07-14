@@ -175,7 +175,7 @@ jobs:
           set JAVA_HOME="${JAVA_HOME_14_X64}"
           ./gradlew createDmg
 
-      - name: 'Upload binary DMG'
+      - name: 'Upload DMG'
         uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -211,9 +211,8 @@ jobs:
       - name: "Build MSI"
         run: |
           .\gradlew.bat createMsi
-          dir *.msi /b/s
 
-      - name: 'Upload binary MSI'
+      - name: 'Upload MSI'
         uses: actions/upload-artifact@v2
         if: success()
         with:
