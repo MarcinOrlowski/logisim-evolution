@@ -1,1 +1,6 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# SVG is binary (despite file contents) so do not diff it as text please.
 *.svg binary
+
