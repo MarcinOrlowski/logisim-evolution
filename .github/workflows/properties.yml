@@ -36,7 +36,8 @@ jobs:
     # https://github.com/marketplace/actions/my-markdown-linter
     - name: "Running sync checker..."
       run: |
-        if ! tools/syncTranslations.py --root src/main/resources/resources/logisim/strings/ > /tmp/report.txt; then
+        cd tools
+        if ! ./syncTranslations.py > /tmp/report.txt; then
           echo "*********************************************************"
           echo " *.properties files out of sync! You can update them by hand"
           echo " or use tools/syncTranslations.py to do the job for you."
