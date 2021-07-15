@@ -38,14 +38,14 @@ jobs:
       run: |
         cd tools
         if ! ./syncTranslations.py > /tmp/report.txt; then
-          echo "*********************************************************"
-          echo " *.properties files out of sync! You can update them by hand"
-          echo " or use tools/syncTranslations.py to do the job for you."
-        echo ""
-          echo " Check report:"
+          echo ""
+          echo "Project *.properties files out of sync! You can update"
+          echo "them by hand or use tools/syncTranslations.py with --write"
+          echo "to do the job for you."
+          echo ""
+          echo "Check report:"
           echo ""
           cat /tmp/report.txt
           echo ""
-          echo "*********************************************************"
           exit 1
         fi
