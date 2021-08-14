@@ -49,15 +49,10 @@ jobs:
           set -euo pipefail
 
           # Short name for branch in which action was triggered.
-          declare -r ref="${GITHUB_BASE_REF:-${GITHUB_REF}}"
           declare -r branch_name="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
-          echo "Branch: ${branch_name}"
-          echo "Ref: ${ref}"
-
-          echo -e declare -r last_commit_sha="$\(git rev-parse "${ref}"\)"
 
           # Get SHA of last commit in that branch.
-          declare -r last_commit_sha="$(git rev-parse "${ref}")"
+          declare -r last_commit_sha="$(git rev-parse HEAD)"
 
           echo x1
 
