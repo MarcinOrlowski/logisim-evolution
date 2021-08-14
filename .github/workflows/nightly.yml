@@ -45,13 +45,16 @@ jobs:
         continue-on-error: true
         # if: ${{ github.event_name == 'schedule' }}
         run: |
+          # No mercy.
+          set -euo pipefail
+
           # Short name for branch in which action was triggered.
           declare -r ref="${GITHUB_BASE_REF:-${GITHUB_REF}}"
           declare -r branch_name="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
           echo "Branch: ${branch_name}"
           echo "Ref: ${ref}"
 
-          echo declare -r last_commit_sha="$(git rev-parse "${ref}")"
+          echo -e declare -r last_commit_sha="$\(git rev-parse "${ref}"\)"
 
           # Get SHA of last commit in that branch.
           declare -r last_commit_sha="$(git rev-parse "${ref}")"
