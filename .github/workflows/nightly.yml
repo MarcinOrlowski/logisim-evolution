@@ -56,7 +56,7 @@ jobs:
 
           # Let's see if we have any commits in last 24 hours.
           if [[ -n "$(git rev-list --after="24 hours" ${last_commit_sha})" ]]; then
-            echo "::set-output name=run_build::${true}"
+            echo "::set-output name=run_build::true"
           else
             echo "*** No code changes since yesterday. Skipping."
           fi
