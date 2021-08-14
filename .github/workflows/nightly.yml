@@ -51,6 +51,8 @@ jobs:
           echo "Branch: ${branch_name}"
           echo "Ref: ${ref}"
 
+          echo declare -r last_commit_sha="$(git rev-parse "${ref}")"
+
           # Get SHA of last commit in that branch.
           declare -r last_commit_sha="$(git rev-parse "${ref}")"
 
