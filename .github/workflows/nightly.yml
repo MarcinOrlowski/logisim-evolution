@@ -48,7 +48,14 @@ jobs:
         continue-on-error: true
         # if: ${{ github.event_name == 'schedule' }}
         run: |
-          if [[ -n "$(git rev-list --after="24 hours" ${{ github.sha }})" ]]; then
+          # Short name for current branch.
+          declare -r branch_name="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
+
+          # Get SHA of last commit in that branch.
+          declare -r last_commit_sha="$(git rev-parse "${branch_name}")"
+
+          # Let's see if we have any commits in last 24 hours.
+          if [[ -n "$(git rev-list --after="24 hours" ${last_commit_sha})" ]]; then
             echo "::set-output name=run_build::${true}"
           else
             echo "*** No code changes since yesterday. Skipping."
