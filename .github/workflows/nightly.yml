@@ -1,5 +1,6 @@
 #
 # Logisim-evolution nightly builder
+# https://github.com/logisim-evolution/logisim-evolution
 #
 # Cron driven Github Action builder, intended to create nightly builds
 # from Logisim-evolution's "develop" branch. It assumes to be invoked
@@ -11,8 +12,10 @@
 
 name: "Nightly"
 on:
-  # The "pull_request" triggers are here for debugging purposes only.
-  # Keep it disabled as we only want "schedule" to be used.
+  # The "pull_request" trigger is here for debugging purposes and
+  # as work-around for having this worker not yet in main branch.
+  # Keep it disabled once it's merged into main branch as we only
+  # want "schedule" to be the trigger.
   pull_request:
     branches: [ develop ]
   schedule:
@@ -45,7 +48,7 @@ jobs:
         continue-on-error: true
         # if: ${{ github.event_name == 'schedule' }}
         run: |
-          # No mercy.
+          # Have no mercy.
           set -euo pipefail
 
           # Short name for branch in which action was triggered.
@@ -72,7 +75,7 @@ jobs:
           # Base name for uploaded artifacts.
           echo "::set-output name=base_name::${lse_name}_${branch_name}_$(date +%Y%m%d)"
 
-  # ##################################
+  # ###############################################################################################
 
   # Building for Linux.
   build_linux:
@@ -97,10 +100,13 @@ jobs:
           java-version: 14
           distribution: 'adopt'
 
-      # ##################################
+      # ###########################################################################################
 
       - name: 'Build binary JAR'
         run: |
+          # Have no mercy.
+          set -euo pipefail
+
           chmod +x gradlew
           ./gradlew shadowJar
 
@@ -112,10 +118,13 @@ jobs:
           path: build/libs/${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}-all.jar
           name: ${{ needs.git_check.outputs.base_name }}-all_jdk14.jar
 
-      # ##################################
+      # ###########################################################################################
 
       - name: 'Build DEB'
         run: |
+          # Have no mercy.
+          set -euo pipefail
+
           chmod +x gradlew
           ./gradlew createDeb -x checkstyleMain -x checkstyleTest
 
@@ -126,10 +135,13 @@ jobs:
           path: build/dist/${{ needs.git_check.outputs.lse_name }}_${{ needs.git_check.outputs.lse_version }}-1_amd64.deb
           name: ${{ needs.git_check.outputs.base_name }}_amd64.deb
 
-        # ##################################
+        # ###########################################################################################
 
       - name: 'Build RPM'
         run: |
+          # Have no mercy.
+          set -euo pipefail
+
           chmod +x gradlew
           # Needs rpm package, but it should be installed already.
           ./gradlew createRpm -x checkstyleMain -x checkstyleTest
@@ -141,10 +153,13 @@ jobs:
           path: build/dist/${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}-1.x86_64.rpm
           name: ${{ needs.git_check.outputs.base_name }}.x86_64.rpm
 
-        # ##################################
+        # ###########################################################################################
 
       - name: 'Build sources JAR'
         run: |
+          # Have no mercy.
+          set -euo pipefail
+
           chmod +x gradlew
           # Need to clean to have just one JAR or createDistDir task would fail.
           ./gradlew clean
@@ -184,6 +199,9 @@ jobs:
 
       - name: "Build DMG"
         run: |
+          # Have no mercy.
+          set -euo pipefail
+
           chmod +x gradlew
           set JAVA_HOME="${JAVA_HOME_14_X64}"
           ./gradlew createDmg -x checkstyleMain -x checkstyleTest
@@ -195,7 +213,7 @@ jobs:
           path: build/dist/${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}.dmg
           name: ${{ needs.git_check.outputs.base_name }}.dmg
 
-  # ##################################
+  # ###############################################################################################
 
   # Building for Windows.
   build_windows:
@@ -210,9 +228,6 @@ jobs:
       # https://github.com/marketplace/actions/checkout
       - name: "Checkout sources"
         uses: actions/checkout@v2
-        with:
-          # We want develop branch only.
-          ref: 'develop'
 
       - name: "Set up JDK"
         uses: actions/setup-java@v2
