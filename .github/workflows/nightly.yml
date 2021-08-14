@@ -46,7 +46,7 @@ jobs:
         # if: ${{ github.event_name == 'schedule' }}
         run: |
           # Short name for branch in which action was triggered.
-          declare -r ref="${GITHUB_BASE_REF:-${GITHUB_REF}"
+          declare -r ref="${GITHUB_BASE_REF:-${GITHUB_REF}}"
           declare -r branch_name="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
           echo "Branch: ${branch_name}"
           echo "Ref: ${ref}"
