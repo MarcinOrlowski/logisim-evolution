@@ -52,7 +52,6 @@ jobs:
   # Build step.
   build:
     name: "Gradle builder"
-    runs-on: ubuntu-latest
 
     # Will run only if analyze_sources determined it is needed.
     needs: analyze_sources
@@ -60,7 +59,10 @@ jobs:
 
     strategy:
       matrix:
+        runner: [ ubuntu-latest, macos-latest, windows-latest ]
         jdk: [ 14 ]
+
+    runs-on: ${{ matrix.runner }}
 
     steps:
     - name: "Checkout sources"
