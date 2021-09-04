@@ -12,22 +12,11 @@
 
 name: "Nightly"
 on:
-  # The "pull_request" trigger is here for debugging purposes and
-  # as work-around for having this worker not yet in main branch.
-  # Keep it disabled once it's merged into main branch as we only
-  # want "schedule" to be the trigger.
-  # NOTE: remove `if` condition marked with `HACK` once merged.
-  pull_request:
-    branches: [ develop ]
-    types: [ closed ]
-  schedule:
-    # every day at midnight
-    - cron: "0 0 * * *"
-
   # ** NOTE: use `push` for tests only! **
   # ** COMMENT IT OUT BEFORE MERGE!     **
   push:
-    branches: [ nightly-mac-jdk16 ]
+    paths:
+      - "**"
 
 env:
   JDK_VERSION: 16
@@ -70,8 +59,6 @@ jobs:
 
           # Get SHA of last commit in that branch.
           declare -r last_commit_sha="$(git rev-parse HEAD)"
-
-          echo x1
 
           # Let's see if we have any commits in last 24 hours.
           if [[ -n "$(git rev-list --after="24 hours" ${last_commit_sha})" ]]; then
