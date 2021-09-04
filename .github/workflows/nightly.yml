@@ -24,6 +24,11 @@ on:
     # every day at midnight
     - cron: "0 0 * * *"
 
+  # ** NOTE: use `push` for tests only! **
+  # ** COMMENT IT OUT BEFORE MERGE!     **
+  push:
+    branches: [ develop ]
+
 env:
   JDK_VERSION: 16
 
