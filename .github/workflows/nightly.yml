@@ -213,7 +213,6 @@ jobs:
           set -euo pipefail
 
           chmod +x gradlew
-          set JAVA_HOME="${JAVA_HOME_${{ env.JDK_VERSION }}_X64}"
           ./gradlew createDmg -x checkstyleMain -x checkstyleTest
 
       - name: 'Upload DMG'
