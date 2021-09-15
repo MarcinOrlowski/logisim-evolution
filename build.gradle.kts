@@ -56,15 +56,19 @@ dependencies {
 }
 
 // https://checkerframework.org/
+// https://github.com/kelloggm/checkerframework-gradle-plugin
 configure<CheckerFrameworkExtension> {
-  // https://checkerframework.org/manual/#introduction
+  // Which checkers to use
   checkers = listOf(
-    // for null pointer errors
     "org.checkerframework.checker.nullness.NullnessChecker",
-    // https://checkerframework.org/manual/#units-checker
-    // "org.checkerframework.checker.units.UnitsChecker",
-    // to ensure all @NonNull fields are set in the constructor
   )
+
+  // Checker-specific options
+  extraJavacArgs = listOf(
+    "-AsuppressWarnings=initialization",
+  )
+
+  excludeTests = true
 }
 
 /**
