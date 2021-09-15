@@ -11,6 +11,7 @@ import org.gradle.internal.os.OperatingSystem
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.io.*
+import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
 
 plugins {
   checkstyle
@@ -18,7 +19,12 @@ plugins {
   java
   application
   id("com.github.johnrengelman.shadow") version "7.0.0"
+
+  // https://github.com/kelloggm/checkerframework-gradle-plugin
+  id("org.checkerframework") version "0.6.0"
 }
+
+apply(plugin = "org.checkerframework")
 
 repositories {
   mavenCentral()
@@ -42,13 +48,23 @@ dependencies {
   implementation("com.formdev:flatlaf:1.2")
   implementation("commons-cli:commons-cli:1.4")
 
-  compileOnly("org.jetbrains:annotations:22.0.0")
-
   // NOTE: Be aware of reported issues with Eclipse and Batik
   // See: https://github.com/logisim-evolution/logisim-evolution/issues/709
   // implementation("org.apache.xmlgraphics:batik-swing:1.14")
 
   testImplementation("org.junit.vintage:junit-vintage-engine:5.7.1")
+}
+
+// https://checkerframework.org/
+configure<CheckerFrameworkExtension> {
+  // https://checkerframework.org/manual/#introduction
+  checkers = listOf(
+    // for null pointer errors
+    "org.checkerframework.checker.nullness.NullnessChecker",
+    // https://checkerframework.org/manual/#units-checker
+    // "org.checkerframework.checker.units.UnitsChecker",
+    // to ensure all @NonNull fields are set in the constructor
+  )
 }
 
 /**
