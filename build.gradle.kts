@@ -590,7 +590,11 @@ tasks.register("jpackage") {
   }
 }
 
-val compilerOptions = listOf("-Xlint:deprecation", "-Xlint:unchecked")
+/**
+ * CompilerOptions must be mutable list to allow other plugins manipulate
+ * compiler arguments (mainly by adding items when needed).
+ */
+val compilerOptions = mutableListOf("-Xlint:deprecation", "-Xlint:unchecked")
 
 tasks {
   compileJava {
