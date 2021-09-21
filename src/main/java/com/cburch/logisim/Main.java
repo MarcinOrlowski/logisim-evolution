@@ -28,7 +28,7 @@ import javax.swing.plaf.FontUIResource;
 
 public class Main {
   /**
-   * Application entry point.
+   * Application entry point..
    *
    * @param args Optional arguments.
    */
