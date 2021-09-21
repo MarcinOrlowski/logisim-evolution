@@ -249,6 +249,7 @@ public class LineBufferTest extends TestBase {
 
   /**
    * Ensures getWithIndent() returns what it should.
+   *
    */
   @Test
   public void testGetWithIndent() {
@@ -264,6 +265,7 @@ public class LineBufferTest extends TestBase {
 
   /**
    * Ensures addUnique() will not add non-unique content to the buffer.
+   *
    */
   @Test
   public void testAddUnique() {
