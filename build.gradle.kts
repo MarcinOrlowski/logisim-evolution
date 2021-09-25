@@ -64,7 +64,7 @@ configure<CheckerFrameworkExtension> {
 
   // Checker-specific options
   extraJavacArgs = listOf(
-    "-AsuppressWarnings=initialization",
+    "-AsuppressWarnings=initialization,allcheckers",
   )
 
   excludeTests = true
