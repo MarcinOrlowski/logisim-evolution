@@ -20,6 +20,11 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SimulationTreeModel implements TreeModel {
   private final ArrayList<TreeModelListener> listeners;
   private final SimulationTreeTopNode root;

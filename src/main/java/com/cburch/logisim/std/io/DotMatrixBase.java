@@ -59,6 +59,11 @@ import java.util.Arrays;
 
 // TODO repropagate when rows/cols change
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class DotMatrixBase extends InstanceFactory {
   protected static class State implements InstanceData, Cloneable {
     protected int rows;

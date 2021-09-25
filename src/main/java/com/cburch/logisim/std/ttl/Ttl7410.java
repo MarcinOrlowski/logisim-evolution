@@ -16,6 +16,11 @@ import com.cburch.logisim.prefs.AppPreferences;
 /**
  * TTL 74x10: triple 3-input NAND gate
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl7410 extends AbstractTtlGate {
   /**
    * Unique identifier of the tool, used as reference in project files.

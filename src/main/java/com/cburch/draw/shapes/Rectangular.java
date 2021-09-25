@@ -18,6 +18,11 @@ import com.cburch.logisim.util.UnmodifiableList;
 import java.awt.Graphics;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class Rectangular extends FillableCanvasObject {
   private Bounds bounds; // excluding the stroke's width
 

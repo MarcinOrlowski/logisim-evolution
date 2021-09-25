@@ -17,6 +17,11 @@ import com.cburch.logisim.gui.generic.AttrTable;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AttrTableDrawManager implements PropertyChangeListener {
   private final Canvas canvas;
   private final AttrTable table;
@@ -40,6 +45,7 @@ public class AttrTableDrawManager implements PropertyChangeListener {
   //
   // PropertyChangeListener method
   //
+  @Override
   public void propertyChange(PropertyChangeEvent evt) {
     String prop = evt.getPropertyName();
     if (prop.equals(Canvas.TOOL_PROPERTY)) {

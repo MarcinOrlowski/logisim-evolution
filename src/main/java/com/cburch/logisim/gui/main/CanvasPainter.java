@@ -34,6 +34,11 @@ import java.beans.PropertyChangeListener;
 import java.util.Collections;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CanvasPainter implements PropertyChangeListener {
   private static final Set<Component> NO_COMPONENTS = Collections.emptySet();
 

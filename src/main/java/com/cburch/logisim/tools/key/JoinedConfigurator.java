@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.tools.key;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class JoinedConfigurator implements KeyConfigurator, Cloneable {
   public static JoinedConfigurator create(KeyConfigurator a, KeyConfigurator b) {
     return new JoinedConfigurator(new KeyConfigurator[] {a, b});
@@ -41,6 +46,7 @@ public class JoinedConfigurator implements KeyConfigurator, Cloneable {
     return ret;
   }
 
+  @Override
   public KeyConfigurationResult keyEventReceived(KeyConfigurationEvent event) {
     final var hs = handlers;
     if (event.isConsumed()) {

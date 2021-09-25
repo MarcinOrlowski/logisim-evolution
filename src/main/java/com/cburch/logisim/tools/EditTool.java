@@ -40,6 +40,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class EditTool extends Tool {
   /**
    * Unique identifier of the tool, used as reference in project files.
@@ -50,6 +55,7 @@ public class EditTool extends Tool {
   public static final String _ID = "Edit Tool";
 
   private class Listener implements CircuitListener, Selection.Listener {
+    @Override
     public void circuitChanged(CircuitEvent event) {
       if (event.getAction() != CircuitEvent.ACTION_INVALIDATE) {
         lastX = -1;
@@ -58,6 +64,7 @@ public class EditTool extends Tool {
       }
     }
 
+    @Override
     public void selectionChanged(Event event) {
       lastX = -1;
       cache.clear();

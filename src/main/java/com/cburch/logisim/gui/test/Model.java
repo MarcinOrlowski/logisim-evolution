@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import javax.swing.Spring;
 import javax.swing.SwingUtilities;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class Model {
 
   private final EventSourceWeakSupport<ModelListener> listeners;

@@ -21,6 +21,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AndGate extends AbstractGate {
   private static class AndGateHDLGeneratorFactory extends AbstractGateHDLGenerator {
     @Override

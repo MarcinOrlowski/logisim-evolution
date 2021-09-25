@@ -17,6 +17,11 @@ import com.cburch.logisim.std.wiring.ProbeAttributes;
 import java.util.ArrayList;
 import java.util.prefs.PreferenceChangeEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PrefMonitorBooleanConvert extends PrefMonitorBoolean {
 
   private final ArrayList<ConvertEventListener> myListeners = new ArrayList<>();

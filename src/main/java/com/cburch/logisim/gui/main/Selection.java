@@ -33,6 +33,11 @@ import java.util.WeakHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Selection extends SelectionBase {
 
   static final Logger logger = LoggerFactory.getLogger(Selection.class);
@@ -197,6 +202,7 @@ public class Selection extends SelectionBase {
       savedSelections = new WeakHashMap<>();
     }
 
+    @Override
     public void circuitChanged(CircuitEvent event) {
       if (event.getAction() == CircuitEvent.TRANSACTION_DONE) {
         Circuit circuit = event.getCircuit();
@@ -227,6 +233,7 @@ public class Selection extends SelectionBase {
       }
     }
 
+    @Override
     public void projectChanged(ProjectEvent event) {
       int type = event.getAction();
       if (type == ProjectEvent.ACTION_START) {

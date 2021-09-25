@@ -16,6 +16,11 @@ import java.awt.Rectangle;
  * Represents an immutable rectangular bounding box. This is analogous to java.awt's <code>Rectangle
  * </code> class, except that objects of this type are immutable.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Bounds {
   public static Bounds create(int x, int y, int wid, int ht) {
     final var hashCode = 13 * (31 * (31 * x + y) + wid) + ht;

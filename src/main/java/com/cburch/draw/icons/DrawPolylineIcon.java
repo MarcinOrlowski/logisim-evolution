@@ -16,6 +16,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DrawPolylineIcon extends BaseIcon {
 
   private static final int[] points = {1, 14, 1, 1, 7, 8, 13, 4, 10, 13};

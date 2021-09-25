@@ -17,6 +17,11 @@ import com.cburch.draw.model.Handle;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ModelDeleteHandleAction extends ModelAction {
   private final Handle handle;
   private Handle previous;

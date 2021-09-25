@@ -18,11 +18,11 @@ import com.cburch.logisim.instance.InstancePainter;
 import com.cburch.logisim.instance.InstanceState;
 import com.cburch.logisim.instance.Port;
 import com.cburch.logisim.instance.StdAttr;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-/**
- * This component takes a multibit input and outputs the value that follows it in Gray Code. For
- * instance, given input 0100 the output is 1100.
- */
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class GrayIncrementer extends InstanceFactory {
   /**
    * Unique identifier of the tool, used as reference in project files.

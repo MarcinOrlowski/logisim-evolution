@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.analyze.model;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VariableListEvent {
   public static final int ALL_REPLACED = 0;
   public static final int ADD = 1;

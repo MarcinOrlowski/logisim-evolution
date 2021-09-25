@@ -22,6 +22,12 @@ import javax.swing.JComponent;
 import javax.swing.Scrollable;
 import javax.swing.SwingConstants;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class HexEditor extends JComponent implements Scrollable {
   private static final long serialVersionUID = 1L;
   private final Listener listener;
@@ -89,10 +95,12 @@ public class HexEditor extends JComponent implements Scrollable {
   //
   // Scrollable methods
   //
+  @Override
   public Dimension getPreferredScrollableViewportSize() {
     return getPreferredSize();
   }
 
+  @Override
   public int getScrollableBlockIncrement(Rectangle vis, int orientation, int direction) {
     if (orientation == SwingConstants.VERTICAL) {
       int height = measures.getCellHeight();
@@ -108,14 +116,17 @@ public class HexEditor extends JComponent implements Scrollable {
     }
   }
 
+  @Override
   public boolean getScrollableTracksViewportHeight() {
     return false;
   }
 
+  @Override
   public boolean getScrollableTracksViewportWidth() {
     return true;
   }
 
+  @Override
   public int getScrollableUnitIncrement(Rectangle vis, int orientation, int direction) {
     if (orientation == SwingConstants.VERTICAL) {
       int ret = measures.getCellHeight();
@@ -237,6 +248,7 @@ public class HexEditor extends JComponent implements Scrollable {
   }
 
   private class Listener implements HexModelListener {
+    @Override
     public void bytesChanged(HexModel source, long start, long numBytes, long[] oldValues) {
       repaint(
           0,
@@ -245,6 +257,7 @@ public class HexEditor extends JComponent implements Scrollable {
           measures.toY(start + numBytes) + measures.getCellHeight());
     }
 
+    @Override
     public void metainfoChanged(HexModel source) {
       measures.recompute();
       repaint();

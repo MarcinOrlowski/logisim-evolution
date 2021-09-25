@@ -16,6 +16,11 @@ import com.cburch.logisim.gui.log.Loggable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class InstanceLoggerAdapter implements Loggable {
 
   static final Logger loggerS = LoggerFactory.getLogger(InstanceLoggerAdapter.class);
@@ -39,22 +44,27 @@ class InstanceLoggerAdapter implements Loggable {
     }
   }
 
+  @Override
   public String getLogName(Object option) {
     return logger == null ? null : logger.getLogName(state, option);
   }
 
+  @Override
   public BitWidth getBitWidth(Object option) {
     return logger == null ? null : logger.getBitWidth(state, option);
   }
 
+  @Override
   public boolean isInput(Object option) {
     return logger == null ? false : logger.isInput(state, option);
   }
 
+  @Override
   public Object[] getLogOptions() {
     return logger == null ? null : logger.getLogOptions(state);
   }
 
+  @Override
   public Value getLogValue(CircuitState circuitState, Object option) {
     if (logger != null) {
       if (state.getCircuitState() != circuitState) state.repurpose(circuitState, comp);

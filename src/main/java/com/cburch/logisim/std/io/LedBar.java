@@ -30,6 +30,11 @@ import com.cburch.logisim.gui.icons.LedBarIcon;
 import static com.cburch.logisim.std.Strings.S;
 
 /** LED cluster */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LedBar extends DotMatrixBase {
 
   /**

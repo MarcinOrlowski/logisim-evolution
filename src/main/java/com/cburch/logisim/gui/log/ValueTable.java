@@ -34,6 +34,11 @@ import javax.swing.event.ChangeListener;
 /**
  * Code taken from Cornell's version of Logisim: http://www.cs.cornell.edu/courses/cs3410/2015sp/
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ValueTable extends JPanel {
 
   private static final long serialVersionUID = 1L;
@@ -255,6 +260,7 @@ public class ValueTable extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    @Override
     public String getToolTipText(MouseEvent event) {
       int col = model == null ? -1 : findColumn(event.getX(), getSize().width);
 
@@ -271,6 +277,7 @@ public class ValueTable extends JPanel {
       return cell.tip;
     }
 
+    @Override
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
 
@@ -350,6 +357,7 @@ public class ValueTable extends JPanel {
       addMouseListener(new MyListener());
     }
 
+    @Override
     public String getToolTipText(MouseEvent event) {
       int col = model == null ? -1 : findColumn(event.getX(), getSize().width);
       if (col < 0) return null;
@@ -361,6 +369,7 @@ public class ValueTable extends JPanel {
       return S.get("tableHeaderHelp", Integer.toString(radix));
     }
 
+    @Override
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
 
@@ -400,6 +409,7 @@ public class ValueTable extends JPanel {
 
     class MyListener extends java.awt.event.MouseAdapter {
 
+      @Override
       public void mouseClicked(MouseEvent e) {
         int col = model == null ? -1 : findColumn(e.getX(), getSize().width);
 
@@ -418,6 +428,7 @@ public class ValueTable extends JPanel {
       getModel().addChangeListener(this);
     }
 
+    @Override
     public int getBlockIncrement(int direction) {
       int curHeight = getVisibleAmount();
       int numCells = curHeight / cellHeight - 1;
@@ -427,10 +438,12 @@ public class ValueTable extends JPanel {
       return numCells * cellHeight;
     }
 
+    @Override
     public int getUnitIncrement(int direction) {
       return cellHeight;
     }
 
+    @Override
     public void stateChanged(ChangeEvent event) {
       int newMaximum = getMaximum();
       int newExtent = getVisibleAmount();

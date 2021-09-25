@@ -34,6 +34,11 @@ import java.util.Collections;
 import java.util.List;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SelectTool extends AbstractTool {
   private static final int IDLE = 0;
   private static final int MOVE_ALL = 1;

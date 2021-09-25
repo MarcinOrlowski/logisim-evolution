@@ -15,6 +15,11 @@ import com.cburch.logisim.util.MacCompatibility;
 import java.awt.Desktop;
 import java.io.File;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class MacOsAdapter {
 
   private static boolean listenersAdded = false;

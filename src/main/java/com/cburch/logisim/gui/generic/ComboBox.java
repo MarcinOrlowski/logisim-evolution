@@ -12,6 +12,11 @@ package com.cburch.logisim.gui.generic;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ComboBox<T> extends JComboBox<T> {
   private static final long serialVersionUID = 1L;
 
@@ -32,6 +37,7 @@ public class ComboBox<T> extends JComboBox<T> {
       return -1;
     }
 
+    @Override
     public int selectionForKey(char ch, ComboBoxModel<?> model) {
       int idx = currentIndex(model);
       long now = System.currentTimeMillis();

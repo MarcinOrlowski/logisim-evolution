@@ -34,6 +34,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class WiringTool extends Tool {
   /**
    * Unique identifier of the tool, used as reference in project files.

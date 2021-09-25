@@ -40,6 +40,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2 extends SocInstanceFactory implements DynamicElementProvider {
   /**
    * Unique identifier of the tool, used as reference in project files.

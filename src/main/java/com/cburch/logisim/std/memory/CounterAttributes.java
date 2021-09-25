@@ -20,6 +20,11 @@ import com.cburch.logisim.prefs.AppPreferences;
 import java.util.List;
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CounterAttributes extends AbstractAttributeSet {
 
   private AttributeSet base;

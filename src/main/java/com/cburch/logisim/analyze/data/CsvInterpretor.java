@@ -27,6 +27,11 @@ import java.util.List;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CsvInterpretor {
   /*
    * Correct content of the Csv file (file format is conform RFC4180) must comply to:

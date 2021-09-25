@@ -16,6 +16,11 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TextField {
   public static final int H_LEFT = GraphicsUtil.H_LEFT;
   public static final int H_CENTER = GraphicsUtil.H_CENTER;

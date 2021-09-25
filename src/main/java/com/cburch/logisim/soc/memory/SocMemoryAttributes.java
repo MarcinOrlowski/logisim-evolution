@@ -22,6 +22,11 @@ import java.awt.Font;
 import java.util.Arrays;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SocMemoryAttributes extends AbstractAttributeSet {
 
   private static class SocMemoryStateAttribute extends Attribute<SocMemoryState> {

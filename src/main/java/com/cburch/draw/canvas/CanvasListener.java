@@ -21,6 +21,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CanvasListener implements BaseMouseListenerContract, BaseMouseMotionListenerContract, BaseKeyListenerContract, CanvasModelListener {
   private final Canvas canvas;
   private CanvasTool tool;

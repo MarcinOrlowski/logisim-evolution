@@ -11,6 +11,11 @@ package com.cburch.logisim;
 
 import java.util.Random;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TestBase {
 
   private static final int DEFAULT_RANDOM_STRING_LENGTH = 16;

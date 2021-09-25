@@ -11,6 +11,11 @@ package com.cburch.logisim.prefs;
 
 import com.cburch.logisim.data.AttributeOption;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ConvertEvent {
   private final AttributeOption value;
 

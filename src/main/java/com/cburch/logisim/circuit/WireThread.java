@@ -11,6 +11,11 @@ package com.cburch.logisim.circuit;
 
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class WireThread {
   private WireThread parent;
   private final CopyOnWriteArraySet<CircuitWires.ThreadBundle> bundles =

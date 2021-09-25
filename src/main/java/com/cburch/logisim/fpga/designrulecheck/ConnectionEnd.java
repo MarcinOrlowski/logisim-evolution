@@ -12,6 +12,11 @@ package com.cburch.logisim.fpga.designrulecheck;
 import com.cburch.logisim.comp.Component;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ConnectionEnd {
 
   private final boolean isOutput;

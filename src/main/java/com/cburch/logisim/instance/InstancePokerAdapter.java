@@ -23,6 +23,11 @@ import java.awt.event.MouseEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class InstancePokerAdapter extends AbstractCaret implements Pokable {
 
   static final Logger logger = LoggerFactory.getLogger(InstancePokerAdapter.class);

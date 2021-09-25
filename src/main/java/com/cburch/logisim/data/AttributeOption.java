@@ -11,6 +11,11 @@ package com.cburch.logisim.data;
 
 import com.cburch.logisim.util.StringGetter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AttributeOption implements AttributeOptionInterface {
   private final Object value;
   private final String name;
@@ -28,10 +33,12 @@ public class AttributeOption implements AttributeOptionInterface {
     this.desc = desc;
   }
 
+  @Override
   public Object getValue() {
     return value;
   }
 
+  @Override
   public String toDisplayString() {
     return desc.toString();
   }

@@ -20,6 +20,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class GridPainter implements PropertyChangeListener {
   public static final String ZOOM_PROPERTY = "zoom";
   public static final String SHOW_GRID_PROPERTY = "showgrid";

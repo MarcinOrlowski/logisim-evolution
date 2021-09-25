@@ -11,6 +11,11 @@ package com.cburch.logisim.prefs;
 
 import java.util.prefs.PreferenceChangeEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class PrefMonitorDouble extends AbstractPrefMonitor<Double> {
   private final double dflt;
   private double value;
@@ -24,10 +29,12 @@ class PrefMonitorDouble extends AbstractPrefMonitor<Double> {
     prefs.addPreferenceChangeListener(this);
   }
 
+  @Override
   public Double get() {
     return value;
   }
 
+  @Override
   public void preferenceChange(PreferenceChangeEvent event) {
     final var prefs = event.getNode();
     final var prop = event.getKey();
@@ -42,6 +49,7 @@ class PrefMonitorDouble extends AbstractPrefMonitor<Double> {
     }
   }
 
+  @Override
   public void set(Double newValue) {
     double newVal = newValue;
     if (value != newVal) {

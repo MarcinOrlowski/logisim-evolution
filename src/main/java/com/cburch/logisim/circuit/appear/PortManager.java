@@ -24,6 +24,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class PortManager {
   private static Location computeDefaultLocation(
       CircuitAppearance appear, Instance pin, Map<Instance, AppearancePort> others) {

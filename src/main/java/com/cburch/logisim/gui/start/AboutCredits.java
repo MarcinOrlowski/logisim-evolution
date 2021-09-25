@@ -28,6 +28,11 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AboutCredits extends JComponent {
   private static final long serialVersionUID = 1L;
   /** Speed of how quickly the scrolling occurs. */

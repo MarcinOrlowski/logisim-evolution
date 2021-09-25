@@ -15,6 +15,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class FatArrowIcon extends BaseIcon {
 
   private static final int[] points = {2, 7, 7, 2, 12, 7, 9, 7, 9, 12, 5, 12, 5, 7};

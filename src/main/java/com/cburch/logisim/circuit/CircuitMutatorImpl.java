@@ -17,6 +17,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CircuitMutatorImpl implements CircuitMutator {
   private final ArrayList<CircuitChange> log;
   private final HashMap<Circuit, ReplacementMap> replacements;
@@ -28,6 +33,7 @@ class CircuitMutatorImpl implements CircuitMutator {
     modified = new HashSet<>();
   }
 
+  @Override
   public void add(Circuit circuit, Component comp) {
     modified.add(circuit);
     log.add(CircuitChange.add(circuit, comp));
@@ -39,6 +45,7 @@ class CircuitMutatorImpl implements CircuitMutator {
     circuit.mutatorAdd(comp);
   }
 
+  @Override
   public void clear(Circuit circuit) {
     final var comps = new HashSet<Component>(circuit.getNonWires());
     comps.addAll(circuit.getWires());

@@ -13,6 +13,11 @@ import com.cburch.logisim.data.Bounds;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class InstancePoker {
   public Bounds getBounds(InstancePainter painter) {
     return painter.getInstance().getBounds();

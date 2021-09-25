@@ -24,7 +24,11 @@ import com.cburch.logisim.data.AttributeSet;
 import com.cburch.logisim.gui.generic.AttributeSetTableModel;
 import java.util.HashMap;
 import java.util.Map;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AttrTableSelectionModel extends AttributeSetTableModel implements SelectionListener {
   private final Canvas canvas;
 

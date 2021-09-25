@@ -46,6 +46,11 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 // Left panel containing signal names
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LeftPanel extends JTable {
   private static final long serialVersionUID = 1L;
 

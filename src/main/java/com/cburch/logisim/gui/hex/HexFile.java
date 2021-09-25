@@ -64,6 +64,11 @@ import javax.swing.filechooser.FileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class HexFile {
   // "v2.0 raw" -- A sequence of space-sparated hex numbers (without "0x"),
   // each optionally prefixed with a decimal count and a "*", spread out on as

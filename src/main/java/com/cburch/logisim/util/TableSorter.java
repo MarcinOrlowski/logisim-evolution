@@ -77,6 +77,11 @@ import javax.swing.table.TableModel;
  * @author ouroborus@ouroborus.org
  * @version 2.1 04/29/06
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TableSorter extends AbstractTableModel {
   private static class Arrow implements Icon {
     private final boolean descending;
@@ -145,6 +150,7 @@ public class TableSorter extends AbstractTableModel {
   }
 
   private class MouseHandler extends MouseAdapter {
+    @Override
     public void mouseClicked(MouseEvent e) {
       final var h = (JTableHeader) e.getSource();
       final var columnModel = h.getColumnModel();
@@ -369,6 +375,7 @@ public class TableSorter extends AbstractTableModel {
     modelToView = null;
   }
 
+  @Override
   public Class<?> getColumnClass(int column) {
     return tableModel.getColumnClass(column);
   }
@@ -378,6 +385,7 @@ public class TableSorter extends AbstractTableModel {
     return (tableModel == null) ? 0 : tableModel.getColumnCount();
   }
 
+  @Override
   public String getColumnName(int column) {
     return tableModel.getColumnName(column);
   }
@@ -461,6 +469,7 @@ public class TableSorter extends AbstractTableModel {
     return viewToModel;
   }
 
+  @Override
   public boolean isCellEditable(int row, int column) {
     return tableModel.isCellEditable(modelIndex(row), column);
   }
@@ -527,6 +536,7 @@ public class TableSorter extends AbstractTableModel {
     fireTableStructureChanged();
   }
 
+  @Override
   public void setValueAt(Object aValue, int row, int column) {
     tableModel.setValueAt(aValue, modelIndex(row), column);
   }

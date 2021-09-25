@@ -17,6 +17,11 @@ import com.cburch.logisim.instance.InstanceLogger;
 import com.cburch.logisim.instance.InstanceState;
 import com.cburch.logisim.instance.StdAttr;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ShiftRegisterLogger extends InstanceLogger {
   @Override
   public String getLogName(InstanceState state, Object option) {

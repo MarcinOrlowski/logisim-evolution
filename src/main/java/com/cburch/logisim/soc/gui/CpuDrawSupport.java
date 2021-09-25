@@ -25,6 +25,11 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CpuDrawSupport {
 
   public static final int NR_OF_TRACES = 21;

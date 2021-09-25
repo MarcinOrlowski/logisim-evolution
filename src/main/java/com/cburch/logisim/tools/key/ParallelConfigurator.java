@@ -12,6 +12,11 @@ package com.cburch.logisim.tools.key;
 import com.cburch.logisim.data.Attribute;
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ParallelConfigurator implements KeyConfigurator, Cloneable {
   public static ParallelConfigurator create(KeyConfigurator a, KeyConfigurator b) {
     return new ParallelConfigurator(new KeyConfigurator[] {a, b});
@@ -44,6 +49,7 @@ public class ParallelConfigurator implements KeyConfigurator, Cloneable {
     return ret;
   }
 
+  @Override
   public KeyConfigurationResult keyEventReceived(KeyConfigurationEvent event) {
     KeyConfigurator[] hs = handlers;
     if (event.isConsumed()) {

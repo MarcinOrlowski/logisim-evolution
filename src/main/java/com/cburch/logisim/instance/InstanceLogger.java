@@ -12,6 +12,11 @@ package com.cburch.logisim.instance;
 import com.cburch.logisim.data.BitWidth;
 import com.cburch.logisim.data.Value;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class InstanceLogger {
   public abstract String getLogName(InstanceState state, Object option);
 

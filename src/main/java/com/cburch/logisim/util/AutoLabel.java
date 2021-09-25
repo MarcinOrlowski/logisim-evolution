@@ -28,6 +28,11 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AutoLabel {
 
   static final Integer[] UsedKeyStrokes = new Integer[] {KeyEvent.VK_L, KeyEvent.VK_T, KeyEvent.VK_V, KeyEvent.VK_H, KeyEvent.VK_A};

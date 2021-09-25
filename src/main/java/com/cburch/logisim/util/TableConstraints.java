@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.util;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TableConstraints {
   public static TableConstraints at(int row, int col) {
     return new TableConstraints(row, col);

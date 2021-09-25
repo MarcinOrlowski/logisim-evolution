@@ -34,6 +34,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RegTabContent extends JScrollPane implements LocaleListener, Simulator.Listener {
   private static final long serialVersionUID = 1L;
   private static final HashMap<String, Component> registers = new HashMap<>();

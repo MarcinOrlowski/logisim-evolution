@@ -12,6 +12,11 @@ package com.cburch.logisim.tools.move;
 import com.cburch.logisim.data.Direction;
 import com.cburch.logisim.data.Location;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class SearchNode implements Comparable<SearchNode> {
 
   private static final int CROSSING_PENALTY = 20;
@@ -48,6 +53,7 @@ class SearchNode implements Comparable<SearchNode> {
     this.prev = prev;
   }
 
+  @Override
   public int compareTo(SearchNode o) {
     int ret = this.heur - o.heur;
 

@@ -23,6 +23,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class OrGate extends AbstractGate {
   private static class OrGateHDLGeneratorFactory extends AbstractGateHDLGenerator {
     @Override

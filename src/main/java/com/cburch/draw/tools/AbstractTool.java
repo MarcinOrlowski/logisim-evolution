@@ -19,6 +19,11 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class AbstractTool extends CanvasTool {
   public static AbstractTool[] getTools(DrawingAttributeSet attrs) {
     return new AbstractTool[] {

@@ -27,6 +27,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DrawingAttributeSet implements AttributeSet, Cloneable {
   static final List<Attribute<?>> ATTRS_ALL =
       UnmodifiableList.create(
@@ -56,6 +61,7 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     values = DEFAULTS_ALL;
   }
 
+  @Override
   public void addAttributeListener(AttributeListener l) {
     listeners.add(l);
   }
@@ -89,6 +95,7 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     }
   }
 
+  @Override
   public boolean containsAttribute(Attribute<?> attr) {
     return attrs.contains(attr);
   }
@@ -97,6 +104,7 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     return new Restriction(tool);
   }
 
+  @Override
   public Attribute<?> getAttribute(String name) {
     for (Attribute<?> attr : attrs) {
       if (attr.getName().equals(name)) return attr;
@@ -104,10 +112,12 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     return null;
   }
 
+  @Override
   public List<Attribute<?>> getAttributes() {
     return attrs;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public <V> V getValue(Attribute<V> attr) {
     Iterator<Attribute<?>> ait = attrs.iterator();
@@ -122,22 +132,27 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     return null;
   }
 
+  @Override
   public boolean isReadOnly(Attribute<?> attr) {
     return false;
   }
 
+  @Override
   public boolean isToSave(Attribute<?> attr) {
     return attr.isToSave();
   }
 
+  @Override
   public void removeAttributeListener(AttributeListener l) {
     listeners.remove(l);
   }
 
+  @Override
   public void setReadOnly(Attribute<?> attr, boolean value) {
     throw new UnsupportedOperationException("setReadOnly");
   }
 
+  @Override
   public <V> void setValue(Attribute<V> attr, V value) {
     Iterator<Attribute<?>> ait = attrs.iterator();
     ListIterator<Object> vit = values.listIterator();
@@ -175,10 +190,12 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
     //
     // AttributeListener methods
     //
+    @Override
     public void attributeListChanged(AttributeEvent e) {
       fireAttributeListChanged();
     }
 
+    @Override
     public void attributeValueChanged(AttributeEvent e) {
       if (selectedAttrs.contains(e.getAttribute())) {
         @SuppressWarnings("unchecked")

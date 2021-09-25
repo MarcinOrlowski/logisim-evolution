@@ -26,6 +26,11 @@ import java.util.regex.Pattern;
  * under the hood, reducing the number of explicit calls made to build a text line. See usage
  * examples.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LineBuffer implements RandomAccess {
   public static final int MAX_LINE_LENGTH = 80;
   // Default indentation string

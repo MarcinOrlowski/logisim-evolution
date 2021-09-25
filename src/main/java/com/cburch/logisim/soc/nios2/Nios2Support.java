@@ -14,6 +14,11 @@ import static com.cburch.logisim.soc.Strings.S;
 import com.cburch.logisim.soc.util.AssemblerAsmInstruction;
 import com.cburch.logisim.soc.util.AssemblerToken;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2Support {
 
   public static final int ASM_FIELD_SIZE = 10;

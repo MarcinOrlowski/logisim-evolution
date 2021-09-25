@@ -35,6 +35,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.jar.JarFile;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LogisimFileActions {
   private static class AddCircuit extends Action {
     private final Circuit circuit;

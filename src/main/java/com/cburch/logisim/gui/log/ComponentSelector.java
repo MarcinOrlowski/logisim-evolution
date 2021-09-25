@@ -37,6 +37,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 // This is more like a JTree, but wedged into a JTable because it looks more
 // reasonable sitting next to the SelectionList JTable .
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ComponentSelector extends JTable {
   private static final long serialVersionUID = 1L;
 

@@ -12,6 +12,11 @@ package com.cburch.logisim.tools.move;
 import com.cburch.logisim.circuit.ReplacementMap;
 import com.cburch.logisim.util.UniquelyNamedThread;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ConnectorThread extends UniquelyNamedThread {
   public static void enqueueRequest(MoveRequest req, boolean priority) {
     synchronized (INSTANCE.lock) {

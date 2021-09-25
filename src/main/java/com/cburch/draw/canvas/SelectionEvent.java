@@ -13,6 +13,11 @@ import com.cburch.draw.model.CanvasObject;
 import java.util.Collection;
 import java.util.EventObject;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SelectionEvent extends EventObject {
   public static final int ACTION_ADDED = 0;
   public static final int ACTION_REMOVED = 1;

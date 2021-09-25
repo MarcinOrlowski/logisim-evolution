@@ -82,6 +82,11 @@ import javax.swing.JViewport;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Canvas extends JPanel implements LocaleListener, CanvasPaneContents, AdjustmentListener {
 
   public static final byte ZOOM_BUTTON_SIZE = 52;

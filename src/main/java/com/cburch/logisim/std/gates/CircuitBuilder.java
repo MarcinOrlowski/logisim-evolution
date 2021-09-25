@@ -30,6 +30,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CircuitBuilder {
 
   private static final int SPINE_DISTANCE = 10;

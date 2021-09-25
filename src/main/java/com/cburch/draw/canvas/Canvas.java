@@ -21,6 +21,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Canvas extends JComponent {
   public static final String TOOL_PROPERTY = "tool";
   public static final String MODEL_PROPERTY = "model";

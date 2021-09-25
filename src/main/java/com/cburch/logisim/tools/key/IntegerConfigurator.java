@@ -11,6 +11,11 @@ package com.cburch.logisim.tools.key;
 
 import com.cburch.logisim.data.Attribute;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class IntegerConfigurator extends NumericConfigurator<Integer> {
   public IntegerConfigurator(Attribute<Integer> attr, int min, int max, int modifiersEx) {
     super(attr, min, max, modifiersEx);

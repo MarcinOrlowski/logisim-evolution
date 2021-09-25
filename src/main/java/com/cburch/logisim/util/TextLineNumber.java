@@ -43,6 +43,11 @@ import javax.swing.text.Utilities;
  *
  * <p>This class was designed to be used as a component added to the row header of a JScrollPane.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TextLineNumber extends JPanel
     implements CaretListener, DocumentListener, PropertyChangeListener {
   private static final long serialVersionUID = 1L;

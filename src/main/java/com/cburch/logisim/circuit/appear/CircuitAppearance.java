@@ -33,10 +33,16 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CircuitAppearance extends Drawing {
   public static final int PINLENGTH = 10;
 
   private class MyListener implements CanvasModelListener {
+    @Override
     public void modelChanged(CanvasModelEvent event) {
       if (!suppressRecompute) {
         setDefaultAppearance(false);

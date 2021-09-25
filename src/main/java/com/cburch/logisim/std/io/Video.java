@@ -49,6 +49,11 @@ import java.awt.image.DirectColorModel;
 import java.awt.image.IndexColorModel;
 
 // 128 x 128 pixel LCD display with 8bpp color (byte addressed)
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class Video extends ManagedComponent implements ToolTipMaker, AttributeListener {
   /**
    * Unique identifier of the tool, used as reference in project files.

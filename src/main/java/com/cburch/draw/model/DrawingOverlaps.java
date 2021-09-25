@@ -17,7 +17,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class DrawingOverlaps {
   private final Map<CanvasObject, List<CanvasObject>> map;
   private final Set<CanvasObject> untested;

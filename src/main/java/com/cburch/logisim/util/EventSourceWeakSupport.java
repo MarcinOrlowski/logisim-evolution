@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class EventSourceWeakSupport<L> implements Iterable<L> {
   private final ConcurrentLinkedQueue<WeakReference<L>> listeners = new ConcurrentLinkedQueue<>();
 

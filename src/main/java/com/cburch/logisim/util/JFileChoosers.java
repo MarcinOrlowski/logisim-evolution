@@ -14,6 +14,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class JFileChoosers {
   /*
    * A user reported that JFileChooser's constructor sometimes resulted in

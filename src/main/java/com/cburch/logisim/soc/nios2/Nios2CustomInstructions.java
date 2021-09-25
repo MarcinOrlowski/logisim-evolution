@@ -21,6 +21,11 @@ import com.cburch.logisim.soc.util.AssemblerExecutionInterface;
 import com.cburch.logisim.soc.util.AssemblerToken;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2CustomInstructions implements AssemblerExecutionInterface {
 
   private static final int CUSTOM = 0x32;
@@ -32,6 +37,7 @@ public class Nios2CustomInstructions implements AssemblerExecutionInterface {
   private int n;
   private boolean custActive = false;
 
+  @Override
   public boolean execute(Object processorState, CircuitState circuitState) {
     if (!valid) return false;
     Nios2State.ProcessorState state = (Nios2State.ProcessorState) processorState;
@@ -81,6 +87,7 @@ public class Nios2CustomInstructions implements AssemblerExecutionInterface {
     return true;
   }
 
+  @Override
   public String getAsmInstruction() {
     if (!valid) return null;
     StringBuilder s = new StringBuilder();
@@ -94,10 +101,12 @@ public class Nios2CustomInstructions implements AssemblerExecutionInterface {
     return s.toString();
   }
 
+  @Override
   public int getBinInstruction() {
     return instruction;
   }
 
+  @Override
   public boolean setAsmInstruction(AssemblerAsmInstruction instr) {
     if (!instr.getOpcode().equalsIgnoreCase("custom")) {
       valid = false;
@@ -172,6 +181,7 @@ public class Nios2CustomInstructions implements AssemblerExecutionInterface {
     return true;
   }
 
+  @Override
   public boolean setBinInstruction(int instr) {
     instruction = instr;
     valid = false;
@@ -189,24 +199,29 @@ public class Nios2CustomInstructions implements AssemblerExecutionInterface {
     return valid;
   }
 
+  @Override
   public boolean performedJump() {
     return false;
   }
 
+  @Override
   public boolean isValid() {
     return valid;
   }
 
+  @Override
   public String getErrorMessage() {
     return null;
   }
 
+  @Override
   public ArrayList<String> getInstructions() {
     ArrayList<String> opcodes = new ArrayList<>();
     opcodes.add("custom");
     return opcodes;
   }
 
+  @Override
   public int getInstructionSizeInBytes(String instruction) {
     if (instruction.equalsIgnoreCase("custom"))
       return 4;

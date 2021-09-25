@@ -12,7 +12,11 @@ package com.cburch.logisim.tools.key;
 import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeSet;
 import java.awt.event.KeyEvent;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class NumericConfigurator<V> implements KeyConfigurator, Cloneable {
   private static final int MAX_TIME_KEY_LASTS = 800;
 
@@ -62,6 +66,7 @@ public abstract class NumericConfigurator<V> implements KeyConfigurator, Cloneab
     return minValue;
   }
 
+  @Override
   public KeyConfigurationResult keyEventReceived(KeyConfigurationEvent event) {
     if (event.getType() == KeyConfigurationEvent.KEY_TYPED) {
       KeyEvent e = event.getKeyEvent();

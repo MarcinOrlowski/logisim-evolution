@@ -12,6 +12,11 @@ package com.cburch.draw.shapes;
 import com.cburch.draw.model.Handle;
 import com.cburch.logisim.data.Location;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PolyUtil {
   private PolyUtil() {
     // dummy

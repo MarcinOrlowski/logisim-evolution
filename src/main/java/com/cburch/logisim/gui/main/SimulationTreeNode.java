@@ -15,6 +15,11 @@ import java.util.Collections;
 import java.util.Enumeration;
 import javax.swing.tree.TreeNode;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SimulationTreeNode implements TreeNode {
   protected final SimulationTreeModel model;
   protected final SimulationTreeNode parent;

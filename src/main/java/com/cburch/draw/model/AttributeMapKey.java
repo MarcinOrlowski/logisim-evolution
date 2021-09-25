@@ -12,6 +12,11 @@ package com.cburch.draw.model;
 import com.cburch.logisim.data.Attribute;
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AttributeMapKey {
   private final Attribute<?> attr;
   private final CanvasObject object;

@@ -23,6 +23,11 @@ import com.cburch.logisim.util.LineBuffer;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class XnorGate extends AbstractGate {
   private static class XNorGateHDLGeneratorFactory extends AbstractGateHDLGenerator {
     @Override

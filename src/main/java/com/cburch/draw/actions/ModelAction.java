@@ -17,6 +17,11 @@ import com.cburch.draw.undo.Action;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class ModelAction extends Action {
   private final CanvasModel model;
 

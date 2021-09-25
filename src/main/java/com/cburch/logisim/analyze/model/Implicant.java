@@ -19,6 +19,11 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Implicant implements Comparable<Implicant> {
   private static class TermIterator implements Iterable<Implicant>, Iterator<Implicant> {
     final Implicant source;

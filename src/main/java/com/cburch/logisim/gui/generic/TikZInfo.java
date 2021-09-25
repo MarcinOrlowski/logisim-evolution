@@ -43,6 +43,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TikZInfo implements Cloneable {
 
   private static final double BASIC_STROKE_WIDTH = 1;
@@ -82,6 +87,7 @@ public class TikZInfo implements Cloneable {
     return "\\pgfpoint{" + p.getX() + "}{" + p.getY() + "}";
   }
 
+  @Override
   public TikZInfo clone() {
     var newInst = new TikZInfo();
     newInst.myTransformer = (AffineTransform) myTransformer.clone();
@@ -425,10 +431,12 @@ public class TikZInfo implements Cloneable {
       close = false;
     }
 
+    @Override
     public String getTikZCommand() {
       return "";
     }
 
+    @Override
     public boolean insideArea(int x, int y, int width, int height) {
       Point left = new Point(x, y);
       Point right = new Point(x + width, y + height);
@@ -452,6 +460,7 @@ public class TikZInfo implements Cloneable {
       return inside;
     }
 
+    @Override
     public DrawObject clone() {
       return null;
     }
@@ -782,6 +791,7 @@ public class TikZInfo implements Cloneable {
         if (endPoint != null) transform(endPoint, endPoint);
       }
 
+      @Override
       public BezierInfo clone() {
         BezierInfo newInst = new BezierInfo();
         newInst.startPoint = startPoint;

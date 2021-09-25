@@ -29,6 +29,11 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class JDialogOk extends JDialog {
   private class MyListener extends WindowAdapter implements ActionListener {
     @Override

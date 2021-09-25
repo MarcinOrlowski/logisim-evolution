@@ -14,6 +14,11 @@ import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.InstanceData;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ShiftRegisterData extends ClockState implements InstanceData {
   private BitWidth width;
   private Value[] vs;

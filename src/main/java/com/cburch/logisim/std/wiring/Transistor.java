@@ -35,6 +35,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Transistor extends InstanceFactory {
   /**
    * Unique identifier of the tool, used as reference in project files.

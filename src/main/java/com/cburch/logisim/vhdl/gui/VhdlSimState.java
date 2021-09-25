@@ -20,6 +20,11 @@ import java.awt.geom.Ellipse2D;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlSimState extends JPanel implements VhdlSimulatorListener {
 
   private static final long serialVersionUID = 1L;
@@ -37,11 +42,13 @@ public class VhdlSimState extends JPanel implements VhdlSimulatorListener {
     this.setBorder(new EmptyBorder(margin, margin, margin, margin));
   }
 
+  @Override
   public Dimension getPreferredSize() {
     Rectangle bounds = circle.getBounds();
     return new Dimension(bounds.width + 2 * margin, bounds.height + 2 * margin);
   }
 
+  @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;

@@ -12,6 +12,11 @@ package com.cburch.logisim.tools.key;
 import com.cburch.logisim.data.AttributeSet;
 import java.awt.event.KeyEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class KeyConfigurationEvent {
   public static final int KEY_PRESSED = 0;
   public static final int KEY_RELEASED = 1;

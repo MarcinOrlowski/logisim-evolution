@@ -16,6 +16,11 @@ import com.cburch.logisim.std.wiring.Pin;
 import com.cburch.logisim.vhdl.base.VhdlEntity;
 import java.util.Collection;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CircuitChange {
   public static CircuitChange add(Circuit circuit, Component comp) {
     return new CircuitChange(circuit, ADD, comp);

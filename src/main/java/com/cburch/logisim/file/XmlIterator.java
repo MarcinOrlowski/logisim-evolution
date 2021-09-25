@@ -16,6 +16,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class XmlIterator<E extends Node> implements Iterable<E>, Iterator<E>, Cloneable {
   public static Iterable<Element> forChildElements(Element node) {
     NodeList nodes = node.getChildNodes();

@@ -29,6 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PolyTool extends AbstractTool {
   // how close we need to be to the start point to count as "closing the loop"
   private static final int CLOSE_TOLERANCE = 2;

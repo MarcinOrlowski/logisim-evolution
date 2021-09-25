@@ -11,6 +11,11 @@ package com.cburch.logisim.std.gates;
 
 import com.cburch.logisim.data.Value;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class GateFunctions {
   static Value computeAnd(Value[] inputs, int numInputs) {
     var ret = inputs[0];

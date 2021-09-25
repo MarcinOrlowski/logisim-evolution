@@ -40,6 +40,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ProjectActions {
   private static final String FILE_NAME_FORMAT_ERROR = "FileNameError";
   private static final String FILE_NAME_KEYWORD_ERROR = "ExistingToolName";

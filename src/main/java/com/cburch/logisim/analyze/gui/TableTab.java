@@ -52,6 +52,11 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class TableTab extends AnalyzerTab implements Entry.EntryChangedListener {
   private class MyListener implements TruthTableListener, LocaleListener {
     @Override
@@ -381,6 +386,7 @@ class TableTab extends AnalyzerTab implements Entry.EntryChangedListener {
     computePreferredSize();
     this.addComponentListener(new ComponentAdapter() {
       boolean done;
+      @Override
       public void componentShown(ComponentEvent e) {
         TableTab.this.removeComponentListener(this);
         if (done) return;

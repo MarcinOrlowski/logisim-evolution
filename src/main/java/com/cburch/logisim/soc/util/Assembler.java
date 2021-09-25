@@ -37,6 +37,11 @@ import org.fife.ui.rtextarea.GutterIconInfo;
 import org.fife.ui.rtextarea.RTextArea;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Assembler extends AbstractParser implements LocaleListener {
 
   private final AssemblerInterface assembler;

@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MapListModel extends DefaultListModel<MapListModel.MapInfo> {
 
   public static class MapInfo {

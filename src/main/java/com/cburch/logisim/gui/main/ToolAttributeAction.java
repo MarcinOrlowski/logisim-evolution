@@ -30,6 +30,11 @@ import com.cburch.logisim.vhdl.base.VhdlEntity;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ToolAttributeAction extends Action {
   private final KeyConfigurationResult config;
   private Map<Attribute<?>, Object> oldValues;

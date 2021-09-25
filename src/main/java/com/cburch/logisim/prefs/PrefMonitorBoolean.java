@@ -15,6 +15,11 @@ import java.util.prefs.PreferenceChangeEvent;
 import java.util.prefs.Preferences;
 import javax.swing.JCheckBox;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PrefMonitorBoolean extends AbstractPrefMonitor<Boolean> implements ActionListener {
   protected final boolean dflt;
   protected boolean value;
@@ -29,6 +34,7 @@ public class PrefMonitorBoolean extends AbstractPrefMonitor<Boolean> implements 
     prefs.addPreferenceChangeListener(this);
   }
 
+  @Override
   public Boolean get() {
     return value;
   }
@@ -38,6 +44,7 @@ public class PrefMonitorBoolean extends AbstractPrefMonitor<Boolean> implements 
     return value;
   }
 
+  @Override
   public void preferenceChange(PreferenceChangeEvent event) {
     final var prefs = event.getNode();
     final var prop = event.getKey();
@@ -52,6 +59,7 @@ public class PrefMonitorBoolean extends AbstractPrefMonitor<Boolean> implements 
     }
   }
 
+  @Override
   public void set(Boolean newValue) {
     if (value != newValue) {
       AppPreferences.getPrefs().putBoolean(getIdentifier(), newValue);

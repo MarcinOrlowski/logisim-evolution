@@ -11,6 +11,11 @@ package com.cburch.logisim.tools;
 
 import com.cburch.logisim.data.Bounds;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MatrixPlacerInfo {
 
   private final String OldLabel;

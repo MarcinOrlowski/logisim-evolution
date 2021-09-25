@@ -11,6 +11,11 @@ package com.cburch.logisim.circuit;
 
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class CircuitTransaction {
   public static final Integer READ_ONLY = 1;
   public static final Integer READ_WRITE = 2;

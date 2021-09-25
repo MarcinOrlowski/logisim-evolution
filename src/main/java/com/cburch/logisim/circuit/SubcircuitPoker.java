@@ -18,6 +18,11 @@ import com.cburch.logisim.instance.InstanceState;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SubcircuitPoker extends InstancePoker {
 
   private static final Color MAGNIFYING_INTERIOR = new Color(200, 200, 255, 64);

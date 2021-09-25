@@ -14,6 +14,11 @@ import com.cburch.logisim.util.SocketClient;
 import com.cburch.logisim.util.UniquelyNamedThread;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclWrapperListenerThread extends UniquelyNamedThread {
 
   final SocketClient socket;

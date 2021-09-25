@@ -18,6 +18,11 @@ import java.util.Map;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class EditPopup extends JPopupMenu {
   private static final long serialVersionUID = 1L;
   private final Listener listener;

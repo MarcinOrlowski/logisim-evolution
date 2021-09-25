@@ -22,6 +22,11 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class TableTabClip implements ClipboardOwner {
   private static class Data implements Transferable, Serializable {
     private static final long serialVersionUID = 1L;

@@ -13,6 +13,11 @@ import com.cburch.logisim.soc.data.AssemblerHighlighter;
 import org.fife.ui.rsyntaxtextarea.Token;
 import org.fife.ui.rsyntaxtextarea.TokenMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RV32imSyntaxHighlighter extends AssemblerHighlighter {
   @Override
   public TokenMap getWordsToHighlight() {

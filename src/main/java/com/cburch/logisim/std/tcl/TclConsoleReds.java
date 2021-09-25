@@ -26,6 +26,11 @@ import java.util.List;
  * so please don't. But if you need to change the display name, you can do this in the resource
  * files (std.properties).
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclConsoleReds extends TclComponent {
   /**
    * Unique identifier of the tool, used as reference in project files.

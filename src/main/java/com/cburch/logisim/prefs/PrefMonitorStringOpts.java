@@ -12,6 +12,11 @@ package com.cburch.logisim.prefs;
 import java.util.Objects;
 import java.util.prefs.PreferenceChangeEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class PrefMonitorStringOpts extends AbstractPrefMonitor<String> {
   private static boolean isSame(String a, String b) {
     return Objects.equals(a, b);
@@ -32,10 +37,12 @@ class PrefMonitorStringOpts extends AbstractPrefMonitor<String> {
     prefs.addPreferenceChangeListener(this);
   }
 
+  @Override
   public String get() {
     return value;
   }
 
+  @Override
   public void preferenceChange(PreferenceChangeEvent event) {
     final var prefs = event.getNode();
     final var prop = event.getKey();
@@ -58,6 +65,7 @@ class PrefMonitorStringOpts extends AbstractPrefMonitor<String> {
     }
   }
 
+  @Override
   public void set(String newValue) {
     final var oldValue = value;
     if (!isSame(oldValue, newValue)) {

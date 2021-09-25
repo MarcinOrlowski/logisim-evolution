@@ -18,6 +18,11 @@ import java.util.ArrayList;
  * correspondence to how they would be laid down in a circuit. This intermediate representation
  * permits easy manipulation of an expression's translation.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class CircuitDetermination {
   private static class Determine implements Expression.Visitor<CircuitDetermination> {
     private Gate binary(

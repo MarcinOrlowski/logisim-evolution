@@ -12,6 +12,11 @@ package com.cburch.logisim.std.memory;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.StdAttr;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ClockState implements Cloneable {
   private Value lastClock;
 

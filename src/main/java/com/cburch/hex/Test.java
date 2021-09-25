@@ -14,6 +14,11 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Test {
   public static void main(String[] args) {
     JFrame frame = new JFrame();
@@ -29,10 +34,12 @@ public class Test {
     private final ArrayList<HexModelListener> listeners = new ArrayList<>();
     private final long[] data = new long[924];
 
+    @Override
     public void addHexModelListener(HexModelListener l) {
       listeners.add(l);
     }
 
+    @Override
     public void fill(long start, long len, long value) {
       long[] oldValues = new long[(int) len];
       System.arraycopy(data, (int) (start - 11111), oldValues, 0, (int) len);
@@ -42,26 +49,32 @@ public class Test {
       }
     }
 
+    @Override
     public long get(long address) {
       return data[(int) (address - 11111)];
     }
 
+    @Override
     public long getFirstOffset() {
       return 11111;
     }
 
+    @Override
     public long getLastOffset() {
       return data.length + 11110;
     }
 
+    @Override
     public int getValueWidth() {
       return 9;
     }
 
+    @Override
     public void removeHexModelListener(HexModelListener l) {
       listeners.remove(l);
     }
 
+    @Override
     public void set(long address, long value) {
       long[] oldValues = new long[] {data[(int) (address - 11111)]};
       data[(int) (address - 11111)] = value & 0x1FF;
@@ -70,6 +83,7 @@ public class Test {
       }
     }
 
+    @Override
     public void set(long start, long[] values) {
       long[] oldValues = new long[values.length];
       System.arraycopy(data, (int) (start - 11111), oldValues, 0, values.length);

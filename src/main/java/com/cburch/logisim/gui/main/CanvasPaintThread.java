@@ -12,6 +12,11 @@ package com.cburch.logisim.gui.main;
 import com.cburch.logisim.util.UniquelyNamedThread;
 import java.awt.Rectangle;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CanvasPaintThread extends UniquelyNamedThread {
   private static final int REPAINT_TIMESPAN = 50; // 50 ms between repaints
 

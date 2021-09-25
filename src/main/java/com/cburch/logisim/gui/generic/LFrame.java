@@ -24,6 +24,11 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LFrame extends JFrame implements WindowClosable {
   private static final long serialVersionUID = 1L;
   private static final String PATH = "resources/logisim/img/logisim-icon-";

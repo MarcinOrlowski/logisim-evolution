@@ -22,6 +22,11 @@ import java.util.logging.Logger;
  *
  * @author christian.mueller@heig-vd.ch
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclVhdlEntityContent extends VhdlContentComponent {
 
   public static TclVhdlEntityContent create() {

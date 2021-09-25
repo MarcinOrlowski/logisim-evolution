@@ -60,6 +60,11 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PLATable {
   private final ArrayList<Row> rows = new ArrayList<>();
   private int inSize, outSize;

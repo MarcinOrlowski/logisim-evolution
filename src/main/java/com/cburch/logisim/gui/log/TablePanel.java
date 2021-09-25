@@ -26,6 +26,11 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class TablePanel extends LogPanel {
   private static final long serialVersionUID = 1L;
   private static final Font HEAD_FONT = new Font("Serif", Font.BOLD, 14);

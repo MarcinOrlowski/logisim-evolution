@@ -32,6 +32,11 @@ import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.KeyStroke;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TextTool extends AbstractTool {
   private static final TextIcon ICON = new TextIcon();
   private final DrawingAttributeSet attrs;

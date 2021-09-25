@@ -21,6 +21,11 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PainterShaped {
   private static GeneralPath computeShield(int width, int height) {
     GeneralPath base;

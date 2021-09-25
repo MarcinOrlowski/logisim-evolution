@@ -17,8 +17,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 @SuppressWarnings("rawtypes")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class LocaleSelector extends JList implements LocaleListener, ListSelectionListener {
   private static class LocaleOption implements Runnable {
     private final Locale locale;

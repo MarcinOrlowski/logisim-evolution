@@ -21,6 +21,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class WireRepair extends CircuitTransaction {
 
   private static class MergeSets {

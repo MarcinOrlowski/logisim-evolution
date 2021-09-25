@@ -20,6 +20,11 @@ import com.cburch.logisim.fpga.hdlgenerator.HDL;
 import com.cburch.logisim.fpga.hdlgenerator.InlinedHDLGeneratorFactory;
 import com.cburch.logisim.util.LineBuffer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LedBarHDLGeneratorFactory extends InlinedHDLGeneratorFactory {
 
   protected Attribute<BitWidth> getAttributeColumns() {

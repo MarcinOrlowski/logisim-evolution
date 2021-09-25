@@ -33,6 +33,11 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Download extends DownloadBase implements Runnable, BaseWindowListenerContract {
 
   private boolean StopRequested = false;

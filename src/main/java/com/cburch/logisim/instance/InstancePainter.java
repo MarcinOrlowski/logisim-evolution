@@ -23,6 +23,11 @@ import com.cburch.logisim.proj.Project;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class InstancePainter implements InstanceState {
   private final ComponentDrawContext context;
   private InstanceComponent comp;
@@ -91,15 +96,18 @@ public class InstancePainter implements InstanceState {
     context.drawRectangle(x, y, width, height, label);
   }
 
+  @Override
   public void fireInvalidated() {
     comp.fireInvalidated();
   }
 
+  @Override
   public AttributeSet getAttributeSet() {
     InstanceComponent c = comp;
     return c == null ? attrs : c.getAttributeSet();
   }
 
+  @Override
   public <E> E getAttributeValue(Attribute<E> attr) {
     InstanceComponent c = comp;
     AttributeSet as = c == null ? attrs : c.getAttributeSet();
@@ -120,6 +128,7 @@ public class InstancePainter implements InstanceState {
    *
    * @pre it assumes that your circuit was instantiate before.
    */
+  @Override
   public InstanceData getData() {
     CircuitState circState = context.getCircuitState();
     if (circState == null || comp == null) {
@@ -138,6 +147,7 @@ public class InstancePainter implements InstanceState {
     return context.getDestination();
   }
 
+  @Override
   public InstanceFactory getFactory() {
     return comp == null ? factory : (InstanceFactory) comp.getFactory();
   }
@@ -160,6 +170,7 @@ public class InstancePainter implements InstanceState {
   //
   // methods related to the instance
   //
+  @Override
   public Instance getInstance() {
     InstanceComponent c = comp;
     return c == null ? null : c.getInstance();
@@ -180,10 +191,12 @@ public class InstancePainter implements InstanceState {
     }
   }
 
+  @Override
   public int getPortIndex(Port port) {
     return this.getInstance().getPorts().indexOf(port);
   }
 
+  @Override
   public Value getPortValue(int portIndex) {
     InstanceComponent c = comp;
     CircuitState s = context.getCircuitState();
@@ -197,6 +210,7 @@ public class InstancePainter implements InstanceState {
   //
   // methods related to the circuit state
   //
+  @Override
   public Project getProject() {
     return context.getCircuitState().getProject();
   }
@@ -205,14 +219,17 @@ public class InstancePainter implements InstanceState {
     return context.getShowState();
   }
 
+  @Override
   public int getTickCount() {
     return context.getCircuitState().getPropagator().getTickCount();
   }
 
+  @Override
   public boolean isCircuitRoot() {
     return !context.getCircuitState().isSubstate();
   }
 
+  @Override
   public boolean isPortConnected(int index) {
     Circuit circ = context.getCircuit();
     Location loc = comp.getEnd(index).getLocation();
@@ -223,6 +240,7 @@ public class InstancePainter implements InstanceState {
     return context.isPrintView();
   }
 
+  @Override
   public void setData(InstanceData value) {
     CircuitState circState = context.getCircuitState();
     if (circState == null || comp == null) {
@@ -242,6 +260,7 @@ public class InstancePainter implements InstanceState {
     this.comp = value;
   }
 
+  @Override
   public void setPort(int portIndex, Value value, int delay) {
     throw new UnsupportedOperationException("setValue on InstancePainter");
   }

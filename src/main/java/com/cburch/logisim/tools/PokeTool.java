@@ -34,6 +34,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.GeneralPath;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PokeTool extends Tool {
   /**
    * Unique identifier of the tool, used as reference in project files. Do NOT change as it will
@@ -44,6 +49,7 @@ public class PokeTool extends Tool {
   public static final String _ID = "Poke Tool";
 
   private class Listener implements CircuitListener {
+    @Override
     public void circuitChanged(CircuitEvent event) {
       final var circ = pokedCircuit;
       if (event.getCircuit() == circ

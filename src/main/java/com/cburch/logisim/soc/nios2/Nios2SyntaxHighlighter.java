@@ -14,6 +14,11 @@ import org.fife.ui.rsyntaxtextarea.Token;
 import org.fife.ui.rsyntaxtextarea.TokenMap;
 
 // FIXME: this class seems to be unused
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2SyntaxHighlighter extends AssemblerHighlighter {
   @Override
   public TokenMap getWordsToHighlight() {

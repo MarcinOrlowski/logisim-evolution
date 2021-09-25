@@ -16,6 +16,11 @@ import java.beans.PropertyChangeListener;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class Clipboard {
   public static final String CONTENTS_PROPERTY = "contents";
   private static final PropertyChangeWeakSupport propertySupport =

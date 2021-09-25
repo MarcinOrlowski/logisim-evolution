@@ -17,6 +17,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ToolbarToolItem implements ToolbarItem {
   private final AbstractTool tool;
   private final Icon icon;

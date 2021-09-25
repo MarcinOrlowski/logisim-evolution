@@ -23,6 +23,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class MenuFile extends Menu implements ActionListener {
   private static final long serialVersionUID = 1L;
   private final LogisimMenuBar menubar;

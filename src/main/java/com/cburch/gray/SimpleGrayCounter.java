@@ -24,6 +24,11 @@ import com.cburch.logisim.util.StringUtil;
  * how a component can maintain its own internal state. All of the code relevant to state, though,
  * appears in CounterData class.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class SimpleGrayCounter extends InstanceFactory {
   /**
    * Unique identifier of the tool, used as reference in project files.

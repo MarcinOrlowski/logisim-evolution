@@ -13,6 +13,11 @@ import com.cburch.logisim.circuit.Circuit;
 import com.cburch.logisim.file.LogisimFile;
 import com.cburch.logisim.tools.Tool;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ProjectEvent {
   public static final int ACTION_SET_FILE = 0; // change file
   public static final int ACTION_SET_CURRENT = 1; // change current

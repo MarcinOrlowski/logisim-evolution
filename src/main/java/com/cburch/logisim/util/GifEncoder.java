@@ -55,6 +55,11 @@ import javax.swing.ProgressMonitor;
  * @version 0.90 21 Apr 1996
  * @author <A HREF="http://www.cs.brown.edu/people/amd/">Adam Doppelt</A>
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class GifEncoder {
   private static class BitFile {
     final OutputStream outputStream;

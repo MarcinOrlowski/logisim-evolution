@@ -12,6 +12,11 @@ package com.cburch.logisim.vhdl.base;
 import com.cburch.logisim.util.EventSourceWeakSupport;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class HdlContent implements HdlModel, Cloneable {
   protected static <T> T[] concat(T[] first, T[] second) {
     T[] result = Arrays.copyOf(first, first.length + second.length);
@@ -94,6 +99,7 @@ public abstract class HdlContent implements HdlModel, Cloneable {
     }
   }
 
+  @Override
   public void displayChanged() {
     if (listeners == null) {
       return;

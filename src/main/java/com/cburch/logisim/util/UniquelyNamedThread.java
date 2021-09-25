@@ -11,6 +11,11 @@ package com.cburch.logisim.util;
 
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class UniquelyNamedThread extends Thread {
 
   private static final Object lock = new Object();

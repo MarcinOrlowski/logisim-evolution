@@ -11,6 +11,11 @@ package com.cburch.draw.model;
 
 import com.cburch.logisim.data.Location;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Handle {
   private final CanvasObject object;
   private final int x;

@@ -18,6 +18,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class PropagationPoints {
   private static class Entry<T> {
     private final CircuitState state;

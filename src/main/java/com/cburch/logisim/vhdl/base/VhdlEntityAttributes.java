@@ -25,6 +25,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlEntityAttributes extends AbstractAttributeSet {
 
   public static class VhdlGenericAttribute extends Attribute<Integer> {

@@ -27,6 +27,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VgaState implements SocBusSlaveInterface, SocBusSnifferInterface, SocBusMasterInterface {
 
   public class VgaDisplayState implements InstanceData, Cloneable {

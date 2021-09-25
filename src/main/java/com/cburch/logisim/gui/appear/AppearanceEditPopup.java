@@ -16,6 +16,11 @@ import com.cburch.logisim.gui.menu.LogisimMenuItem;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AppearanceEditPopup extends EditPopup implements EditHandler.Listener {
   private static final long serialVersionUID = 1L;
   private final AppearanceCanvas canvas;
@@ -32,6 +37,7 @@ public class AppearanceEditPopup extends EditPopup implements EditHandler.Listen
     initialize();
   }
 
+  @Override
   public void enableChanged(EditHandler handler, LogisimMenuItem action, boolean value) {
     enabled.put(action, value);
   }

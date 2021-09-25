@@ -28,6 +28,11 @@ import javax.help.JHelp;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class MenuHelp extends JMenu implements ActionListener {
 
   private static final long serialVersionUID = 1L;

@@ -20,6 +20,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class GraphicsUtil {
   public static void drawArrow(Graphics g, int x0, int y0, int x1, int y1, int headLength, int headAngle) {
     final var offs = headAngle * Math.PI / 180.0;

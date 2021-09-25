@@ -15,6 +15,11 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeOption;
 import java.awt.Color;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class FillableCanvasObject extends AbstractCanvasObject {
   private AttributeOption paintType;
   private int strokeWidth;

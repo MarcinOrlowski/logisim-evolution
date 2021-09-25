@@ -22,7 +22,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 @SuppressWarnings("serial")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class FPGACommanderTextWindow extends JFrame implements BaseKeyListenerContract, BaseWindowListenerContract {
 
   private int FontSize;

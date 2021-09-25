@@ -35,6 +35,11 @@ import com.cburch.logisim.util.StringGetter;
 import java.io.File;
 import java.util.WeakHashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class Mem extends InstanceFactory {
   // Note: The code is meant to be able to handle up to 32-bit addresses, but
   // it

@@ -11,6 +11,11 @@ package com.cburch.logisim.fpga.designrulecheck;
 
 import com.cburch.logisim.comp.Component;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ConnectionPoint {
 
   private Net myOwnNet;

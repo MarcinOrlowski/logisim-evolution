@@ -16,6 +16,11 @@ import com.cburch.hex.HexModelListener;
 import com.cburch.logisim.proj.Action;
 import com.cburch.logisim.proj.Project;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class RomContentsListener implements HexModelListener {
   private static class Change extends Action {
     private final RomContentsListener source;

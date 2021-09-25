@@ -34,6 +34,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import com.cburch.logisim.util.StringUtil;
 import javax.swing.JPopupMenu;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Splitter extends ManagedComponent
     implements WireRepair, ToolTipMaker, MenuExtender, AttributeListener {
 

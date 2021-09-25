@@ -14,6 +14,11 @@ import com.cburch.logisim.proj.Project;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class OptionsPanel extends JPanel {
   private static final long serialVersionUID = 1L;
   private final OptionsFrame optionsFrame;

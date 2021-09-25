@@ -11,6 +11,11 @@ package com.cburch.draw.shapes;
 
 import com.cburch.logisim.data.Location;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LineUtil {
   // a value we consider "small enough" to equal it to zero:
   // (this is used for double solutions in 2nd or 3d degree equation)

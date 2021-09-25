@@ -17,6 +17,11 @@ import java.awt.RenderingHints;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class EditableLabelField extends JTextField {
   static final int FIELD_BORDER = 2;
   private static final long serialVersionUID = 1L;

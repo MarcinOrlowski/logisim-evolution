@@ -15,21 +15,29 @@ import com.cburch.logisim.data.Location;
 import java.awt.Graphics;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class AbstractComponent implements Component {
   protected AbstractComponent() {}
 
+  @Override
   public boolean contains(Location pt) {
     final var bds = getBounds();
     if (bds == null) return false;
     return bds.contains(pt, 1);
   }
 
+  @Override
   public boolean contains(Location pt, Graphics g) {
     final var bds = getBounds(g);
     if (bds == null) return false;
     return bds.contains(pt, 1);
   }
 
+  @Override
   public boolean endsAt(Location pt) {
     for (final var data : getEnds()) {
       if (data.getLocation().equals(pt)) return true;
@@ -37,12 +45,15 @@ public abstract class AbstractComponent implements Component {
     return false;
   }
 
+  @Override
   public abstract Bounds getBounds();
 
+  @Override
   public Bounds getBounds(Graphics g) {
     return getBounds();
   }
 
+  @Override
   public EndData getEnd(int index) {
     return getEnds().get(index);
   }
@@ -50,17 +61,21 @@ public abstract class AbstractComponent implements Component {
   //
   // propagation methods
   //
+  @Override
   public abstract List<EndData> getEnds();
 
   //
   // basic information methods
   //
+  @Override
   public abstract ComponentFactory getFactory();
 
   //
   // location/extent methods
   //
+  @Override
   public abstract Location getLocation();
 
+  @Override
   public abstract void propagate(CircuitState state);
 }

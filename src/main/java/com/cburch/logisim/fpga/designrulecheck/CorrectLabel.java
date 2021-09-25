@@ -18,6 +18,11 @@ import com.cburch.logisim.gui.generic.OptionPane;
 import java.util.Arrays;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CorrectLabel {
   public static String getCorrectLabel(String label) {
     if (label.isEmpty()) return label;

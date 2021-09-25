@@ -15,6 +15,11 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.font.TextLayout;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ArithmeticIcon extends BaseIcon {
 
   private final String opp;
@@ -36,6 +41,7 @@ public class ArithmeticIcon extends BaseIcon {
     this.invalid = invalid;
   }
 
+  @Override
   protected void paintIcon(Graphics2D g2) {
     g2.setStroke(new BasicStroke(scale(2)));
     g2.setColor(Color.BLACK);

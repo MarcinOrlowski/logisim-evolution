@@ -11,6 +11,11 @@ package com.cburch.logisim.circuit.appear;
 
 import com.cburch.logisim.circuit.Circuit;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CircuitAppearanceEvent {
   public static final int APPEARANCE = 1;
   public static final int BOUNDS = 2;

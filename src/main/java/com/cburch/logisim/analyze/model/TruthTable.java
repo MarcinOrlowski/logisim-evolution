@@ -16,6 +16,11 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TruthTable {
 
   private static final Entry DEFAULT_ENTRY = Entry.DONT_CARE;

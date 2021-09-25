@@ -18,6 +18,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class IOComponentsInformation {
 
   private Frame parent;

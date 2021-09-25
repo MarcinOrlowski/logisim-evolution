@@ -23,6 +23,11 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFileChooser;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclComponentAttributes extends AbstractAttributeSet {
 
   private static class ContentFileAttribute extends Attribute<File> {

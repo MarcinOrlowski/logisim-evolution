@@ -16,6 +16,11 @@ import com.cburch.logisim.analyze.model.Var.Bit;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class Expression {
   public interface Visitor<T> {
     default T visitVariable(String name) {

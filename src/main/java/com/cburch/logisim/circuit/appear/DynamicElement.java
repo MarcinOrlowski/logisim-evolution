@@ -37,6 +37,11 @@ import java.awt.Graphics;
 import java.util.List;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class DynamicElement extends AbstractCanvasObject {
 
   public static final AttributeOption LABEL_NONE =
@@ -79,6 +84,7 @@ public abstract class DynamicElement extends AbstractCanvasObject {
       return elt[elt.length - 1];
     }
 
+    @Override
     public String toString() {
       return toSvgString();
     }

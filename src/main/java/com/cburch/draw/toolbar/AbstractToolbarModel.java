@@ -12,6 +12,11 @@ package com.cburch.draw.toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class AbstractToolbarModel implements ToolbarModel {
   private final List<ToolbarModelListener> listeners;
 

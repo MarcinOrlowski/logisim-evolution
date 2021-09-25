@@ -15,6 +15,11 @@ import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.EventSourceWeakSupport;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MemContents implements Cloneable, HexModel {
   public static MemContents create(int addrBits, int width) {
     return new MemContents(addrBits, width);

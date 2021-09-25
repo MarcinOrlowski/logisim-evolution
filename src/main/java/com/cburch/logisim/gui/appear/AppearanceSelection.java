@@ -14,6 +14,11 @@ import com.cburch.draw.model.CanvasObject;
 import com.cburch.logisim.circuit.appear.AppearanceElement;
 import java.util.Collection;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AppearanceSelection extends Selection {
   @Override
   public void setMovingDelta(int dx, int dy) {

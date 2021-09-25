@@ -13,6 +13,11 @@ import static com.cburch.logisim.circuit.Strings.S;
 
 import com.cburch.logisim.util.StringUtil;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AnalyzeException extends Exception {
   public static class CannotHandle extends AnalyzeException {
     private static final long serialVersionUID = 1L;

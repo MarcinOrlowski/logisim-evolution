@@ -16,6 +16,11 @@ import com.cburch.logisim.instance.InstanceComponent;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SimpleDRCContainer {
 
   public static final int LEVEL_NORMAL = 1;

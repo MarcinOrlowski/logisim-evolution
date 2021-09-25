@@ -19,6 +19,11 @@ import com.cburch.logisim.util.SocketClient;
  * The TCL components needs some activity for each instance of component. Here we extend the
  * InstanceComponent for the Tcl components to create those activities
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclComponentData implements InstanceData {
 
   /**

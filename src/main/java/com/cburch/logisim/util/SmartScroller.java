@@ -39,6 +39,11 @@ import javax.swing.text.JTextComponent;
  *
  * <p>http://www.camick.com/java/source/SmartScroller.java
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SmartScroller implements AdjustmentListener {
   public static final int HORIZONTAL = 0;
   public static final int VERTICAL = 1;

@@ -75,6 +75,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Frame extends LFrame.MainWindow implements LocaleListener {
   public static final String EDITOR_VIEW = "editorView";
   public static final String EXPLORER_VIEW = "explorerView";

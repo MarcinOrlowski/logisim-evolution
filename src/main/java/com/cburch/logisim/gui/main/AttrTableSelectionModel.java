@@ -36,6 +36,11 @@ import com.cburch.logisim.vhdl.base.VhdlContent;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AttrTableSelectionModel extends AttributeSetTableModel implements Selection.Listener {
   private final Project project;
   private final Frame frame;

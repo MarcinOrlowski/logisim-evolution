@@ -12,6 +12,11 @@ package com.cburch.logisim.comp;
 import com.cburch.logisim.circuit.CircuitState;
 import com.cburch.logisim.gui.main.Canvas;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ComponentUserEvent {
   private final Canvas canvas;
   private int x = 0;

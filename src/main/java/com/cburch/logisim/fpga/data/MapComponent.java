@@ -25,6 +25,11 @@ import java.util.List;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MapComponent {
 
   public static final String MAP_KEY = "key";

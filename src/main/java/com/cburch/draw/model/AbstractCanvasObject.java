@@ -25,6 +25,11 @@ import java.util.Random;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class AbstractCanvasObject implements AttributeSet, CanvasObject, Cloneable {
   private static final int OVERLAP_TRIES = 50;
   private static final int GENERATE_RANDOM_TRIES = 20;

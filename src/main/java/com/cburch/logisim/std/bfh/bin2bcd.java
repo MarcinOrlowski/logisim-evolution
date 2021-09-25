@@ -28,6 +28,11 @@ import com.cburch.logisim.tools.key.BitWidthConfigurator;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class bin2bcd extends InstanceFactory {
   /**
    * Unique identifier of the tool, used as reference in project files.
@@ -50,6 +55,7 @@ public class bin2bcd extends InstanceFactory {
     setKeyConfigurator(new BitWidthConfigurator(bin2bcd.ATTR_BinBits, 4, 13, 0));
   }
 
+  @Override
   public void paintInstance(InstancePainter painter) {
     Graphics g = painter.getGraphics();
     BitWidth nrofbits = painter.getAttributeValue(bin2bcd.ATTR_BinBits);

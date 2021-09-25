@@ -24,8 +24,12 @@ import java.io.Reader;
 import javax.swing.text.Segment;
 import org.fife.ui.rsyntaxtextarea.AbstractJFlexTokenMaker;
 import org.fife.ui.rsyntaxtextarea.Token;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 @SuppressWarnings("fallthrough")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlSyntax extends AbstractJFlexTokenMaker {
 
   /** This character denotes the end of file */
@@ -1129,6 +1133,7 @@ public class VhdlSyntax extends AbstractJFlexTokenMaker {
    * @param startOffset The offset in the document at which this token occurs.
    * @param hyperlink Whether this token is a hyperlink.
    */
+  @Override
   public void addToken(
       char[] array, int start, int end, int tokenType, int startOffset, boolean hyperlink) {
     super.addToken(array, start, end, tokenType, startOffset, hyperlink);
@@ -1136,6 +1141,7 @@ public class VhdlSyntax extends AbstractJFlexTokenMaker {
   }
 
   /** {@inheritDoc} */
+  @Override
   public String[] getLineCommentStartAndEnd(int languageIndex) {
     return new String[] {"--", null};
   }
@@ -1149,6 +1155,7 @@ public class VhdlSyntax extends AbstractJFlexTokenMaker {
    * @param startOffset The offset into the document at which <code>text</code> starts.
    * @return The first <code>Token</code> in a linked list representing the syntax highlighted text.
    */
+  @Override
   public Token getTokenList(Segment text, int initialTokenType, int startOffset) {
 
     resetTokenList();
@@ -1252,6 +1259,7 @@ public class VhdlSyntax extends AbstractJFlexTokenMaker {
    *
    * @param newState the new lexical state
    */
+  @Override
   public final void yybegin(int newState) {
     zzLexicalState = newState;
   }

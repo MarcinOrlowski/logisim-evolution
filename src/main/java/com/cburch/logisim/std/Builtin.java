@@ -30,6 +30,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Builtin extends Library {
   /**
    * Unique identifier of the library, used as reference in project files.

@@ -27,6 +27,11 @@ import com.cburch.logisim.std.wiring.Pin;
 import com.cburch.logisim.util.StringUtil;
 import com.cburch.logisim.util.UniquelyNamedThread;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TestThread extends UniquelyNamedThread implements CircuitListener {
 
   private final Project project;

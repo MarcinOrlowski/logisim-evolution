@@ -13,9 +13,15 @@ import com.cburch.logisim.data.Bounds;
 import java.awt.Font;
 import java.awt.FontMetrics;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class StringUtil {
   public static StringGetter constantGetter(final String value) {
     return new StringGetter() {
+      @Override
       public String toString() {
         return value;
       }
@@ -28,6 +34,7 @@ public class StringUtil {
 
   public static StringGetter formatter(final StringGetter base, final String arg) {
     return new StringGetter() {
+      @Override
       public String toString() {
         return format(base.toString(), arg);
       }
@@ -36,6 +43,7 @@ public class StringUtil {
 
   public static StringGetter formatter(final StringGetter base, final StringGetter arg) {
     return new StringGetter() {
+      @Override
       public String toString() {
         return format(base.toString(), arg.toString());
       }

@@ -26,8 +26,12 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 @SuppressWarnings({"serial", "rawtypes"})
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ToolbarList extends JList {
   private final ToolbarData base;
   private final Model model;

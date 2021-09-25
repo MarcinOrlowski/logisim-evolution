@@ -30,6 +30,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.JLabel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SocSimulationManager implements SocBusMasterInterface {
 
   private static class SocBusSelector extends JLabel implements BaseMouseListenerContract {

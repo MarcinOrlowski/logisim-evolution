@@ -23,6 +23,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import javax.swing.tree.TreeNode;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class SimulationTreeCircuitNode extends SimulationTreeNode
     implements CircuitListener, AttributeListener, Comparator<Component> {
   private final CircuitState circuitState;

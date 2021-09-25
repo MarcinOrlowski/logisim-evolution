@@ -14,6 +14,11 @@ import javax.swing.JProgressBar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Reporter {
 
   public static final Reporter Report = new Reporter();

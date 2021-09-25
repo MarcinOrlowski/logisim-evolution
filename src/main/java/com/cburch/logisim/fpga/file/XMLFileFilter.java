@@ -14,12 +14,18 @@ import static com.cburch.logisim.fpga.Strings.S;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class XMLFileFilter extends FileFilter {
 
   public static final FileFilter XML_FILTER = new XMLFileFilter();
 
   public static final String XML_EXTENSION = ".xml";
 
+  @Override
   public boolean accept(File f) {
     return f.isDirectory() || f.getName().toLowerCase().endsWith(XML_EXTENSION);
   }

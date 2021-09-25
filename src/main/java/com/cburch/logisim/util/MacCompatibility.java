@@ -12,6 +12,11 @@ package com.cburch.logisim.util;
 import java.awt.Desktop;
 import javax.swing.JMenuBar;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MacCompatibility {
 
   private static final boolean runningOnMac =

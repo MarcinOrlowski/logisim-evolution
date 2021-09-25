@@ -14,6 +14,11 @@ import com.cburch.logisim.data.BitWidth;
 import com.cburch.logisim.instance.StdAttr;
 import com.cburch.logisim.tools.key.LongConfigurator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ConstantConfigurator extends LongConfigurator {
   public ConstantConfigurator() {
     super(Constant.ATTR_VALUE, 0, 0, 0, 16);

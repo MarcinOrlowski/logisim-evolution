@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import javax.swing.tree.TreeNode;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class SimulationTreeTopNode extends SimulationTreeNode {
 
   public SimulationTreeTopNode(SimulationTreeModel model, List<CircuitState> allRootStates) {

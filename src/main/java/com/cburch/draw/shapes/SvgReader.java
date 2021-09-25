@@ -22,6 +22,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SvgReader {
   private static final Pattern PATH_REGEX = Pattern.compile("[a-zA-Z]|[-0-9.]+");
 

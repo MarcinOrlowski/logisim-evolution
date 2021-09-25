@@ -14,6 +14,11 @@ import com.cburch.logisim.data.Location;
 import com.cburch.logisim.data.Value;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class WireBundle {
   private BitWidth width = BitWidth.UNKNOWN;
   private Value pullValue = Value.UNKNOWN;

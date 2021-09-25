@@ -13,6 +13,11 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.Direction;
 import java.awt.event.KeyEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DirectionConfigurator implements KeyConfigurator, Cloneable {
   private final Attribute<?> attr;
   private final int modsEx;

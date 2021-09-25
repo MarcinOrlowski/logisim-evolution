@@ -19,6 +19,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SocUpSimulationState {
   public static final int SIMULATION_RUNNING = 0;
   public static final int SIMULATION_HALTED_BY_ERROR = 1;

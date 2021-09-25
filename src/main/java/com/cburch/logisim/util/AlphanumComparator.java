@@ -41,6 +41,11 @@ import java.util.stream.Collectors;
  * <p>To use this class: Use the static "sort" method from the java.util.Collections class:
  * Collections.sort(your list, new AlphanumComparator());
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AlphanumComparator implements Comparator<String> {
   private boolean isDigit(char ch) {
     return ((ch >= 48) && (ch <= 57));
@@ -70,6 +75,7 @@ public class AlphanumComparator implements Comparator<String> {
     return chunk.toString();
   }
 
+  @Override
   public int compare(String s1, String s2) {
     if ((s1 == null) || (s2 == null)) {
       return 0;

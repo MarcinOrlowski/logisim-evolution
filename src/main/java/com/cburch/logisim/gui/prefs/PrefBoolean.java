@@ -17,6 +17,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JCheckBox;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class PrefBoolean extends JCheckBox implements ActionListener, PropertyChangeListener {
   private static final long serialVersionUID = 1L;
   private final PrefMonitor<Boolean> pref;

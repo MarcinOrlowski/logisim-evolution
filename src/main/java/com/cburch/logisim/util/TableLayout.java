@@ -15,6 +15,11 @@ import java.awt.Dimension;
 import java.awt.LayoutManager2;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TableLayout implements LayoutManager2 {
   private final int colCount;
   private final ArrayList<Component[]> contents;

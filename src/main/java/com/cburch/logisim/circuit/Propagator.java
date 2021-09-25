@@ -22,6 +22,11 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Random;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Propagator {
   private static class ComponentPoint {
     final Component cause;

@@ -22,8 +22,12 @@ import java.awt.Font;
 import java.util.Arrays;
 import java.util.List;
 import java.util.WeakHashMap;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-class RomAttributes extends AbstractAttributeSet {
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
+public class RomAttributes extends AbstractAttributeSet {
 
   static HexFrame getHexFrame(MemContents value, Project proj, Instance instance) {
     synchronized (windowRegistry) {

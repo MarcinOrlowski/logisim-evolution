@@ -22,6 +22,11 @@ import com.cburch.logisim.gui.menu.MenuListener;
 import com.cburch.logisim.util.UnmodifiableList;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ToolboxToolbarModel extends AbstractToolbarModel implements MenuListener.EnabledListener {
   private final Frame frame;
   private final LogisimToolbarItem itemAdd;

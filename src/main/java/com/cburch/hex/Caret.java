@@ -30,7 +30,11 @@ import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Caret {
   private static final Color SELECT_COLOR = new Color(192, 192, 255);
   private static final Stroke CURSOR_STROKE = new BasicStroke(2.0f);

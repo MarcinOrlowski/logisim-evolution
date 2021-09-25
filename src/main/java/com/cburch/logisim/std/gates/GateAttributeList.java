@@ -14,6 +14,11 @@ import com.cburch.logisim.data.Direction;
 import com.cburch.logisim.instance.StdAttr;
 import java.util.AbstractList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class GateAttributeList extends AbstractList<Attribute<?>> {
   private static final Attribute<?>[] BASE_ATTRIBUTES = {
     StdAttr.FACING,

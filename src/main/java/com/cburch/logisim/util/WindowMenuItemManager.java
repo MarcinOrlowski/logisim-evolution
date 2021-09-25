@@ -15,6 +15,11 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JRadioButtonMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class WindowMenuItemManager {
   private class MyListener implements BaseWindowListenerContract {
     @Override

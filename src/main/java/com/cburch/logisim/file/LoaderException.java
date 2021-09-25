@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.file;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LoaderException extends RuntimeException {
   private static final long serialVersionUID = 1L;
   private final boolean shown;

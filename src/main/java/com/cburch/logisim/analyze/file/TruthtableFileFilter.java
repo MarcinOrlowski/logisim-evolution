@@ -13,6 +13,11 @@ import com.cburch.logisim.util.StringGetter;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TruthtableFileFilter extends FileFilter {
 
   final StringGetter description;

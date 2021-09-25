@@ -18,6 +18,11 @@ import java.awt.Graphics2D;
 import java.awt.font.TextLayout;
 import java.awt.geom.GeneralPath;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ProjectAddIcon extends BaseIcon {
 
   private static final int[] points = {

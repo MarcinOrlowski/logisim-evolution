@@ -12,6 +12,11 @@ package com.cburch.logisim.circuit;
 import com.cburch.logisim.data.Location;
 import java.util.Iterator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class WireIterator implements Iterator<Location> {
   private int curX;
   private int curY;

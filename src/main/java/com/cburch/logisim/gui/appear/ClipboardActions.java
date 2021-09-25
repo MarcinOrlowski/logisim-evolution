@@ -22,6 +22,11 @@ import com.cburch.logisim.proj.Project;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ClipboardActions extends Action {
 
   private final boolean remove;

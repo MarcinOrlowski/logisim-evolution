@@ -13,6 +13,11 @@ import static com.cburch.logisim.util.Strings.S;
 
 import java.awt.Font;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class FontUtil {
   public static String toStyleDisplayString(int style) {
     switch (style) {

@@ -26,6 +26,11 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import javax.swing.JFrame;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class WindowManagers {
   private static final MyListener myListener = new MyListener();
   private static final HashMap<Project, ProjectManager> projectMap =

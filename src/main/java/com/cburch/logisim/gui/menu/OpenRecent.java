@@ -24,6 +24,11 @@ import java.util.List;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class OpenRecent extends JMenu implements PropertyChangeListener {
   private static final long serialVersionUID = 1L;
   private static final int MAX_ITEM_LENGTH = 50;

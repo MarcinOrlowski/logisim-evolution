@@ -24,6 +24,11 @@ import java.nio.charset.StandardCharsets;
  * with one or two other features, like the ability to reset to the start of the stream, to keep
  * count of line numbers and byte positions, and to know the overall size.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class BufferedLineReader {
 
   protected long bsize;

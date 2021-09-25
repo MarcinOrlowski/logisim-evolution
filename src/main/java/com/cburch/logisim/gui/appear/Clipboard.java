@@ -12,6 +12,11 @@ package com.cburch.logisim.gui.appear;
 import com.cburch.logisim.util.PropertyChangeWeakSupport;
 import java.beans.PropertyChangeListener;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class Clipboard {
   public static final String CONTENTS_PROPERTY = "appearance";
   private static final PropertyChangeWeakSupport propertySupport =

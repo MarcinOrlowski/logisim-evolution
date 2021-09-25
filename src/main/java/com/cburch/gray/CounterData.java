@@ -13,8 +13,11 @@ import com.cburch.logisim.data.BitWidth;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.InstanceData;
 import com.cburch.logisim.instance.InstanceState;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-/** Represents the state of a counter. */
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class CounterData implements InstanceData, Cloneable {
   /** The last clock input value observed. */
   private Value lastClock;

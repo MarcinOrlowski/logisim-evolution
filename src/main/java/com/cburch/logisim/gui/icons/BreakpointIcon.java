@@ -17,6 +17,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class BreakpointIcon implements Icon {
 
   private final int wh = AppPreferences.getScaled(12);

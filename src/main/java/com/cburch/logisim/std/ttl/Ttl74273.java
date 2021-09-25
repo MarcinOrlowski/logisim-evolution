@@ -14,6 +14,11 @@ import com.cburch.logisim.fpga.designrulecheck.NetlistComponent;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl74273 extends AbstractOctalFlops {
   /**
    * Unique identifier of the tool, used as reference in project files.

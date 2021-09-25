@@ -23,10 +23,16 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ExpressionView extends JPanel {
 
   private class MyListener extends ComponentAdapter {
 
+    @Override
     public void componentResized(ComponentEvent arg0) {
       final var width = getWidth();
       if (renderData != null && Math.abs(renderData.getParentWidth() - width) > 2) {

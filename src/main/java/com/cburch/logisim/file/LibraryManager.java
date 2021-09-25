@@ -20,6 +20,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class LibraryManager {
   private static class JarDescriptor extends LibraryDescriptor {
     private final File file;

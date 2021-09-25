@@ -15,6 +15,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /** The library of components that the user can access. */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Components extends Library {
   /**
    * Unique identifier of the library, used as reference in project files.

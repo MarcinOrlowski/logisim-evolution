@@ -15,6 +15,11 @@ import com.cburch.logisim.data.Location;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ClipboardContents {
   static final ClipboardContents EMPTY =
       new ClipboardContents(Collections.emptySet(), null, null);

@@ -48,7 +48,11 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 @SuppressWarnings("serial")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AttrTable extends JPanel implements LocaleListener {
 
   private static final AttrTableModel NULL_ATTR_MODEL = new NullAttrModel();

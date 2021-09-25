@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class OutputStreamBinarySanitizer extends OutputStream {
   protected final Writer out;
 
@@ -20,10 +25,12 @@ public class OutputStreamBinarySanitizer extends OutputStream {
     this.out = out;
   }
 
+  @Override
   public void close() throws IOException {
     out.close();
   }
 
+  @Override
   public void flush() throws IOException {
     out.flush();
   }

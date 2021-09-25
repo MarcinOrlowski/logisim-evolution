@@ -16,6 +16,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MatchingSet<E extends CanvasObject> extends AbstractSet<E> {
   private final Set<Member<E>> set;
 
@@ -66,14 +71,17 @@ public class MatchingSet<E extends CanvasObject> extends AbstractSet<E> {
       this.it = it;
     }
 
+    @Override
     public boolean hasNext() {
       return it.hasNext();
     }
 
+    @Override
     public E next() {
       return it.next().value;
     }
 
+    @Override
     public void remove() {
       it.remove();
     }

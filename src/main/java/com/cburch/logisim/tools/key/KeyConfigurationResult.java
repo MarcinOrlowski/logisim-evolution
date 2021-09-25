@@ -13,6 +13,11 @@ import com.cburch.logisim.data.Attribute;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class KeyConfigurationResult {
   private final KeyConfigurationEvent event;
   private final Map<Attribute<?>, Object> attrValueMap;

@@ -12,6 +12,11 @@ package com.cburch.logisim.std.ttl;
 import com.cburch.logisim.instance.InstancePainter;
 import com.cburch.logisim.instance.InstanceState;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl7413 extends AbstractTtlGate {
   /**
    * Unique identifier of the tool, used as reference in project files.

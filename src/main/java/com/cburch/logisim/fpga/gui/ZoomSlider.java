@@ -14,6 +14,11 @@ import java.util.Hashtable;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ZoomSlider extends JSlider {
 
   private int zoomMin;

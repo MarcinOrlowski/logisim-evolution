@@ -16,6 +16,11 @@ import com.cburch.logisim.gui.generic.OptionPane;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ConstantButton extends FPGAIOInformationContainer {
 
   public static final int CONSTANT_ZERO = 0;

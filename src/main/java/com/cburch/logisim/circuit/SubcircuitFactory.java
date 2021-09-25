@@ -47,6 +47,11 @@ import java.util.Map;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SubcircuitFactory extends InstanceFactory {
   private class CircuitFeature implements StringGetter, MenuExtender, ActionListener {
     private final Instance instance;

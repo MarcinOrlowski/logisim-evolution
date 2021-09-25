@@ -39,6 +39,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPopupMenu;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AppearanceCanvas extends Canvas implements CanvasPaneContents, ActionDispatcher {
   private static final long serialVersionUID = 1L;
   private static final int BOUNDS_BUFFER = 70;

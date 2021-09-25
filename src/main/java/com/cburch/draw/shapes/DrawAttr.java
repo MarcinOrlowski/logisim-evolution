@@ -20,6 +20,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DrawAttr {
   public static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, 12);
   public static final Font DEFAULT_FIXED_PICH_FONT = new Font("Courier 10 Pitch", Font.PLAIN, 12);

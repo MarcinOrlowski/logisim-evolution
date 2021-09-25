@@ -11,6 +11,11 @@ package com.cburch.logisim.file;
 
 import com.cburch.logisim.tools.Library;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LibraryEvent {
   public static final int ADD_TOOL = 0;
   public static final int REMOVE_TOOL = 1;

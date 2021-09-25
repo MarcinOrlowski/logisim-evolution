@@ -18,6 +18,11 @@ import com.cburch.logisim.soc.util.AssemblerExecutionInterface;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RV32imEnvironmentCallAndBreakpoints implements AssemblerExecutionInterface {
 
   private static final int SYSTEM = 0x73;
@@ -31,11 +36,13 @@ public class RV32imEnvironmentCallAndBreakpoints implements AssemblerExecutionIn
   private int operation;
   private boolean valid;
 
+  @Override
   public ArrayList<String> getInstructions() {
     ArrayList<String> opcodes = new ArrayList<>(Arrays.asList(AsmOpcodes));
     return opcodes;
   }
 
+  @Override
   public boolean execute(Object state, CircuitState cState) {
     if (!valid)
       return false;
@@ -43,26 +50,31 @@ public class RV32imEnvironmentCallAndBreakpoints implements AssemblerExecutionIn
     return true;
   }
 
+  @Override
   public String getAsmInstruction() {
     if (!valid)
       return null;
     return AsmOpcodes[operation].toLowerCase();
   }
 
+  @Override
   public int getBinInstruction() {
     return instruction;
   }
 
+  @Override
   public boolean setBinInstruction(int instr) {
     instruction = instr;
     valid = decodeBin();
     return valid;
   }
 
+  @Override
   public boolean performedJump() {
     return false;
   }
 
+  @Override
   public boolean isValid() {
     return valid;
   }
@@ -78,15 +90,18 @@ public class RV32imEnvironmentCallAndBreakpoints implements AssemblerExecutionIn
     return false;
   }
 
+  @Override
   public String getErrorMessage() {
     return null;
   }
 
+  @Override
   public int getInstructionSizeInBytes(String instruction) {
     if (getInstructions().contains(instruction.toUpperCase())) return 4;
     return -1;
   }
 
+  @Override
   public boolean setAsmInstruction(AssemblerAsmInstruction instr) {
     int operation = -1;
     for (int i = 0; i < AsmOpcodes.length; i++)

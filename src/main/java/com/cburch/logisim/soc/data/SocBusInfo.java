@@ -17,6 +17,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SocBusInfo {
   private String busId;
   private SocSimulationManager socManager;

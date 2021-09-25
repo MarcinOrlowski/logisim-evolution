@@ -12,6 +12,11 @@ package com.cburch.logisim.fpga.data;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PullBehaviors {
   public static String getContraintedPullString(char id) {
     switch (id) {

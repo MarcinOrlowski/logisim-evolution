@@ -19,6 +19,11 @@
 
 package com.cburch.logisim.util;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LibraryUtil {
 
   public static final String ID_FIELD_NAME = "_ID";

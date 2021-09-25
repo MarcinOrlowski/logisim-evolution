@@ -29,6 +29,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TextTool extends Tool {
   /**
    * Unique identifier of the tool, used as reference in project files.
@@ -39,6 +44,7 @@ public class TextTool extends Tool {
   public static final String _ID = "Text Tool";
 
   private class MyListener implements CaretListener, CircuitListener {
+    @Override
     public void circuitChanged(CircuitEvent event) {
       if (event.getCircuit() != caretCircuit) {
         event.getCircuit().removeCircuitListener(this);
@@ -56,6 +62,7 @@ public class TextTool extends Tool {
       }
     }
 
+    @Override
     public void editingCanceled(CaretEvent e) {
       if (e.getCaret() != caret) {
         e.getCaret().removeCaretListener(this);
@@ -70,6 +77,7 @@ public class TextTool extends Tool {
       caret = null;
     }
 
+    @Override
     public void editingStopped(CaretEvent e) {
       if (e.getCaret() != caret) {
         e.getCaret().removeCaretListener(this);

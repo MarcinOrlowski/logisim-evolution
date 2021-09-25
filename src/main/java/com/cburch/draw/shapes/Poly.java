@@ -25,6 +25,11 @@ import java.util.Random;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Poly extends FillableCanvasObject {
   private final boolean closed;
   // "handles" should be immutable - create a new array and change using
@@ -91,6 +96,7 @@ public class Poly extends FillableCanvasObject {
    * Clone function taken from Cornell's version of Logisim:
    * http://www.cs.cornell.edu/courses/cs3410/2015sp/
    */
+  @Override
   public Poly clone() {
     Poly ret = (Poly) super.clone();
     Handle[] hs = this.handles.clone();

@@ -32,6 +32,11 @@ import org.slf4j.LoggerFactory;
  *
  * @author christian.mueller@heig-vd.ch
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlSimulatorTclComp {
 
   static final Logger logger = LoggerFactory.getLogger(VhdlSimulatorTclComp.class);

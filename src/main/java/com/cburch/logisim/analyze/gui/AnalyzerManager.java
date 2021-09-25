@@ -16,6 +16,11 @@ import com.cburch.logisim.util.LocaleManager;
 import com.cburch.logisim.util.WindowMenuItemManager;
 import javax.swing.JFrame;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AnalyzerManager extends WindowMenuItemManager implements LocaleListener {
   public static Analyzer getAnalyzer(java.awt.Component parent) {
     if (analysisWindow == null) {

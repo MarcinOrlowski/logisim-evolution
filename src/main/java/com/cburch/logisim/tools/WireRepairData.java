@@ -12,6 +12,11 @@ package com.cburch.logisim.tools;
 import com.cburch.logisim.circuit.Wire;
 import com.cburch.logisim.data.Location;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class WireRepairData {
   private final Wire wire;
   private final Location point;

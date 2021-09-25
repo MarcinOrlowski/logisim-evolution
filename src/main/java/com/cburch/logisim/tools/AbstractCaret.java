@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AbstractCaret implements Caret {
   private final ArrayList<CaretListener> listeners = new ArrayList<>();
   private final List<CaretListener> listenersView;

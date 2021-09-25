@@ -14,6 +14,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VendorSoftware {
   public static final char VENDOR_ALTERA = 0;
   public static final char VENDOR_XILINX = 1;

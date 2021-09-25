@@ -17,6 +17,11 @@ import java.util.ArrayList;
 import java.util.prefs.PreferenceChangeEvent;
 import java.util.prefs.PreferenceChangeListener;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Entry implements Comparable<Entry>, PreferenceChangeListener {
   public static Entry parse(String description) {
     if (AppPreferences.FALSE_CHAR.get().charAt(0) == description.charAt(0)) return ZERO;

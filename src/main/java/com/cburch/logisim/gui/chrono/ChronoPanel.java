@@ -48,6 +48,11 @@ import javax.swing.KeyStroke;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ChronoPanel extends LogPanel implements Model.Listener {
   private static final long serialVersionUID = 1L;
   public static final int HEADER_HEIGHT = 20;

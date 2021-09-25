@@ -13,6 +13,11 @@ import com.cburch.logisim.soc.util.AbstractAssembler;
 import com.cburch.logisim.soc.util.AssemblerToken;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2Assembler extends AbstractAssembler {
 
   public static final int CUSTOM_REGISTER = 256;
@@ -33,14 +38,17 @@ public class Nios2Assembler extends AbstractAssembler {
     super.addAssemblerExecutionUnit(new Nios2OtherControlInstructions());
   }
 
+  @Override
   public boolean usesRoundedBrackets() {
     return true;
   }
 
+  @Override
   public String getHighlightStringIdentifier() {
     return "asm/nios2";
   }
 
+  @Override
   public void performUpSpecificOperationsOnTokens(LinkedList<AssemblerToken> tokens) {
     for (AssemblerToken token : tokens) {
       if (token.getType() == AssemblerToken.REGISTER) {

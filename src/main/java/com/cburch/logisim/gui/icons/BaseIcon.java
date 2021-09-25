@@ -15,6 +15,11 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public abstract class BaseIcon implements javax.swing.Icon {
 
   /**

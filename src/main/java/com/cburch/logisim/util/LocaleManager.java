@@ -23,6 +23,11 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LocaleManager {
   private static class LocaleGetter implements StringGetter {
     final LocaleManager source;

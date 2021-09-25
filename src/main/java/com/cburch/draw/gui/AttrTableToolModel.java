@@ -13,7 +13,11 @@ import com.cburch.draw.tools.AbstractTool;
 import com.cburch.draw.tools.DrawingAttributeSet;
 import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.gui.generic.AttributeSetTableModel;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AttrTableToolModel extends AttributeSetTableModel {
   private final DrawingAttributeSet defaults;
   private AbstractTool currentTool;

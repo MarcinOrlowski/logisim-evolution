@@ -13,6 +13,11 @@ package com.cburch.logisim.util;
  * Allows immutable objects to be cached in memory in order to reduce the creation of duplicate
  * objects.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Cache {
   private final int mask;
   private final Object[] data;

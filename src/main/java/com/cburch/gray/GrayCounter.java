@@ -23,11 +23,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import com.cburch.logisim.util.StringUtil;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-/**
- * Manufactures a counter that iterates over Gray codes. This demonstrates several additional
- * features beyond the SimpleGrayCounter class.
- */
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class GrayCounter extends InstanceFactory {
   /**
    * Unique identifier of the tool, used as reference in project files.

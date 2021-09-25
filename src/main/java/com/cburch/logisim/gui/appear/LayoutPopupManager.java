@@ -31,6 +31,11 @@ import javax.swing.JViewport;
 import javax.swing.Popup;
 import javax.swing.PopupFactory;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class LayoutPopupManager implements SelectionListener, BaseMouseListenerContract, BaseMouseMotionListenerContract {
   private final CanvasPane canvasPane;
   private final AppearanceCanvas canvas;

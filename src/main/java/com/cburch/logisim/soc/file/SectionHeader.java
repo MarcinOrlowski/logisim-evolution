@@ -11,6 +11,11 @@ package com.cburch.logisim.soc.file;
 
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SectionHeader {
   public static final int SH_NAME = 0;
   public static final int SH_TYPE = 1;

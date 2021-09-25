@@ -13,6 +13,11 @@ import com.cburch.logisim.data.AttributeOption;
 import com.cburch.logisim.util.StringGetter;
 import javax.swing.JComboBox;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ComboOption {
   private final Object value;
   private final StringGetter getter;

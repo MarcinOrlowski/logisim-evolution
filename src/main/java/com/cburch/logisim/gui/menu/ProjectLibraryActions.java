@@ -24,6 +24,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ProjectLibraryActions {
   private ProjectLibraryActions() {}
 

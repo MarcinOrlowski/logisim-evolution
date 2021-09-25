@@ -18,6 +18,11 @@ import java.awt.Graphics2D;
 import java.awt.font.TextLayout;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class InfoIcon implements Icon {
 
   final int wh = AppPreferences.getIconSize();

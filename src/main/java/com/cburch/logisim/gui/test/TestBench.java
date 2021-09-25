@@ -25,6 +25,11 @@ import com.cburch.logisim.vhdl.sim.VhdlSimulatorTop;
 import java.io.File;
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TestBench {
 
   /* Watch out the order matters*/

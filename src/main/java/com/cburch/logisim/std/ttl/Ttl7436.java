@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.std.ttl;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl7436 extends Ttl7402 {
   /**
    * Unique identifier of the tool, used as reference in project files.

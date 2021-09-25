@@ -20,8 +20,12 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListDataEvent;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 @SuppressWarnings("serial")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class FPGACommanderListWindow extends JFrame implements BaseWindowListenerContract, BaseListDataListenerContract {
 
   private final String Title;

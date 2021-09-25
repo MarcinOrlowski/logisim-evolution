@@ -11,6 +11,11 @@ package com.cburch.draw.model;
 
 import java.util.Comparator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ReorderRequest {
   public static final Comparator<ReorderRequest> ASCENDING_FROM = new Compare(true, true);
   public static final Comparator<ReorderRequest> DESCENDING_FROM = new Compare(true, true);
@@ -47,6 +52,7 @@ public class ReorderRequest {
       this.asc = asc;
     }
 
+    @Override
     public int compare(ReorderRequest a, ReorderRequest b) {
       int i = onFrom ? a.fromIndex : a.toIndex;
       int j = onFrom ? b.fromIndex : b.toIndex;

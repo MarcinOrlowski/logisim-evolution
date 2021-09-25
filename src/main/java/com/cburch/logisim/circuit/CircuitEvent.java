@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.circuit;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CircuitEvent {
   public static final int ACTION_SET_NAME = 0; // name changed
   public static final int ACTION_ADD = 1; // component added
@@ -48,6 +53,7 @@ public class CircuitEvent {
     return (CircuitTransactionResult) data;
   }
 
+  @Override
   public String toString() {
     String s;
     switch (action) {

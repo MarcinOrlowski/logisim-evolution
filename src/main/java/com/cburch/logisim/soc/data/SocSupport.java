@@ -19,6 +19,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class SocSupport {
 
   private static final long LongMask = (1L << 32) - 1L;

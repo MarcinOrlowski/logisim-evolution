@@ -12,6 +12,11 @@ package com.cburch.logisim.file;
 import java.util.Collections;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class XmlReaderException extends Exception {
   private static final long serialVersionUID = 1L;
   private final List<String> messages;

@@ -18,6 +18,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CanvasModelEvent extends EventObject {
   public static final int ACTION_ADDED = 0;
   public static final int ACTION_REMOVED = 1;

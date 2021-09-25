@@ -19,7 +19,11 @@ import com.cburch.logisim.data.Location;
 import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Font;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public final class Instance implements Location.At {
 
   public static Instance getInstanceFor(Component comp) {
@@ -76,6 +80,7 @@ public final class Instance implements Location.At {
     return (InstanceFactory) comp.getFactory();
   }
 
+  @Override
   public Location getLocation() {
     return comp.getLocation();
   }

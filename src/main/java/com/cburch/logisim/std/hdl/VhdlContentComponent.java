@@ -26,6 +26,11 @@ import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlContentComponent extends HdlContent {
 
   public static VhdlContentComponent create() {

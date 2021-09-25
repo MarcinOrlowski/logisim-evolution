@@ -18,6 +18,11 @@ import com.cburch.logisim.soc.util.AssemblerExecutionInterface;
 import com.cburch.logisim.soc.util.AssemblerToken;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecutionInterface {
 
   private static final int INSTR_AND = 0;
@@ -96,6 +101,7 @@ public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecution
     }
   }
 
+  @Override
   @SuppressWarnings("fallthrough")
   public boolean execute(Object processorState, CircuitState circuitState) {
     if (!valid) return false;
@@ -195,6 +201,7 @@ public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecution
     return true;
   }
 
+  @Override
   public String getAsmInstruction() {
     if (!valid) return null;
     StringBuilder s = new StringBuilder();
@@ -230,10 +237,12 @@ public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecution
     return s.toString();
   }
 
+  @Override
   public int getBinInstruction() {
     return instruction;
   }
 
+  @Override
   public boolean setAsmInstruction(AssemblerAsmInstruction instr) {
     if (!Opcodes.contains(instr.getOpcode().toLowerCase())) return false;
     valid = true;
@@ -385,6 +394,7 @@ public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecution
     return true;
   }
 
+  @Override
   public boolean setBinInstruction(int instr) {
     instruction = instr;
     valid = false;
@@ -434,22 +444,27 @@ public class Nios2ArithmeticAndLogicalInstructions implements AssemblerExecution
     }
   }
 
+  @Override
   public boolean performedJump() {
     return false;
   }
 
+  @Override
   public boolean isValid() {
     return valid;
   }
 
+  @Override
   public String getErrorMessage() {
     return null;
   }
 
+  @Override
   public ArrayList<String> getInstructions() {
     return Opcodes;
   }
 
+  @Override
   public int getInstructionSizeInBytes(String instruction) {
     if (Opcodes.contains(instruction.toLowerCase())) {
       int idx = Opcodes.indexOf(instruction.toLowerCase());

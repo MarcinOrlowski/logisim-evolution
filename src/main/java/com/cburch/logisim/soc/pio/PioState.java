@@ -23,6 +23,11 @@ import com.cburch.logisim.soc.data.SocBusTransaction;
 import com.cburch.logisim.soc.data.SocSupport;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PioState implements SocBusSlaveInterface {
 
   public class PioRegState implements InstanceData, Cloneable {

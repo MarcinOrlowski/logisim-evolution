@@ -10,8 +10,12 @@
 package com.cburch.logisim.std.memory;
 
 import com.cburch.logisim.prefs.AppPreferences;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-class MemContentsSub {
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
+public class MemContentsSub {
   private static class BytePage extends MemContents.Page {
     private byte[] data;
     private final long mask;

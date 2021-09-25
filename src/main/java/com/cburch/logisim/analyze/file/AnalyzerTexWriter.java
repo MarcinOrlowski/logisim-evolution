@@ -32,6 +32,11 @@ import java.util.Date;
 import java.util.Locale;
 import javax.swing.filechooser.FileFilter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AnalyzerTexWriter {
 
   private static final String SECTION_SEP = "%===============================================================================";

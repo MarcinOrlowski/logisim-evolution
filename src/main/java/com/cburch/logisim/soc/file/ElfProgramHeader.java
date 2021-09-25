@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ElfProgramHeader {
 
   public static final int P_TYPE = 0;
@@ -108,6 +113,7 @@ public class ElfProgramHeader {
       return null;
     }
 
+    @Override
     public String toString() {
       StringBuilder s = new StringBuilder();
       s.append("Program Header Info:\np_type   : ");

@@ -12,6 +12,11 @@ package com.cburch.logisim.circuit;
 import com.cburch.logisim.data.Direction;
 import com.cburch.logisim.util.GraphicsUtil;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class SplitterParameters {
   private final int dxEnd0; // location of split end 0 relative to origin
   private final int dyEnd0;

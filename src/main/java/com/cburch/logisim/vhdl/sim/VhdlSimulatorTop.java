@@ -39,6 +39,11 @@ import org.slf4j.LoggerFactory;
  * @author christian.mueller@heig-vd.ch
  * @since 2.12.0
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlSimulatorTop implements CircuitListener {
 
   private final VhdlSimulatorVhdlTop vhdlTop = new VhdlSimulatorVhdlTop(this);

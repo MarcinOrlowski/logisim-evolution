@@ -14,6 +14,11 @@ import static com.cburch.logisim.fpga.Strings.S;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PNGFileFilter  extends FileFilter {
 
   public static final String PNG_EXTENSION = ".png";

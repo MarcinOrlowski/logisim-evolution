@@ -14,6 +14,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class OutputExpressions {
   private class MyListener implements VariableListListener, TruthTableListener {
 

@@ -22,6 +22,11 @@ import org.slf4j.LoggerFactory;
  * when in tty mode.
  */
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class OptionPane {
   public static final int YES_NO_OPTION = JOptionPane.YES_NO_OPTION;
   public static final int YES_NO_CANCEL_OPTION = JOptionPane.YES_NO_CANCEL_OPTION;

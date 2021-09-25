@@ -22,6 +22,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.WeakHashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlEntityAttributes extends AbstractAttributeSet {
 
   public static HdlContentEditor getContentEditor(Window source, HdlContent value, Project proj) {

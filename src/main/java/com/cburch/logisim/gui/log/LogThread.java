@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class LogThread extends UniquelyNamedThread implements Model.Listener {
   // file will be flushed with at least this frequency (ms)
   private static final int FLUSH_FREQUENCY = 500;

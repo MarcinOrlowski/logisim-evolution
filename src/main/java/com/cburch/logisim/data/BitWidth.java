@@ -13,6 +13,11 @@ import com.cburch.logisim.gui.generic.ComboBox;
 import com.cburch.logisim.util.StringGetter;
 import java.awt.Component;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class BitWidth implements Comparable<BitWidth> {
   static class Attribute extends com.cburch.logisim.data.Attribute<BitWidth> {
     private final BitWidth[] choices;
@@ -99,6 +104,7 @@ public class BitWidth implements Comparable<BitWidth> {
     this.width = width;
   }
 
+  @Override
   public int compareTo(BitWidth other) {
     return this.width - other.width;
   }

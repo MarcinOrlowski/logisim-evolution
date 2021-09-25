@@ -13,6 +13,11 @@ import static com.cburch.logisim.gui.Strings.S;
 
 import com.cburch.logisim.circuit.Simulator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class TickCounter implements Simulator.Listener {
   private static final int QUEUE_LENGTH = 1000;
 
@@ -127,6 +132,7 @@ class TickCounter implements Simulator.Listener {
     }
   }
 
+  @Override
   public void simulatorStateChanged(Simulator.Event e) {
     updateSimulator(e);
   }

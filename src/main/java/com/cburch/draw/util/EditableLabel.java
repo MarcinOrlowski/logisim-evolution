@@ -18,6 +18,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import javax.swing.JTextField;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class EditableLabel implements Cloneable {
   public static final int LEFT = JTextField.LEFT;
   public static final int RIGHT = JTextField.RIGHT;

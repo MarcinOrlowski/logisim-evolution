@@ -22,7 +22,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 @SuppressWarnings("serial")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class MenuFPGA extends JMenu implements ActionListener {
   private final Project ThisCircuit;
   private final JMenuItem BoardEditor = new JMenuItem();
@@ -41,6 +45,7 @@ public class MenuFPGA extends JMenu implements ActionListener {
     setEnabled(parent instanceof Frame);
   }
 
+  @Override
   public void actionPerformed(ActionEvent e) {
     Object src = e.getSource();
     if (src == BoardEditor) {

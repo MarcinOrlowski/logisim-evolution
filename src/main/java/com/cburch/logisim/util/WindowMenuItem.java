@@ -14,6 +14,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JRadioButtonMenuItem;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class WindowMenuItem extends JRadioButtonMenuItem {
   private static final long serialVersionUID = 1L;
   private final WindowMenuItemManager manager;

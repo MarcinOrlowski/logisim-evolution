@@ -12,6 +12,11 @@ package com.cburch.logisim.std.ttl;
 /**
  * TTL 74x27: triple 3-input NOR gate
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl7427 extends Ttl7410 {
   /**
    * Unique identifier of the tool, used as reference in project files.

@@ -13,6 +13,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class Highlighter {
   private final HexEditor hex;
   private ArrayList<Entry> entries;

@@ -16,6 +16,11 @@ import com.cburch.logisim.data.Attributes;
 import com.cburch.logisim.data.Direction;
 import com.cburch.logisim.util.StringUtil;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class NegateAttribute extends Attribute<Boolean> {
   private static final Attribute<Boolean> BOOLEAN_ATTR = Attributes.forBoolean("negateDummy");
 

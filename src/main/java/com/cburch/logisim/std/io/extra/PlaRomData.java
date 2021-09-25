@@ -21,6 +21,11 @@ import java.util.Arrays;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PlaRomData implements InstanceData {
   private byte inputs, outputs, and;
   private String SavedData = "";

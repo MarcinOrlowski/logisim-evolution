@@ -23,6 +23,11 @@ import java.awt.event.MouseEvent;
  * object will handle all user events. Note that CounterPoker is a class specific to GrayCounter,
  * and that it must be a subclass of InstancePoker in the com.cburch.logisim.instance package.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CounterPoker extends InstancePoker {
   public CounterPoker() {
     // dummy

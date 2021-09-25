@@ -14,6 +14,11 @@ import com.cburch.logisim.instance.InstanceState;
 import com.cburch.logisim.util.LineBuffer;
 import java.util.ArrayList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl7408 extends AbstractTtlGate {
   /**
    * Unique identifier of the tool, used as reference in project files.

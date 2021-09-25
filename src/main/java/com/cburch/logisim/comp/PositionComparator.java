@@ -2,6 +2,11 @@ package com.cburch.logisim.comp;
 
 import java.util.Comparator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PositionComparator implements Comparator<Component> {
   @Override
   public int compare(Component o1, Component o2) {

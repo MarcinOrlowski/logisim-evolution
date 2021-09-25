@@ -12,6 +12,11 @@ package com.cburch.logisim.std.tcl;
 import com.cburch.logisim.instance.Instance;
 import java.io.File;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TclComponentListener {
   final Instance instance;
 

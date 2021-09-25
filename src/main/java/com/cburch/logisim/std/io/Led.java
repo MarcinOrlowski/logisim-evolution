@@ -34,6 +34,11 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Led extends InstanceFactory implements DynamicElementProvider {
   /**
    * Unique identifier of the tool, used as reference in project files.

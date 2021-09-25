@@ -68,6 +68,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import org.jdesktop.swingx.prompt.BuddySupport;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class ExpressionTab extends AnalyzerTab {
   private static final long serialVersionUID = 1L;
   private final AnalyzerModel model;

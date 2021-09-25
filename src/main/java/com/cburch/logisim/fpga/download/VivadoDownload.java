@@ -24,6 +24,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VivadoDownload implements VendorDownload {
 
   private final VendorSoftware vivadoVendor =

@@ -25,6 +25,11 @@ import org.slf4j.LoggerFactory;
  * a program genuinely gets around to needing to use it. Note that for this to work, the ComponentFactory
  * class must be public, and it must include a public no-arguments constructor.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class FactoryDescription {
 
   public static List<Tool> getTools(

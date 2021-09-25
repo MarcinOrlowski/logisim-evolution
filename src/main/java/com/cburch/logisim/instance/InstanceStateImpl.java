@@ -19,6 +19,11 @@ import com.cburch.logisim.data.Location;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.proj.Project;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class InstanceStateImpl implements InstanceState {
   private CircuitState circuitState;
   private Component component;
@@ -32,16 +37,19 @@ public class InstanceStateImpl implements InstanceState {
     }
   }
 
+  @Override
   public void fireInvalidated() {
     if (component instanceof InstanceComponent) {
       ((InstanceComponent) component).fireInvalidated();
     }
   }
 
+  @Override
   public AttributeSet getAttributeSet() {
     return component.getAttributeSet();
   }
 
+  @Override
   public <E> E getAttributeValue(Attribute<E> attr) {
     return component.getAttributeSet().getValue(attr);
   }
@@ -50,10 +58,12 @@ public class InstanceStateImpl implements InstanceState {
     return circuitState;
   }
 
+  @Override
   public InstanceData getData() {
     return ((InstanceData) circuitState.getData(component));
   }
 
+  @Override
   public InstanceFactory getFactory() {
     if (component instanceof InstanceComponent) {
       InstanceComponent comp = (InstanceComponent) component;
@@ -63,6 +73,7 @@ public class InstanceStateImpl implements InstanceState {
     }
   }
 
+  @Override
   public Instance getInstance() {
     if (component instanceof InstanceComponent) {
       return ((InstanceComponent) component).getInstance();
@@ -71,27 +82,33 @@ public class InstanceStateImpl implements InstanceState {
     }
   }
 
+  @Override
   public int getPortIndex(Port port) {
     return this.getInstance().getPorts().indexOf(port);
   }
 
+  @Override
   public Value getPortValue(int portIndex) {
     EndData data = component.getEnd(portIndex);
     return circuitState.getValue(data.getLocation());
   }
 
+  @Override
   public Project getProject() {
     return circuitState.getProject();
   }
 
+  @Override
   public int getTickCount() {
     return circuitState.getPropagator().getTickCount();
   }
 
+  @Override
   public boolean isCircuitRoot() {
     return !circuitState.isSubstate();
   }
 
+  @Override
   public boolean isPortConnected(int index) {
     Circuit circ = circuitState.getCircuit();
     Location loc = component.getEnd(index).getLocation();
@@ -103,10 +120,12 @@ public class InstanceStateImpl implements InstanceState {
     this.component = component;
   }
 
+  @Override
   public void setData(InstanceData value) {
     circuitState.setData(component, value);
   }
 
+  @Override
   public void setPort(int portIndex, Value value, int delay) {
     EndData end = component.getEnd(portIndex);
     circuitState.setValue(end.getLocation(), value, component, delay);

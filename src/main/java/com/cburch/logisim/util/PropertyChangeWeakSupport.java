@@ -15,6 +15,11 @@ import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PropertyChangeWeakSupport {
   private static class ListenerData {
     final String property;

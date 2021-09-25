@@ -10,6 +10,11 @@
 package com.cburch.logisim;
 
 /** Logisim follows Semantic Versioning https://semver.org/ */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LogisimVersion {
   private int major = 0;
   private int minor = 0;

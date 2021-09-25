@@ -20,10 +20,16 @@ import javax.swing.filechooser.FileFilter;
 /**
  * Code taken from Cornell's version of Logisim: http://www.cs.cornell.edu/courses/cs3410/2015sp/
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class TestVector {
 
   private static class TestVectorFilter extends FileFilter {
 
+    @Override
     public boolean accept(File f) {
       if (!f.isFile()) return true;
 
@@ -32,6 +38,7 @@ public class TestVector {
       return (i > 0 && name.substring(i).equalsIgnoreCase(".txt"));
     }
 
+    @Override
     public String getDescription() {
       return "Logisim-evolution Test Vector (*.txt)";
     }

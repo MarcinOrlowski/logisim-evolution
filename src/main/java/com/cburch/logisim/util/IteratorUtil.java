@@ -12,6 +12,11 @@ package com.cburch.logisim.util;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class IteratorUtil {
 
   private static class EmptyIterator<E> implements Iterator<E> {
@@ -27,6 +32,7 @@ public class IteratorUtil {
       throw new NoSuchElementException();
     }
 
+    @Override
     public void remove() {
       throw new UnsupportedOperationException("EmptyIterator.remove");
     }
@@ -56,6 +62,7 @@ public class IteratorUtil {
       return cur.next();
     }
 
+    @Override
     public void remove() {
       cur.remove();
     }

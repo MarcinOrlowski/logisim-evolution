@@ -14,6 +14,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class WireSet {
   private static final Set<Wire> NULL_WIRES = Collections.emptySet();
   public static final WireSet EMPTY = new WireSet(NULL_WIRES);

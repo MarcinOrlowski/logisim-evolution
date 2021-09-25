@@ -16,6 +16,11 @@ import com.cburch.logisim.util.StringGetter;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Parser {
   private Parser() {
     // dummy, private

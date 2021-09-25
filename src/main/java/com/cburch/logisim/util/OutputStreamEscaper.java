@@ -14,6 +14,11 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class OutputStreamEscaper extends OutputStream {
   protected final Writer out;
   protected boolean preserveWhitespace;

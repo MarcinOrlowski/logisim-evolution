@@ -18,6 +18,11 @@ import com.cburch.logisim.data.Value;
 import static com.cburch.logisim.std.Strings.S;
 
 /** LED dot Matrix */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DotMatrix extends DotMatrixBase {
 
   /**

@@ -17,6 +17,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VerticalSplitPane extends JPanel {
   private class MyDragbar extends HorizontalSplitPane.Dragbar {
     private static final long serialVersionUID = 1L;

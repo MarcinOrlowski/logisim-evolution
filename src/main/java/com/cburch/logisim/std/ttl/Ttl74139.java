@@ -28,6 +28,11 @@ import java.util.ArrayList;
  * TTL 74x139 Dual 2-line to 4-line decoders/multiplexers
  * Model based on https://www.ti.com/product/SN74LS139A datasheet.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Ttl74139 extends AbstractTtlGate {
   /**
    * Unique identifier of the tool, used as reference in project files.

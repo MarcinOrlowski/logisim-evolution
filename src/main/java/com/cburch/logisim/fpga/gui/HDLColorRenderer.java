@@ -19,7 +19,11 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.TableCellRenderer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 @SuppressWarnings("serial")
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class HDLColorRenderer extends JLabel implements TableCellRenderer {
   public static final String NO_SUPPORT_STRING = "HDL_NOT_SUPPORTED";
   public static final String SUPPORT_STRING = "HDL_SUPPORTED";

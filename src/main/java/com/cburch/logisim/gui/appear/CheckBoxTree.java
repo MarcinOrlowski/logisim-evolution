@@ -23,6 +23,11 @@ import org.scijava.swing.checkboxtree.CheckBoxNodeData;
 import org.scijava.swing.checkboxtree.CheckBoxNodeEditor;
 import org.scijava.swing.checkboxtree.CheckBoxNodeRenderer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class CheckBoxTree extends JTree {
 
   public CheckBoxTree(DefaultMutableTreeNode root) {

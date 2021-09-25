@@ -17,6 +17,11 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class BoardIcon implements Icon {
   private Image image;
   private static final int ICON_WIDTH = 240;
@@ -30,14 +35,17 @@ public class BoardIcon implements Icon {
               this.getIconWidth(), this.getIconHeight(), BufferedImage.SCALE_SMOOTH);
   }
 
+  @Override
   public int getIconHeight() {
     return AppPreferences.getScaled(ICON_HEIGHT);
   }
 
+  @Override
   public int getIconWidth() {
     return AppPreferences.getScaled(ICON_WIDTH);
   }
 
+  @Override
   public void paintIcon(Component c, Graphics g, int x, int y) {
     if (image != null) g.drawImage(image, x, y, null);
     else {

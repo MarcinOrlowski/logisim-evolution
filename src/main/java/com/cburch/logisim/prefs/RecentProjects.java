@@ -19,6 +19,11 @@ import java.util.prefs.PreferenceChangeEvent;
 import java.util.prefs.PreferenceChangeListener;
 import java.util.prefs.Preferences;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class RecentProjects implements PreferenceChangeListener {
   private static class FileTime {
     private final long time;
@@ -134,6 +139,7 @@ class RecentProjects implements PreferenceChangeListener {
     }
   }
 
+  @Override
   public void preferenceChange(PreferenceChangeEvent event) {
     final var prefs = event.getNode();
     final var prop = event.getKey();

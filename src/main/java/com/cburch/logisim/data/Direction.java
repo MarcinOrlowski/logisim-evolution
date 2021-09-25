@@ -13,6 +13,11 @@ import static com.cburch.logisim.data.Strings.S;
 
 import com.cburch.logisim.util.StringGetter;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Direction implements AttributeOptionInterface {
   public static Direction parse(String str) {
     if (str.equals(EAST.name)) return EAST;
@@ -69,6 +74,7 @@ public class Direction implements AttributeOptionInterface {
   }
 
   // for AttributeOptionInterface
+  @Override
   public Object getValue() {
     return this;
   }
@@ -94,6 +100,7 @@ public class Direction implements AttributeOptionInterface {
     return 0;
   }
 
+  @Override
   public String toDisplayString() {
     return disp.toString();
   }

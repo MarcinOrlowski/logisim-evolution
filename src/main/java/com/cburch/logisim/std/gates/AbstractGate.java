@@ -42,6 +42,11 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.font.TextLayout;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 abstract class AbstractGate extends InstanceFactory {
   static Value pullOutput(Value value, Object outType) {
     if (outType == GateAttributes.OUTPUT_01) {

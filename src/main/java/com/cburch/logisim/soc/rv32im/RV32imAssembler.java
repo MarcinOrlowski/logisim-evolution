@@ -13,6 +13,11 @@ import com.cburch.logisim.soc.util.AbstractAssembler;
 import com.cburch.logisim.soc.util.AssemblerToken;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RV32imAssembler extends AbstractAssembler {
 
   public RV32imAssembler() {
@@ -28,13 +33,16 @@ public class RV32imAssembler extends AbstractAssembler {
     super.addAssemblerExecutionUnit(new RV32im_M_ExtensionInstructions());
   }
 
+  @Override
   public boolean usesRoundedBrackets() {
     return true;
   }
 
+  @Override
   public String getHighlightStringIdentifier() {
     return "asm/riscv";
   }
 
+  @Override
   public void performUpSpecificOperationsOnTokens(LinkedList<AssemblerToken> tokens) {}
 }

@@ -46,9 +46,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.WeakHashMap;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class VhdlEntity extends InstanceFactory implements HdlModelListener {
 
   static final Logger logger = LoggerFactory.getLogger(VhdlEntity.class);

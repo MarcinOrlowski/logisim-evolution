@@ -12,6 +12,11 @@ package com.cburch.logisim.fpga.data;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class DriveStrength {
   public static String GetContraintedDriveStrength(char id) {
     if ((id > DEFAULT_STENGTH) && (id <= DRIVE_24)) {

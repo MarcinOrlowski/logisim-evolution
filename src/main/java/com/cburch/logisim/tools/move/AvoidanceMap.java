@@ -20,6 +20,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class AvoidanceMap {
   static AvoidanceMap create(Collection<Component> elements, int dx, int dy) {
     AvoidanceMap ret = new AvoidanceMap(new HashMap<>());

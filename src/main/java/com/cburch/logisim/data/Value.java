@@ -14,6 +14,11 @@ import com.cburch.logisim.util.Cache;
 import java.awt.Color;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Value {
 
   private static Value create(int width, long error, long unknown, long value) {

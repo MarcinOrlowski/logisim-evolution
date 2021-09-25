@@ -17,6 +17,11 @@ import java.io.Reader;
  * Adapts a <code>Reader</code> as an <code>InputStream</code>. Adapted from <CODE>StringInputStream
  * </CODE>.
  */
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class ReaderInputStream extends InputStream {
 
   /** Source Reader. */

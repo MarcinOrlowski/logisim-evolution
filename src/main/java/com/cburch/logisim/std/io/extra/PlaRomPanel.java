@@ -27,6 +27,11 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class PlaRomPanel extends JPanel implements BaseMouseListenerContract, BaseMouseMotionListenerContract {
 
   /** */

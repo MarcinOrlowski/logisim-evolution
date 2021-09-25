@@ -21,6 +21,11 @@ import com.cburch.logisim.instance.StdAttr;
 import java.awt.Font;
 import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 class GateAttributes extends AbstractAttributeSet {
   static final int MAX_INPUTS = 64;
   static final int DELAY = 1;

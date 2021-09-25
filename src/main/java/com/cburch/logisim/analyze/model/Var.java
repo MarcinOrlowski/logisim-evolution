@@ -13,6 +13,11 @@ import static com.cburch.logisim.analyze.Strings.S;
 
 import java.util.Iterator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Var implements Iterable<String> {
 
   public final int width;
@@ -73,6 +78,7 @@ public class Var implements Iterable<String> {
       this.bitIndex = b;
     }
 
+    @Override
     public String toString() {
       return (bitIndex == -1) ? name : name + "[" + bitIndex + "]";
     }
@@ -115,6 +121,7 @@ public class Var implements Iterable<String> {
     return (width > 1) ? name + "[" + b + "]" : name;
   }
 
+  @Override
   public Iterator<String> iterator() {
     return new Iterator<>() {
       int bitIndex = width - 1;

@@ -27,8 +27,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LoadedLibrary extends Library implements LibraryEventSource {
   private class MyListener implements LibraryListener {
+    @Override
     public void libraryChanged(LibraryEvent event) {
       fireLibraryEvent(event);
     }
@@ -120,6 +126,7 @@ public class LoadedLibrary extends Library implements LibraryEventSource {
     }
   }
 
+  @Override
   public void addLibraryListener(LibraryListener l) {
     listeners.add(l);
   }
@@ -151,6 +158,7 @@ public class LoadedLibrary extends Library implements LibraryEventSource {
     return base.getLibraries();
   }
 
+  @Override
   public boolean removeLibrary(String Name) {
     return base.removeLibrary(Name);
   }
@@ -170,6 +178,7 @@ public class LoadedLibrary extends Library implements LibraryEventSource {
     return dirty || base.isDirty();
   }
 
+  @Override
   public void removeLibraryListener(LibraryListener l) {
     listeners.remove(l);
   }

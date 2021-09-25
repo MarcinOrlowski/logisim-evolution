@@ -9,6 +9,11 @@
 
 package com.cburch.logisim.soc.rv32im;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RV32imSupport {
   public static final int ASM_FIELD_SIZE = 10;
 

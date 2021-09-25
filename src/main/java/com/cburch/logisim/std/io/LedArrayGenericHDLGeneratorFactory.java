@@ -19,6 +19,11 @@ import com.cburch.logisim.fpga.data.LedArrayDriving;
 import com.cburch.logisim.fpga.hdlgenerator.AbstractHDLGeneratorFactory;
 import com.cburch.logisim.fpga.hdlgenerator.HDL;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class LedArrayGenericHDLGeneratorFactory {
   public static String LedArrayOutputs = "externalLeds";
   public static String LedArrayRedOutputs = "externalRedLeds";

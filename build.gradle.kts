@@ -7,11 +7,10 @@
  * This is free software released under GNU GPLv3 license
  */
 
+import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
 import org.gradle.internal.os.OperatingSystem
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.io.*
-import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
+import java.util.*
 
 plugins {
   checkstyle

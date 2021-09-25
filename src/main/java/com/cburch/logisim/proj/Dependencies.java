@@ -22,8 +22,14 @@ import com.cburch.logisim.util.Dag;
 import com.cburch.logisim.vhdl.base.VhdlContent;
 import com.cburch.logisim.vhdl.base.VhdlEntity;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class Dependencies {
   private class MyListener implements LibraryListener, CircuitListener {
+    @Override
     public void circuitChanged(CircuitEvent e) {
       Component comp;
       switch (e.getAction()) {
@@ -67,6 +73,7 @@ public class Dependencies {
       }
     }
 
+    @Override
     public void libraryChanged(LibraryEvent e) {
       switch (e.getAction()) {
         case LibraryEvent.ADD_TOOL:

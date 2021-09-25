@@ -19,6 +19,11 @@ import com.cburch.logisim.soc.util.AssemblerToken;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class RV32imIntegerRegisterImmediateInstructions implements AssemblerExecutionInterface {
 
   private static final int OP_IMM = 0x13;

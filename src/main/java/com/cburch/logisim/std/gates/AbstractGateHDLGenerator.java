@@ -20,13 +20,18 @@ import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.OTHERWISE)
 public class AbstractGateHDLGenerator extends AbstractHDLGeneratorFactory {
 
   private static final int BIT_WIDTH_GENERIC = -1;
   private static final String BIT_WIDTH_STRING = "NrOfBits";
   private static final int BUBBLES_GENERIC = -2;
   private static final String BUBBLES_MASK = "BubblesMask";
-  
+
   public boolean GetFloatingValue(boolean isInverted) {
     return !isInverted;
   }
