@@ -32,7 +32,7 @@ class CounterData implements InstanceData, Cloneable {
    * necessary.
    */
   public static CounterData get(InstanceState state, BitWidth width) {
-    CounterData ret = (CounterData) state.getData();
+    var ret = (CounterData) state.getData();
     if (ret == null) {
       // If it doesn't yet exist, then we'll set it up with our default
       // values and put it into the circuit state so it can be retrieved
@@ -74,7 +74,7 @@ class CounterData implements InstanceData, Cloneable {
 
   /** Updates the last clock observed, returning true if triggered. */
   public boolean updateClock(Value value) {
-    Value old = lastClock;
+    final var old = lastClock;
     lastClock = value;
     return old == Value.FALSE && value == Value.TRUE;
   }
