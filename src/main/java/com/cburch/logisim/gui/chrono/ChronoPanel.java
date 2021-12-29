@@ -48,11 +48,43 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
 public class ChronoPanel extends LogPanel implements Model.Listener {
-  private static final long serialVersionUID = 1L;
   public static final int HEADER_HEIGHT = 20;
   public static final int SIGNAL_HEIGHT = 30;
   public static final int GAP = 2;
   public static final int INITIAL_SPLIT = 150;
+
+  private static final Color PLAIN_BG = new Color(0xbb, 0xbb, 0xbb);
+  private static final Color PLAIN_HI = darker(PLAIN_BG);
+  private static final Color PLAIN_LINE = Color.BLACK;
+  private static final Color PLAIN_ERROR = new Color(0xdb, 0x9d, 0x9d);
+  private static final Color PLAIN_ERROR_LINE = Color.BLACK;
+  private static final Color PLAIN_UNKNOWN = new Color(0xea, 0xaa, 0x6c);
+  private static final Color PLAIN_UNKNOWN_LINE = Color.BLACK;
+  private static final Color SPOT_BG = new Color(0xaa, 0xff, 0xaa);
+  private static final Color SPOT_HI = darker(SPOT_BG);
+  private static final Color SPOT_LINE = Color.BLACK;
+  private static final Color SPOT_ERROR = new Color(0xf9, 0x76, 0x76);
+  private static final Color SPOT_ERROR_LINE = Color.BLACK;
+  private static final Color SPOT_UNKNOWN = new Color(0xea, 0x98, 0x49);
+  private static final Color SPOT_UNKNOWN_LINE = Color.BLACK;
+  private static final Color SELECT_LINE = Color.BLACK;
+  private static final Color SELECT_ERROR = new Color(0xe5, 0x80, 0x80);
+  private static final Color SELECT_ERROR_LINE = Color.BLACK;
+  private static final Color SELECT_UNKNOWN = new Color(0xee, 0x99, 0x44);
+  private static final Color SELECT_UNKNOWN_LINE = Color.BLACK;
+  private final Color SELECT_BG; // set in constructor
+  private final Color SELECT_HI; // set in constructor
+
+  private static final Color[] SPOT_COLORS = {
+    SPOT_BG, SPOT_HI, SPOT_LINE, SPOT_ERROR, SPOT_ERROR_LINE, SPOT_UNKNOWN, SPOT_UNKNOWN_LINE
+  };
+  private static final Color[] PLAIN_COLORS = {
+    PLAIN_BG, PLAIN_HI, PLAIN_LINE, PLAIN_ERROR, PLAIN_ERROR_LINE, PLAIN_UNKNOWN, PLAIN_UNKNOWN_LINE
+  };
+  private final Color[] selectColors; // set in constructor
+
+  private static final long serialVersionUID = 1L;
+
   private Model model;
   private RightPanel rightPanel;
   private LeftPanel leftPanel;
@@ -63,11 +95,17 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
 
   public ChronoPanel(LogFrame logFrame) {
     super(logFrame);
-    selectBg = UIManager.getDefaults().getColor("List.selectionBackground");
-    selectHi = darker(selectBg);
+    SELECT_BG = UIManager.getDefaults().getColor("List.selectionBackground");
+    SELECT_HI = darker(SELECT_BG);
     selectColors =
         new Color[] {
-          selectBg, selectHi, SELECT_LINE, SELECT_ERR, SELECT_ERRLINE, SELECT_UNK, SELECT_UNKLINE
+          SELECT_BG,
+          SELECT_HI,
+          SELECT_LINE,
+          SELECT_ERROR,
+          SELECT_ERROR_LINE,
+          SELECT_UNKNOWN,
+          SELECT_UNKNOWN_LINE
         };
     setModel(logFrame.getModel());
     configure();
@@ -91,8 +129,8 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
     toolpanel.add(toolbar);
 
     final var b = logFrame.makeSelectionButton();
-    b.setFont(b.getFont().deriveFont(10.0f));
-    Insets insets = gc.insets;
+    b.setFont(b.getFont().deriveFont(10.0F));
+    final var insets = gc.insets;
     gc.insets = new Insets(2, 0, 2, 0);
     gc.gridx = 1;
     gb.setConstraints(b, gc);
@@ -159,11 +197,14 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
             } else e.getComponent().getParent().dispatchEvent(e);
           }
         };
-    // We can't put it on the scroll pane, because ordering of listeners isn's
-    // specified and we need to be first to prevent default scroll behavior
-    // when control is down.
-    // leftScroll.addMouseWheelListener(zoomer);
-    // rightScroll.addMouseWheelListener(zoomer);
+
+    /*
+     * We can't put it on the scroll pane, because ordering of listeners isn's
+     * specified and we need to be first to prevent default scroll behavior
+     * when control is down.
+     *   leftScroll.addMouseWheelListener(zoomer);
+     *   rightScroll.addMouseWheelListener(zoomer);
+     */
     leftPanel.addMouseWheelListener(zoomer);
     rightPanel.addMouseWheelListener(zoomer);
     leftPanel.getTableHeader().addMouseWheelListener(zoomer);
@@ -273,48 +314,19 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
     model.addModelListener(this);
   }
 
-  private static final Color PLAIN_BG = new Color(0xbb, 0xbb, 0xbb);
-  private static final Color PLAIN_HI = darker(PLAIN_BG);
-  private static final Color PLAIN_LINE = Color.BLACK;
-  private static final Color PLAIN_ERR = new Color(0xdb, 0x9d, 0x9d);
-  private static final Color PLAIN_ERRLINE = Color.BLACK;
-  private static final Color PLAIN_UNK = new Color(0xea, 0xaa, 0x6c);
-  private static final Color PLAIN_UNKLINE = Color.BLACK;
-  private static final Color SPOT_BG = new Color(0xaa, 0xff, 0xaa);
-  private static final Color SPOT_HI = darker(SPOT_BG);
-  private static final Color SPOT_LINE = Color.BLACK;
-  private static final Color SPOT_ERR = new Color(0xf9, 0x76, 0x76);
-  private static final Color SPOT_ERRLINE = Color.BLACK;
-  private static final Color SPOT_UNK = new Color(0xea, 0x98, 0x49);
-  private static final Color SPOT_UNKLINE = Color.BLACK;
-  private final Color selectBg; // set in constructor
-  private final Color selectHi; // set in constructor
-  private static final Color SELECT_LINE = Color.BLACK;
-  private static final Color SELECT_ERR = new Color(0xe5, 0x80, 0x80);
-  private static final Color SELECT_ERRLINE = Color.BLACK;
-  private static final Color SELECT_UNK = new Color(0xee, 0x99, 0x44);
-  private static final Color SELECT_UNKLINE = Color.BLACK;
-  private static final Color[] SPOT = {
-    SPOT_BG, SPOT_HI, SPOT_LINE, SPOT_ERR, SPOT_ERRLINE, SPOT_UNK, SPOT_UNKLINE
-  };
-  private static final Color[] PLAIN = {
-    PLAIN_BG, PLAIN_HI, PLAIN_LINE, PLAIN_ERR, PLAIN_ERRLINE, PLAIN_UNK, PLAIN_UNKLINE
-  };
-  private final Color[] selectColors; // set in constructor
 
   public Color[] rowColors(SignalInfo item, boolean isSelected) {
     if (isSelected) return selectColors;
     final var spotlight = model.getSpotlight();
-    if (spotlight != null && spotlight.info == item) return SPOT;
-    return PLAIN;
+    return (spotlight != null && spotlight.info == item) ? SPOT_COLORS : PLAIN_COLORS;
   }
 
   private static Color darker(Color c) {
     final var hsb = Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), null);
-    final var s = 0.8f;
+    final var s = 0.8F;
     return (hsb[1] == 0.0)
         ? Color.getHSBColor(hsb[0], hsb[1] + hsb[1], hsb[2] * s)
-        : Color.getHSBColor(hsb[0], 1.0f - (1.0f - hsb[1]) * s, hsb[2]);
+        : Color.getHSBColor(hsb[0], 1.0F - (1.0F - hsb[1]) * s, hsb[2]);
   }
 
   @Override
@@ -322,7 +334,7 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
     return editHandler;
   }
 
-  final EditHandler editHandler =
+  private final EditHandler editHandler =
       new EditHandler() {
         @Override
         public void computeEnabled() {
