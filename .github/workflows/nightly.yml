@@ -109,7 +109,13 @@ jobs:
 #    if: needs.git_check.outputs.run_build == 'true'
     steps:
 
+      - name: 'Checkout test branch'
+        uses: actions/checkout@v2
+        with:
+          ref: 'snap-packages-test-1'
+
       - name: 'Build SNAP'
+        # https://github.com/snapcore/action-build
         uses: snapcore/action-build@v1
 
       - name: 'Upload *.snap'
@@ -121,13 +127,13 @@ jobs:
 
         # ###########################################################################################
 
+
       # https://github.com/marketplace/actions/checkout
-      - name: "Checkout sources"
-        uses: actions/checkout@v2
-        with:
-          # We want develop branch only.
+#      - name: "Checkout sources"
+#        uses: actions/checkout@v2
+#        with:
+#          # We want develop branch only.
 #          ref: 'develop'
-           ref: 'snap-packages-test-1'
       - name: Set up JDK ${{ env.JDK_VERSION }} ${{ env.JDK_DISTRO }}
         uses: actions/setup-java@v2
         with:
