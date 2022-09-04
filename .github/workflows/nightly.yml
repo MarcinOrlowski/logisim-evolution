@@ -108,6 +108,19 @@ jobs:
 #    needs: git_check
 #    if: needs.git_check.outputs.run_build == 'true'
     steps:
+
+      - name: 'Build SNAP'
+        uses: snapcore/action-build@v1
+
+      - name: 'Upload *.snap'
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          path: ${{ needs.git_check.outputs.lse_name }}_${{ needs.git_check.outputs.lse_version }}_amd64.snap
+          name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
+
+        # ###########################################################################################
+
       # https://github.com/marketplace/actions/checkout
       - name: "Checkout sources"
         uses: actions/checkout@v2
@@ -176,18 +189,6 @@ jobs:
 
         # ###########################################################################################
 
-      - name: 'Build SNAP'
-        uses: snapcore/action-build@v1
-
-      - name: 'Upload *.snap'
-        uses: actions/upload-artifact@v2
-        if: success()
-        with:
-          path: ${{ needs.git_check.outputs.lse_name }}_${{ needs.git_check.outputs.lse_version }}_amd64.snap
-          name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
-
-        # ###########################################################################################
-
       - name: 'Build sources JAR'
         run: |
           # Have no mercy.
@@ -213,7 +214,7 @@ jobs:
     runs-on: macos-latest
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'true'
+    if: needs.git_check.outputs.run_build == 'trueXXX'
 
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -251,7 +252,7 @@ jobs:
     runs-on: windows-latest
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'true'
+    if: needs.git_check.outputs.run_build == 'trueXXX'
 
     steps:
       # https://github.com/marketplace/actions/checkout
