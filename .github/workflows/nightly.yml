@@ -19,7 +19,7 @@ on:
   # NOTE: remove `if` condition marked with `HACK` once merged.
   pull_request:
     branches: [ develop ]
-    types: [ closed, edited ]
+#    types: [ closed ]
   schedule:
     # every day at midnight
     - cron: "0 0 * * *"
