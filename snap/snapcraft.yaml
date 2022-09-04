@@ -69,7 +69,7 @@ parts:
     source-type: git
     override-pull: |
       craftctl default
-      git checkout devel
+      git checkout develop
       craftctl set version="$(cat gradle.properties | grep '^version\s*=.*' | awk 'print $3')"
 #      git checkout "$(git describe --tags $(git rev-list --tags --max-count=1))" -b latest
     override-build: |
