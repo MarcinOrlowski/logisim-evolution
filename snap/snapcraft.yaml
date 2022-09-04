@@ -69,8 +69,9 @@ parts:
     source-type: git
     override-pull: |
       craftctl default
-      git checkout "$(git describe --tags $(git rev-list --tags --max-count=1))" -b latest
+      git checkout devel
       craftctl set version="$(cat gradle.properties | grep '^version\s*=.*' | awk 'print $3')"
+#      git checkout "$(git describe --tags $(git rev-list --tags --max-count=1))" -b latest
     override-build: |
       bash gradlew "$@" shadowJar && \
       mkdir -p "$CRAFT_PART_INSTALL"/logisim-evolution && \
