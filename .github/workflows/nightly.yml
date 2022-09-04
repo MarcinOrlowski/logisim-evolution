@@ -84,7 +84,6 @@ jobs:
           # consider that whlie looking for artifacts (i.e. for upload).
           declare -r version_prop=$(grep '^version\s*=.*' gradle.properties | awk '{print $3}')
 
-
           # Remove "-" (if present) from version string.
           declare -r lse_version=$(echo "${version_prop}" | awk '{gsub("-","", $0); print}')
           echo "::set-output name=lse_version::${lse_version}"
@@ -173,6 +172,18 @@ jobs:
         with:
           path: build/dist/${{ needs.git_check.outputs.lse_name }}-${{ needs.git_check.outputs.lse_version }}-1.x86_64.rpm
           name: ${{ needs.git_check.outputs.base_name }}.x86_64.rpm
+
+        # ###########################################################################################
+
+      - name: 'Build SNAP'
+        uses: snapcore/action-build@v1
+
+      - name: 'Upload *.snap'
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          path: ${{ needs.git_check.outputs.lse_name }}_${{ needs.git_check.outputs.lse_version }}_amd64.snap
+          name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
 
         # ###########################################################################################
 
