@@ -286,3 +286,7 @@ gradle-app.setting
 
 # default pre-commit config
 /.pre-commit-config.yaml
+
+# SNAP packages
+
+/*.snap
