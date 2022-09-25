@@ -66,6 +66,7 @@ jobs:
 
           # Short name for branch in which action was triggered.
           declare -r branch_name="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
+          echo "Triggered for branch: ${branch_name}"
 
           # Get SHA of last commit in that branch.
           declare -r last_commit_sha="$(git rev-parse HEAD)"
@@ -126,6 +127,19 @@ jobs:
         with:
            path: ${{ steps.snapcraft.outputs.snap }}
            name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
+
+      - name: 'Pushing *.snap to snapcraft.io'
+        # https://github.com/snapcore/action-publish
+        uses: snapcore/action-publish@v1
+        if: success()
+        env:
+          # Obtain Snapcraft.io store token:
+          # $ snapcraft export-login --snaps=logisim-evolution --acls package_access,package_push,package_update,package_release token.txt
+          # then open Github repository settings and add new secred named SNAPCRAFT_STORE_TOKEN with the value of token.txt
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_TOKEN }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: edge
 
         # ###########################################################################################
 

@@ -74,7 +74,7 @@ include the Java runtime and do not require it to be installed separately:
 The Java JAR [`logisim-evolution-<version>-all.jar`](https://github.com/logisim-evolution/logisim-evolution/releases)
 is also available and can be run on any system with a supported Java runtime installed.
 
-**Note for macOS users**:
+### Note for macOS users
 The Logisim-evolution.app is not signed with an Apple approved certificate.
 
 When launching the application for the first time, you will have to start it via the "Open" entry in the
@@ -89,6 +89,12 @@ See [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491) for
 
 Depending on your security settings, you may also get a panel asking if you wish to allow it to accept
 network connections. You can click "Deny" as we do not need network access currently nor we do request any.
+
+### Snap users
+
+Our nightly builder pushes produced builds also to Snap store and it is accessible from `edge` channel:
+
+
 
 ### Nightly builds ###
 
