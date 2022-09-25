@@ -34,7 +34,6 @@ adopt-info: logisim-evolution
 
 architectures:
   - build-on: amd64
-    build-for: amd64
 
 layout:
   /etc/fonts:
@@ -71,11 +70,9 @@ parts:
     override-pull: |
       craftctl default
       git checkout snap-packages-test-1
-      ls -l
+      git status
       LSE_VERSION="$(cat gradle.properties | grep '^version\s*=.*' | awk '{print $3}')"
-      echo "LSE_VERSION=${LSE_VERSION}"
       craftctl set version="${LSE_VERSION}"
-#      git checkout "$(git describe --tags $(git rev-list --tags --max-count=1))" -b latest
     override-build: |
       bash gradlew "$@" shadowJar && \
       mkdir -p "$CRAFT_PART_INSTALL"/logisim-evolution && \

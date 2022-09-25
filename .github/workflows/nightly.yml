@@ -18,7 +18,7 @@ on:
   # want "schedule" to be the trigger.
   # NOTE: remove `if` condition marked with `HACK` once merged.
   pull_request:
-    # Nightly must be run agains "develop" branch only.
+#  # Nightly must be run against "develop" branch only.
 #    branches: [ develop ]
 #    branches: [ snap-packages-test-1 ]
 #    types: [ closed ]
@@ -138,7 +138,7 @@ jobs:
           # then open Github repository settings and add new secred named SNAPCRAFT_STORE_TOKEN with the value of token.txt
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_TOKEN }}
         with:
-          snap: ${{ steps.build.outputs.snap }}
+          snap: ${{ steps.snapcraft.outputs.snap }}
           release: edge
 
         # ###########################################################################################
