@@ -20,9 +20,6 @@ on:
   pull_request:
     branches: [ develop ]
 #    types: [ closed ]
-#  schedule:
-#    # every day at midnight
-#    - cron: "0 0 * * *"
 
 env:
   JDK_VERSION: 16
@@ -33,9 +30,6 @@ jobs:
   build_linux:
     name: 'Linux build'
     runs-on: ubuntu-latest
-    # Will run only if git_check determined it is needed.
-#    needs: git_check
-#    if: needs.git_check.outputs.run_build == 'true'
     steps:
       - name: 'Checkout test branch'
         uses: actions/checkout@v2

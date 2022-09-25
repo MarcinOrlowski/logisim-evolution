@@ -34,6 +34,7 @@ adopt-info: logisim-evolution
 
 architectures:
   - build-on: amd64
+  - build-for: amd64
 
 layout:
   /etc/fonts:
@@ -46,7 +47,7 @@ layout:
 apps:
   logisim-evolution:
     extensions: [gnome]
-    command: usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar $SNAP/logisim-evolution/logisim-evolution.jar
+    command: usr/lib/jvm/java-17-openjdk-$CRAFT_TARGET_ARCH/bin/java -jar $SNAP/logisim-evolution/logisim-evolution.jar
     environment:
       _JAVA_OPTIONS: "-Duser.home=$SNAP_USER_DATA"
       XDG_DATA_HOME: $SNAP/usr/share
@@ -69,13 +70,16 @@ parts:
     source-type: git
     override-pull: |
       craftctl default
-      git checkout develop
+      git checkout snap-packages-test-1
       ls -l
-      craftctl set version="$(cat gradle.properties | grep '^version\s*=.*' | awk 'print $3')"
+      LSE_VERSION="$(cat gradle.properties | grep '^version\s*=.*' | awk 'print $3')"
+      echo "LSE_VERSION=${LSE_VERSION}"
+      craftctl set version="${LSE_VERSION}"
 #      git checkout "$(git describe --tags $(git rev-list --tags --max-count=1))" -b latest
     override-build: |
       bash gradlew "$@" shadowJar && \
       mkdir -p "$CRAFT_PART_INSTALL"/logisim-evolution && \
+      ls -ld build/libs/*
       mv build/libs/logisim-evolution-*-all.jar "$CRAFT_PART_INSTALL"/logisim-evolution/logisim-evolution.jar
     build-packages:
       - git
