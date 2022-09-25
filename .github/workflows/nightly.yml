@@ -18,11 +18,13 @@ on:
   # want "schedule" to be the trigger.
   # NOTE: remove `if` condition marked with `HACK` once merged.
   pull_request:
-    branches: [ develop ]
-    types: [ closed ]
-  schedule:
-    # every day at midnight
-    - cron: "0 0 * * *"
+    # Nightly must be run agains "develop" branch only.
+#    branches: [ develop ]
+#    branches: [ snap-packages-test-1 ]
+#    types: [ closed ]
+#  schedule:
+#    # every day at midnight
+#    - cron: "0 0 * * *"
 
 env:
   JDK_VERSION: 16
@@ -108,7 +110,6 @@ jobs:
     needs: git_check
     if: needs.git_check.outputs.run_build == 'true'
     steps:
-
       - name: 'Checkout test branch'
         uses: actions/checkout@v2
         with:
@@ -123,20 +124,16 @@ jobs:
         uses: actions/upload-artifact@v3
         if: success()
         with:
-           name: snap
            path: ${{ steps.snapcraft.outputs.snap }}
-#          path: ${{ needs.git_check.outputs.lse_name }}_${{ needs.git_check.outputs.lse_version }}_amd64.snap
-#          name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
+           name: ${{ needs.git_check.outputs.base_name }}_amd64.snap
 
         # ###########################################################################################
-
 
       # https://github.com/marketplace/actions/checkout
 #      - name: "Checkout sources"
 #        uses: actions/checkout@v2
 #        with:
-#          # We want develop branch only.
-#          ref: 'develop'
+#          ref: ${{ github.ref_name }}
       - name: Set up JDK ${{ env.JDK_VERSION }} ${{ env.JDK_DISTRO }}
         uses: actions/setup-java@v2
         with:
@@ -230,8 +227,7 @@ jobs:
       - name: "Checkout sources"
         uses: actions/checkout@v2
         with:
-          # We want develop branch only.
-          ref: 'develop'
+          ref: ${{ github.ref_name }}
       - name: Set up JDK ${{ env.JDK_VERSION }} ${{ env.JDK_DISTRO }}
         uses: actions/setup-java@v2
         with:
