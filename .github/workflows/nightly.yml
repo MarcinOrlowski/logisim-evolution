@@ -19,7 +19,7 @@ on:
   # NOTE: remove `if` condition marked with `HACK` once merged.
   pull_request:
     branches: [ develop ]
-#    types: [ closed ]
+    types: [ closed ]
   schedule:
     # every day at midnight
     - cron: "0 0 * * *"
@@ -105,8 +105,8 @@ jobs:
     name: 'Linux build'
     runs-on: ubuntu-latest
     # Will run only if git_check determined it is needed.
-#    needs: git_check
-#    if: needs.git_check.outputs.run_build == 'true'
+    needs: git_check
+    if: needs.git_check.outputs.run_build == 'true'
     steps:
 
       - name: 'Checkout test branch'
@@ -223,7 +223,7 @@ jobs:
     runs-on: macos-latest
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'trueXXX'
+    if: needs.git_check.outputs.run_build == 'true'
 
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -261,7 +261,7 @@ jobs:
     runs-on: windows-latest
     # Will run only if git_check determined it is needed.
     needs: git_check
-    if: needs.git_check.outputs.run_build == 'trueXXX'
+    if: needs.git_check.outputs.run_build == 'true'
 
     steps:
       # https://github.com/marketplace/actions/checkout
