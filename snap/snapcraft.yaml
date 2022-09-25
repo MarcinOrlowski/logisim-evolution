@@ -79,8 +79,8 @@ parts:
     override-build: |
       bash gradlew "$@" shadowJar && \
       mkdir -p "$CRAFT_PART_INSTALL"/logisim-evolution && \
-      ls -ld build/libs/*
-      mv build/libs/logisim-evolution-*-all.jar "$CRAFT_PART_INSTALL"/logisim-evolution/logisim-evolution.jar
+        ls -ld build/libs/*
+        mv build/libs/logisim-evolution-*-all.jar "$CRAFT_PART_INSTALL"/logisim-evolution/logisim-evolution.jar
     build-packages:
       - git
       - openjdk-17-jdk
