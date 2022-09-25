@@ -66,11 +66,10 @@ apps:
 parts:
   logisim-evolution:
     plugin: nil
-    source: https://github.com/logisim-evolution/logisim-evolution.git
+    source: https://github.com/MarcinOrlowski/logisim-evolution.git
     source-type: git
     override-pull: |
       craftctl default
-      git fetch
       git checkout snap-packages-test-1
       ls -l
       LSE_VERSION="$(cat gradle.properties | grep '^version\s*=.*' | awk 'print $3')"
