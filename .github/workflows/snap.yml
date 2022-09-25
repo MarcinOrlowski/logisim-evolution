@@ -10,7 +10,7 @@
 # Marcin Orlowski
 #
 
-name: "Nightly"
+name: "Snap"
 on:
   # The "pull_request" trigger is here for debugging purposes and
   # as work-around for having this worker not yet in main branch.
