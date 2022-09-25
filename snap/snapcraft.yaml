@@ -34,7 +34,7 @@ adopt-info: logisim-evolution
 
 architectures:
   - build-on: amd64
-  - build-for: amd64
+    build-for: amd64
 
 layout:
   /etc/fonts:
