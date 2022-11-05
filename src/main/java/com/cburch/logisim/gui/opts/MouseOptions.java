@@ -13,7 +13,7 @@ import static com.cburch.logisim.gui.Strings.S;
 
 import com.cburch.contracts.BaseMouseListenerContract;
 import com.cburch.logisim.file.MouseMappings;
-import com.cburch.logisim.gui.generic.AttrTable;
+import com.cburch.logisim.gui.generic.ComponentAttributeTable;
 import com.cburch.logisim.gui.generic.ProjectExplorer;
 import com.cburch.logisim.gui.generic.ProjectExplorerToolNode;
 import com.cburch.logisim.gui.main.AttrTableToolModel;
@@ -52,7 +52,7 @@ class MouseOptions extends OptionsPanel {
   private final ProjectExplorer explorer;
   private final JPanel addArea = new AddArea();
   private final JTable mappings = new JTable();
-  private final AttrTable attrTable;
+  private final ComponentAttributeTable attrTable;
   private final JButton remove = new JButton();
   private Tool curTool = null;
 
@@ -81,7 +81,7 @@ class MouseOptions extends OptionsPanel {
     removeArea.add(remove);
 
     // Area for viewing/changing attributes
-    attrTable = new AttrTable(getOptionsFrame());
+    attrTable = new ComponentAttributeTable(getOptionsFrame());
 
     final var gridbag = new GridBagLayout();
     final var gbc = new GridBagConstraints();

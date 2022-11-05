@@ -53,7 +53,7 @@ import javax.swing.table.TableModel;
  * Attribute table panel
  * Shows detailed attributes of selected element.
  */
-public class AttrTable extends JPanel implements LocaleListener {
+public class ComponentAttributeTable extends JPanel implements LocaleListener {
 
   private static final AttrTableModel NULL_ATTR_MODEL = new NullAttrModel();
   private final Window parent;
@@ -63,7 +63,7 @@ public class AttrTable extends JPanel implements LocaleListener {
   private final CellEditor editor = new CellEditor();
   private boolean titleEnabled;
 
-  public AttrTable(Window parent) {
+  public ComponentAttributeTable(Window parent) {
     super(new BorderLayout());
     this.parent = parent;
 
@@ -254,7 +254,7 @@ public class AttrTable extends JPanel implements LocaleListener {
 
     public void fireEditingCanceled() {
       final var col = table.getEditingColumn();
-      final var e = new ChangeEvent(AttrTable.this);
+      final var e = new ChangeEvent(ComponentAttributeTable.this);
       for (final var l : new ArrayList<>(listeners)) {
         l.editingCanceled(e);
       }
@@ -268,7 +268,7 @@ public class AttrTable extends JPanel implements LocaleListener {
     }
 
     public void fireEditingStopped() {
-      final var e = new ChangeEvent(AttrTable.this);
+      final var e = new ChangeEvent(ComponentAttributeTable.this);
       for (final var l : new ArrayList<>(listeners)) {
         l.editingStopped(e);
       }
@@ -288,7 +288,7 @@ public class AttrTable extends JPanel implements LocaleListener {
       if (dst != null) {
         var p = dst;
         while (p != null && !(p instanceof Window)) {
-          if (p == AttrTable.this) {
+          if (p == ComponentAttributeTable.this) {
             // switch to another place in this table,
             // no problem
             return;
@@ -476,7 +476,7 @@ public class AttrTable extends JPanel implements LocaleListener {
 
       final var ed = table.getCellEditor();
       if (row >= 0
-          && ed instanceof AttrTable.CellEditor cellEd
+          && ed instanceof ComponentAttributeTable.CellEditor cellEd
           && cellEd.isEditing(attrModel.getRow(row))) {
         ed.cancelCellEditing();
       }

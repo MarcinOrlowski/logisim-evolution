@@ -25,7 +25,7 @@ import com.cburch.logisim.file.LibraryEvent;
 import com.cburch.logisim.file.LibraryListener;
 import com.cburch.logisim.generated.BuildInfo;
 import com.cburch.logisim.gui.appear.AppearanceView;
-import com.cburch.logisim.gui.generic.AttrTable;
+import com.cburch.logisim.gui.generic.ComponentAttributeTable;
 import com.cburch.logisim.gui.generic.AttrTableModel;
 import com.cburch.logisim.gui.generic.BasicZoomModel;
 import com.cburch.logisim.gui.generic.CanvasPane;
@@ -99,7 +99,7 @@ public class Frame extends LFrame.MainWindow implements LocaleListener {
   private final JTabbedPane bottomTab;
   private final Toolbox toolbox;
   private final SimulationExplorer simExplorer;
-  private final AttrTable attrTable;
+  private final ComponentAttributeTable attrTable;
   private final ZoomControl zoom;
   // for the Layout view
   private final LayoutToolbarModel layoutToolbarModel;
@@ -151,7 +151,7 @@ public class Frame extends LFrame.MainWindow implements LocaleListener {
     simExplorer = new SimulationExplorer(project, menuListener);
     bottomTab = new JTabbedPane();
     bottomTab.setFont(AppPreferences.getScaledFont(new Font("Dialog", Font.BOLD, 9)));
-    bottomTab.add(attrTable = new AttrTable(this));
+    bottomTab.add(attrTable = new ComponentAttributeTable(this));
     bottomTab.add(new RegTabContent(this));
 
     zoom = new ZoomControl(layoutZoomModel, layoutCanvas);

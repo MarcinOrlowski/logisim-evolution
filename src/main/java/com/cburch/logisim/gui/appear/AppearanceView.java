@@ -16,7 +16,7 @@ import com.cburch.draw.tools.DrawingAttributeSet;
 import com.cburch.draw.tools.SelectTool;
 import com.cburch.logisim.circuit.CircuitState;
 import com.cburch.logisim.data.AttributeSet;
-import com.cburch.logisim.gui.generic.AttrTable;
+import com.cburch.logisim.gui.generic.ComponentAttributeTable;
 import com.cburch.logisim.gui.generic.BasicZoomModel;
 import com.cburch.logisim.gui.generic.CanvasPane;
 import com.cburch.logisim.gui.generic.ZoomModel;
@@ -76,7 +76,7 @@ public class AppearanceView {
     return attrs;
   }
 
-  public AttrTableDrawManager getAttrTableDrawManager(AttrTable table) {
+  public AttrTableDrawManager getAttrTableDrawManager(ComponentAttributeTable table) {
     var ret = attrTableManager;
     if (ret == null) {
       ret = new AttrTableDrawManager(canvas, table, attrs);

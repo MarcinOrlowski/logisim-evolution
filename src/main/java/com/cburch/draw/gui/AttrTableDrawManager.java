@@ -13,17 +13,17 @@ import com.cburch.draw.canvas.Canvas;
 import com.cburch.draw.tools.AbstractTool;
 import com.cburch.draw.tools.DrawingAttributeSet;
 import com.cburch.draw.tools.SelectTool;
-import com.cburch.logisim.gui.generic.AttrTable;
+import com.cburch.logisim.gui.generic.ComponentAttributeTable;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class AttrTableDrawManager implements PropertyChangeListener {
   private final Canvas canvas;
-  private final AttrTable table;
+  private final ComponentAttributeTable table;
   private final AttrTableSelectionModel selectionModel;
   private final AttrTableToolModel toolModel;
 
-  public AttrTableDrawManager(Canvas canvas, AttrTable table, DrawingAttributeSet attrs) {
+  public AttrTableDrawManager(Canvas canvas, ComponentAttributeTable table, DrawingAttributeSet attrs) {
     this.canvas = canvas;
     this.table = table;
     this.selectionModel = new AttrTableSelectionModel(canvas);
