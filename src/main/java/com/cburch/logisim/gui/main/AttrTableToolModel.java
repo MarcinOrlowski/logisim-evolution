@@ -16,13 +16,12 @@ import com.cburch.logisim.circuit.SubcircuitFactory;
 import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.gui.generic.AttributeSetTableModel;
 import com.cburch.logisim.gui.generic.OptionPane;
-import com.cburch.logisim.proj.Action;
 import com.cburch.logisim.proj.Project;
 import com.cburch.logisim.tools.AddTool;
 import com.cburch.logisim.tools.Tool;
 
 public class AttrTableToolModel extends AttributeSetTableModel {
-  final Project proj;
+  final Project project;
   final Tool tool;
 
   public AttrTableToolModel(Project proj, Tool tool) {
@@ -31,7 +30,7 @@ public class AttrTableToolModel extends AttributeSetTableModel {
       setInstance(addTool.getFactory());
       setIsTool();
     }
-    this.proj = proj;
+    this.project = proj;
     this.tool = tool;
   }
 
@@ -49,19 +48,19 @@ public class AttrTableToolModel extends AttributeSetTableModel {
     if (tool instanceof AddTool addTool) {
       if (addTool.getFactory() instanceof SubcircuitFactory fac) {
         if (attr.equals(CircuitAttributes.NAMED_CIRCUIT_BOX_FIXED_SIZE)
-            || attr.equals(CircuitAttributes.NAME_ATTR)) {
+          || attr.equals(CircuitAttributes.NAME_ATTR)) {
           try {
-            CircuitMutation mutation = new CircuitMutation(fac.getSubcircuit());
+            final var mutation = new CircuitMutation(fac.getSubcircuit());
             mutation.setForCircuit(attr, value);
-            Action action = mutation.toAction(null);
-            proj.doAction(action);
+            final var action = mutation.toAction(null);
+            project.doAction(action);
           } catch (CircuitException ex) {
-            OptionPane.showMessageDialog(proj.getFrame(), ex.getMessage());
+            OptionPane.showMessageDialog(project.getFrame(), ex.getMessage());
           }
           return;
         }
       }
     }
-    proj.doAction(ToolAttributeAction.create(tool, attr, value));
+    project.doAction(ToolAttributeAction.create(tool, attr, value));
   }
 }

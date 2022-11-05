@@ -19,29 +19,28 @@ import com.cburch.logisim.gui.generic.AttributeSetTableModel;
 import com.cburch.logisim.proj.Project;
 
 public class AttrTableCircuitModel extends AttributeSetTableModel {
-  private final Project proj;
-  private final Circuit circ;
+  private final Project project;
+  private final Circuit circuit;
 
-  public AttrTableCircuitModel(Project proj, Circuit circ) {
-    super(circ.getStaticAttributes());
-    this.proj = proj;
-    this.circ = circ;
+  public AttrTableCircuitModel(Project project, Circuit circuit) {
+    super(circuit.getStaticAttributes());
+    this.project = project;
+    this.circuit = circuit;
   }
 
   @Override
   public String getTitle() {
-    return S.get("circuitAttrTitle", circ.getName());
+    return S.get("circuitAttrTitle", circuit.getName());
   }
 
   @Override
   public void setValueRequested(Attribute<Object> attr, Object value) throws AttrTableSetException {
-    if (!proj.getLogisimFile().contains(circ)) {
-      String msg = S.get("cannotModifyCircuitError");
-      throw new AttrTableSetException(msg);
-    } else {
-      CircuitMutation xn = new CircuitMutation(circ);
-      xn.setForCircuit(attr, value);
-      proj.doAction(xn.toAction(S.getter("changeCircuitAttrAction")));
+    if (!project.getLogisimFile().contains(circuit)) {
+      throw new AttrTableSetException(S.get("cannotModifyCircuitError"));
     }
+
+    final var xn = new CircuitMutation(circuit);
+    xn.setForCircuit(attr, value);
+    project.doAction(xn.toAction(S.getter("changeCircuitAttrAction")));
   }
 }

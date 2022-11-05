@@ -11,13 +11,11 @@ package com.cburch.logisim.gui.main;
 
 import static com.cburch.logisim.gui.Strings.S;
 
-import com.cburch.logisim.circuit.Circuit;
 import com.cburch.logisim.circuit.CircuitAttributes;
 import com.cburch.logisim.circuit.CircuitException;
 import com.cburch.logisim.circuit.CircuitMutation;
 import com.cburch.logisim.circuit.SubcircuitFactory;
 import com.cburch.logisim.circuit.Wire;
-import com.cburch.logisim.comp.Component;
 import com.cburch.logisim.comp.ComponentFactory;
 import com.cburch.logisim.comp.PositionComparator;
 import com.cburch.logisim.data.Attribute;
@@ -57,13 +55,13 @@ class AttrTableSelectionModel extends AttributeSetTableModel implements Selectio
     ComponentFactory factory = null;
     String label = null;
     Location loc = null;
-    int factoryCount = 0;
-    int totalCount = 0;
-    boolean variousFound = false;
+    var factoryCount = 0;
+    var totalCount = 0;
+    var variousFound = false;
 
-    Selection selection = frame.getCanvas().getSelection();
-    for (Component comp : selection.getComponents()) {
-      ComponentFactory fact = comp.getFactory();
+    final var selection = frame.getCanvas().getSelection();
+    for (final var comp : selection.getComponents()) {
+      final var fact = comp.getFactory();
       if (fact.equals(factory)) {
         factoryCount++;
       } else if (comp instanceof Wire) {
@@ -92,14 +90,14 @@ class AttrTableSelectionModel extends AttributeSetTableModel implements Selectio
       setInstance(factory);
       return S.get("selectionVarious", "" + totalCount);
     } else if (factoryCount == 0) {
-      Circuit circ = frame.getCanvas().getCircuit();
+      final var circ = frame.getCanvas().getCircuit();
       if (circ != null) {
-        String circName = circ.getName();
+        final var circName = circ.getName();
         setInstance(circ.getSubcircuitFactory());
         return S.get("circuitAttrTitle", circName);
       } else {
-        VhdlContent hdl = (VhdlContent) frame.getCanvas().getCurrentHdl();
-        String circName = hdl.getName();
+        final var hdl = (VhdlContent) frame.getCanvas().getCurrentHdl();
+        final var circName = hdl.getName();
         setInstance(null);
         return S.get("hdlAttrTitle", circName);
       }

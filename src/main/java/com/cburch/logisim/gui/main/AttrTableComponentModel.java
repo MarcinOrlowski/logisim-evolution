@@ -14,8 +14,6 @@ import static com.cburch.logisim.gui.Strings.S;
 import com.cburch.logisim.circuit.Circuit;
 import com.cburch.logisim.comp.Component;
 import com.cburch.logisim.data.Attribute;
-import com.cburch.logisim.data.AttributeSet;
-import com.cburch.logisim.data.Location;
 import com.cburch.logisim.gui.generic.AttrTableSetException;
 import com.cburch.logisim.gui.generic.AttributeSetTableModel;
 import com.cburch.logisim.instance.StdAttr;
@@ -23,55 +21,57 @@ import com.cburch.logisim.proj.Project;
 import com.cburch.logisim.tools.SetAttributeAction;
 
 class AttrTableComponentModel extends AttributeSetTableModel {
-  final Project proj;
-  final Circuit circ;
-  final Component comp;
+  final Project project;
+  final Circuit circuit;
+  final Component component;
 
   AttrTableComponentModel(Project proj, Circuit circ, Component comp) {
     super(comp.getAttributeSet());
-    this.proj = proj;
-    this.circ = circ;
-    this.comp = comp;
+    this.project = proj;
+    this.circuit = circ;
+    this.component = comp;
     setInstance(comp.getFactory());
   }
 
   public Circuit getCircuit() {
-    return circ;
+    return circuit;
   }
 
   public Component getComponent() {
-    return comp;
+    return component;
   }
 
   @Override
   public String getTitle() {
-    String label = comp.getAttributeSet().getValue(StdAttr.LABEL);
-    Location loc = comp.getLocation();
-    String s = comp.getFactory().getDisplayName();
-    if (label != null && label.length() > 0) s += " \"" + label + "\"";
-    else if (loc != null) s += " " + loc;
-    return s;
+    final var label = component.getAttributeSet().getValue(StdAttr.LABEL);
+    final var location = component.getLocation();
+    var title = component.getFactory().getDisplayName();
+    if (label != null && label.length() > 0) {
+      title += " \"" + label + "\"";
+    } else if (location != null) {
+      title += " " + location;
+    }
+    return title;
   }
 
   @Override
   public void setValueRequested(Attribute<Object> attr, Object value) throws AttrTableSetException {
-    if (!proj.getLogisimFile().contains(circ)) {
-      String msg = S.get("cannotModifyCircuitError");
-      throw new AttrTableSetException(msg);
-    } else {
-      SetAttributeAction act = new SetAttributeAction(circ, S.getter("changeAttributeAction"));
-      AttributeSet compAttrSet = comp.getAttributeSet();
-      if (compAttrSet != null) {
-        final var mayBeChangedList = compAttrSet.attributesMayAlsoBeChanged(attr, value);
-        if (mayBeChangedList != null) {
-          for (final var mayChangeAttr : mayBeChangedList) {
-            // mayChangeAttr is set to its current value to have it restored on undo
-            act.set(comp, mayChangeAttr, compAttrSet.getValue(mayChangeAttr));
-          }
+    if (!project.getLogisimFile().contains(circuit)) {
+      throw new AttrTableSetException(S.get("cannotModifyCircuitError"));
+    }
+
+    final var action = new SetAttributeAction(circuit, S.getter("changeAttributeAction"));
+    final var compAttrSet = component.getAttributeSet();
+    if (compAttrSet != null) {
+      final var mayBeChangedList = compAttrSet.attributesMayAlsoBeChanged(attr, value);
+      if (mayBeChangedList != null) {
+        for (final var mayChangeAttr : mayBeChangedList) {
+          // mayChangeAttr is set to its current value to have it restored on undo
+          action.set(component, mayChangeAttr, compAttrSet.getValue(mayChangeAttr));
         }
       }
-      act.set(comp, attr, value);
-      proj.doAction(act);
     }
+    action.set(component, attr, value);
+    project.doAction(action);
   }
 }
