@@ -44,7 +44,7 @@ public final class GraphicsUtil {
     throw new IllegalStateException("Utility class. No instantiation allowed.");
   }
 
-  public static void drawArrow(Graphics g, int x0, int y0, int x1, int y1, int headLength, int headAngle) {
+  public static void drawArrow(Graphics gfx, int x0, int y0, int x1, int y1, int headLength, int headAngle) {
     final var offs = headAngle * Math.PI / 180.0;
     final var angle = Math.atan2(y0 - y1, x0 - x1);
     int[] xs = {
@@ -57,33 +57,33 @@ public final class GraphicsUtil {
       y1,
       y1 + (int) (headLength * Math.sin(angle - offs))
     };
-    g.drawLine(x0, y0, x1, y1);
-    g.drawPolyline(xs, ys, 3);
+    gfx.drawLine(x0, y0, x1, y1);
+    gfx.drawPolyline(xs, ys, 3);
   }
 
-  public static void drawArrow2(Graphics g, int x0, int y0, int x1, int y1, int x2, int y2) {
+  public static void drawArrow2(Graphics gfx, int x0, int y0, int x1, int y1, int x2, int y2) {
     int[] xs = {x0, x1, x2};
     int[] ys = {y0, y1, y2};
-    GraphicsUtil.switchToWidth(g, 7);
-    g.drawPolyline(xs, ys, 3);
-    final var oldColor = g.getColor();
-    g.setColor(Color.WHITE);
-    GraphicsUtil.switchToWidth(g, 3);
-    g.drawPolyline(xs, ys, 3);
-    g.setColor(oldColor);
-    GraphicsUtil.switchToWidth(g, 1);
+    GraphicsUtil.switchToWidth(gfx, 7);
+    gfx.drawPolyline(xs, ys, 3);
+    final var oldColor = gfx.getColor();
+    gfx.setColor(Color.WHITE);
+    GraphicsUtil.switchToWidth(gfx, 3);
+    gfx.drawPolyline(xs, ys, 3);
+    gfx.setColor(oldColor);
+    GraphicsUtil.switchToWidth(gfx, 1);
   }
 
-  public static void drawCenteredArc(Graphics g, int x, int y, int r, int start, int dist) {
-    g.drawArc(x - r, y - r, 2 * r, 2 * r, start, dist);
+  public static void drawCenteredArc(Graphics gfx, int x, int y, int r, int start, int dist) {
+    gfx.drawArc(x - r, y - r, 2 * r, 2 * r, start, dist);
   }
 
-  public static void drawCenteredText(Graphics g, String text, int x, int y) {
-    drawText(g, text, x, y, H_CENTER, V_CENTER);
+  public static void drawCenteredText(Graphics gfx, String text, int x, int y) {
+    drawText(gfx, text, x, y, H_CENTER, V_CENTER);
   }
 
-  public static void drawCenteredText(Graphics g, Font font, String text, int x, int y, Color fg, Color bg) {
-    drawText(g, text, x, y, H_CENTER, V_CENTER);
+  public static void drawCenteredText(Graphics gfx, Font font, String text, int x, int y, Color fg, Color bg) {
+    drawText(gfx, text, x, y, H_CENTER, V_CENTER);
   }
 
   public static void drawCenteredValue(Graphics2D gfx, Value value, RadixOption radix, int x, int y) {
@@ -103,23 +103,23 @@ public final class GraphicsUtil {
     gfx.setColor(currentColor);
   }
 
-  public static void drawCenteredColoredText(Graphics g, String text, Color fg, Color bg, int x, int y) {
-    drawText(g, text, x, y, H_CENTER, V_CENTER, fg, bg);
+  public static void drawCenteredColoredText(Graphics gfx, String text, Color fg, Color bg, int x, int y) {
+    drawText(gfx, text, x, y, H_CENTER, V_CENTER, fg, bg);
   }
 
-  public static Rectangle getTextCursor(Graphics g, String text, int x, int y, int pos, int halign, int valign) {
-    final var r = getTextBounds(g, text, x, y, halign, valign);
-    if (pos > 0) r.x += new TextMetrics(g, text.substring(0, pos)).width;
+  public static Rectangle getTextCursor(Graphics gfx, String text, int x, int y, int pos, int halign, int valign) {
+    final var r = getTextBounds(gfx, text, x, y, halign, valign);
+    if (pos > 0) r.x += new TextMetrics(gfx, text.substring(0, pos)).width;
     r.width = 1;
     return r;
   }
 
-  public static int getTextPosition(Graphics g, String text, int x, int y, int halign, int valign) {
-    final var r = getTextBounds(g, text, 0, 0, halign, valign);
+  public static int getTextPosition(Graphics gfx, String text, int x, int y, int halign, int valign) {
+    final var r = getTextBounds(gfx, text, 0, 0, halign, valign);
     x -= r.x;
     var last = 0;
-    final var font = g.getFont();
-    final var fr = ((Graphics2D) g).getFontRenderContext();
+    final var font = gfx.getFont();
+    final var fr = ((Graphics2D) gfx).getFontRenderContext();
     for (var i = 0; i < text.length(); i++) {
       final var cur = (int) font.getStringBounds(text.substring(0, i + 1), fr).getWidth();
       if (x <= (last + cur) / 2) {
@@ -131,7 +131,7 @@ public final class GraphicsUtil {
   }
 
   public static void drawText(
-      Graphics g,
+      Graphics gfx,
       Font font,
       String text,
       int x,
@@ -140,25 +140,25 @@ public final class GraphicsUtil {
       int valign,
       Color fg,
       Color bg) {
-    final var oldfont = g.getFont();
-    if (font != null) g.setFont(font);
-    drawText(g, text, x, y, halign, valign, fg, bg);
-    if (font != null) g.setFont(oldfont);
+    final var oldfont = gfx.getFont();
+    if (font != null) gfx.setFont(font);
+    drawText(gfx, text, x, y, halign, valign, fg, bg);
+    if (font != null) gfx.setFont(oldfont);
   }
 
   public static void drawText(
-      Graphics g, Font font, String text, int x, int y, int halign, int valign) {
-    final var oldfont = g.getFont();
-    if (font != null) g.setFont(font);
-    drawText(g, text, x, y, halign, valign);
-    if (font != null) g.setFont(oldfont);
+      Graphics gfx, Font font, String text, int x, int y, int halign, int valign) {
+    final var oldfont = gfx.getFont();
+    if (font != null) gfx.setFont(font);
+    drawText(gfx, text, x, y, halign, valign);
+    if (font != null) gfx.setFont(oldfont);
   }
 
-  public static void drawText(Graphics g, String text, int x, int y, int halign, int valign) {
+  public static void drawText(Graphics gfx, String text, int x, int y, int halign, int valign) {
     if (text.length() == 0) return;
-    final var bd = getTextBounds(g, text, x, y, halign, valign);
-    final var tm = new TextMetrics(g, text);
-    g.drawString(text, bd.x, bd.y + tm.ascent);
+    final var bd = getTextBounds(gfx, text, x, y, halign, valign);
+    final var tm = new TextMetrics(gfx, text);
+    gfx.drawString(text, bd.x, bd.y + tm.ascent);
   }
 
   public static void drawText(Graphics g, String text, int x, int y, int halign, int valign, Color fg, Color bg) {
@@ -173,8 +173,8 @@ public final class GraphicsUtil {
     g.drawString(text, bd.x, bd.y + tm.ascent);
   }
 
-  public static void outlineText(Graphics g, String text, int x, int y, Color fg, Color bg) {
-    final var g2 = (Graphics2D) g;
+  public static void outlineText(Graphics gfx, String text, int x, int y, Color fg, Color bg) {
+    final var g2 = (Graphics2D) gfx;
     final var glyphVector = g2.getFont().createGlyphVector(g2.getFontRenderContext(), text);
     final var textShape = glyphVector.getOutline();
     final var transform = g2.getTransform();
@@ -186,19 +186,19 @@ public final class GraphicsUtil {
     g2.setTransform(transform);
   }
 
-  public static Rectangle getTextBounds(Graphics g, Font font, String text, int x, int y, int halign, int valign) {
-    if (g == null) return new Rectangle(x, y, 0, 0);
-    final var oldfont = g.getFont();
-    if (font != null) g.setFont(font);
-    final var ret = getTextBounds(g, text, x, y, halign, valign);
-    if (font != null) g.setFont(oldfont);
+  public static Rectangle getTextBounds(Graphics gfx, Font font, String text, int x, int y, int halign, int valign) {
+    if (gfx == null) return new Rectangle(x, y, 0, 0);
+    final var oldfont = gfx.getFont();
+    if (font != null) gfx.setFont(font);
+    final var ret = getTextBounds(gfx, text, x, y, halign, valign);
+    if (font != null) gfx.setFont(oldfont);
     return ret;
   }
 
-  public static Rectangle getTextBounds(Graphics g, String text, int x, int y, int halign, int valign) {
-    if (g == null) return new Rectangle(x, y, 0, 0);
+  public static Rectangle getTextBounds(Graphics gfx, String text, int x, int y, int halign, int valign) {
+    if (gfx == null) return new Rectangle(x, y, 0, 0);
 
-    final var tm = new TextMetrics(g, text);
+    final var tm = new TextMetrics(gfx, text);
     final var width = tm.width;
     final var ascent = tm.ascent;
     final var height = tm.height;
@@ -208,6 +208,7 @@ public final class GraphicsUtil {
       case H_CENTER -> ret.translate(-(width / 2), 0);
       case H_RIGHT -> ret.translate(-width, 0);
       default -> {
+        // do nothing
       }
     }
     switch (valign) {
