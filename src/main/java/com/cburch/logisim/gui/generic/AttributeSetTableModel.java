@@ -25,17 +25,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public abstract class AttributeSetTableModel implements AttrTableModel, AttributeListener {
-  private final ArrayList<AttrTableModelListener> listeners;
-  private final HashMap<Attribute<?>, AttrRow> rowMap;
+  private final ArrayList<AttrTableModelListener> listeners = new ArrayList<>();
+  private final HashMap<Attribute<?>, AttrRow> rowMap = new HashMap<>();
   private AttributeSet attrs;
-  private ArrayList<AttrRow> rows;
+  private ArrayList<AttrRow> rows = new ArrayList<>();
   private ComponentFactory compInst = null;
 
   public AttributeSetTableModel(AttributeSet attrs) {
     this.attrs = attrs;
-    this.listeners = new ArrayList<>();
-    this.rowMap = new HashMap<>();
-    this.rows = new ArrayList<>();
     if (attrs != null) {
       /* put the vhdl/verilog row */
       final var rowd = new HDLrow(null);
@@ -221,9 +218,9 @@ public abstract class AttributeSetTableModel implements AttrTableModel, Attribut
         try {
           final var str = attr.toDisplayString(value);
           if (str.isEmpty()
-              && "label".equals(attr.getName())
-              && compInst != null
-              && compInst.requiresNonZeroLabel()) return AttributeTableRenderer.HDL_REQUIRED_FIELD;
+            && "label".equals(attr.getName())
+            && compInst != null
+            && compInst.requiresNonZeroLabel()) return AttributeTableRenderer.HDL_REQUIRED_FIELD;
           return str;
         } catch (Exception e) {
           return "???";
@@ -252,8 +249,8 @@ public abstract class AttributeSetTableModel implements AttrTableModel, Attribut
       if (attr == null || value == null) return;
 
       try {
-        if (value instanceof String) {
-          value = attr.parse((String) value);
+        if (value instanceof String str) {
+          value = attr.parse(str);
         }
         setValueRequested(attr, value);
       } catch (ClassCastException e) {
@@ -284,8 +281,8 @@ public abstract class AttributeSetTableModel implements AttrTableModel, Attribut
     public String getValue() {
       if (compInst == null) return AttributeTableRenderer.HDL_SUPPORT_UNKNOWN;
       return (compInst.isHDLSupportedComponent(attrs))
-          ? AttributeTableRenderer.HDL_SUPPORTED
-          : AttributeTableRenderer.HDL_NOT_SUPPORTED;
+             ? AttributeTableRenderer.HDL_SUPPORTED
+             : AttributeTableRenderer.HDL_NOT_SUPPORTED;
     }
 
     @Override
