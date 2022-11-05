@@ -21,10 +21,15 @@ import javax.swing.table.TableCellRenderer;
 
 @SuppressWarnings("serial")
 public class HdlColorRenderer extends JLabel implements TableCellRenderer {
-  public static final String NO_SUPPORT_STRING = "HDL_NOT_SUPPORTED";
-  public static final String SUPPORT_STRING = "HDL_SUPPORTED";
-  public static final String UNKNOWN_STRING = "HDL_UNKNOWN";
-  public static final String REQUIRED_FIELD_STRING = ">_HDL_REQUIRED_FIELD_<";
+  // This component has HDL support
+  public static final String HDL_SUPPORTED = "HDL_SUPPORTED";
+  // This component is not HDL supported
+  public static final String HDL_NOT_SUPPORTED = "HDL_NOT_SUPPORTED";
+  // Unknown state for HDL support for this element
+  public static final String HDL_SUPPORT_UNKNOWN = "HDL_UNKNOWN";
+
+  // Value of this field is required to be non-empty for HDL support to deal with this element.
+  public static final String HDL_REQUIRED_FIELD = ">_HDL_REQUIRED_FIELD_<";
 
   // Table columns' meaning.
   protected static final int LABEL = 0;
@@ -35,8 +40,8 @@ public class HdlColorRenderer extends JLabel implements TableCellRenderer {
   public HdlColorRenderer() {
     setOpaque(true);
     CorrectStrings.clear();
-    CorrectStrings.add(NO_SUPPORT_STRING);
-    CorrectStrings.add(UNKNOWN_STRING);
+    CorrectStrings.add(HDL_NOT_SUPPORTED);
+    CorrectStrings.add(HDL_SUPPORT_UNKNOWN);
   }
 
   @Override
@@ -55,7 +60,7 @@ public class HdlColorRenderer extends JLabel implements TableCellRenderer {
     }
 
     // Render all the rest
-    if (value.equals(REQUIRED_FIELD_STRING)) {
+    if (value.equals(HDL_REQUIRED_FIELD)) {
       // This field (mostly lables) is required to be set for FGPA support to work.
       // But this is not an error if user do not really care FPGA at this moment, so let's color differently.
       setCellColors(Color.ORANGE);
@@ -97,8 +102,8 @@ public class HdlColorRenderer extends JLabel implements TableCellRenderer {
     // Let's color the status cell fancy way.
     final String labelKey;
     var bg = javax.swing.UIManager.getColor("Table.background");
-    if (!value.equals(UNKNOWN_STRING)) {
-      if (value.equals(NO_SUPPORT_STRING)) {
+    if (!value.equals(HDL_SUPPORT_UNKNOWN)) {
+      if (value.equals(HDL_NOT_SUPPORTED)) {
         bg = Color.RED;
         labelKey = "FPGANotSupported";
       } else {
