@@ -46,11 +46,11 @@ public class AttrTableToolModel extends AttributeSetTableModel {
   @Override
   public void setValueRequested(Attribute<Object> attr, Object value) {
     if (tool instanceof AddTool addTool) {
-      if (addTool.getFactory() instanceof SubcircuitFactory fac) {
+      if (addTool.getFactory() instanceof SubcircuitFactory factory) {
         if (attr.equals(CircuitAttributes.NAMED_CIRCUIT_BOX_FIXED_SIZE)
           || attr.equals(CircuitAttributes.NAME_ATTR)) {
           try {
-            final var mutation = new CircuitMutation(fac.getSubcircuit());
+            final var mutation = new CircuitMutation(factory.getSubcircuit());
             mutation.setForCircuit(attr, value);
             final var action = mutation.toAction(null);
             project.doAction(action);
