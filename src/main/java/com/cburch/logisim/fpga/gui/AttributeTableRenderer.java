@@ -96,6 +96,7 @@ public class AttributeTableRenderer extends JLabel implements TableCellRenderer 
 
     if (columnIdx == LABEL) {
       setText(value);
+      setHorizontalAlignment(JLabel.LEFT);
       return this;
     }
 
