@@ -17,7 +17,7 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeEvent;
 import com.cburch.logisim.data.AttributeListener;
 import com.cburch.logisim.data.AttributeSet;
-import com.cburch.logisim.fpga.gui.HdlColorRenderer;
+import com.cburch.logisim.fpga.gui.AttributeTableRenderer;
 import java.awt.Component;
 import java.awt.Window;
 import java.util.ArrayList;
@@ -223,7 +223,7 @@ public abstract class AttributeSetTableModel implements AttrTableModel, Attribut
           if (str.isEmpty()
               && "label".equals(attr.getName())
               && compInst != null
-              && compInst.requiresNonZeroLabel()) return HdlColorRenderer.HDL_REQUIRED_FIELD;
+              && compInst.requiresNonZeroLabel()) return AttributeTableRenderer.HDL_REQUIRED_FIELD;
           return str;
         } catch (Exception e) {
           return "???";
@@ -282,10 +282,10 @@ public abstract class AttributeSetTableModel implements AttrTableModel, Attribut
 
     @Override
     public String getValue() {
-      if (compInst == null) return HdlColorRenderer.HDL_SUPPORT_UNKNOWN;
+      if (compInst == null) return AttributeTableRenderer.HDL_SUPPORT_UNKNOWN;
       return (compInst.isHDLSupportedComponent(attrs))
-          ? HdlColorRenderer.HDL_SUPPORTED
-          : HdlColorRenderer.HDL_NOT_SUPPORTED;
+          ? AttributeTableRenderer.HDL_SUPPORTED
+          : AttributeTableRenderer.HDL_NOT_SUPPORTED;
     }
 
     @Override

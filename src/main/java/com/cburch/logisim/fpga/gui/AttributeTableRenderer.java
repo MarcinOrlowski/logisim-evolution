@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 @SuppressWarnings("serial")
-public class HdlColorRenderer extends JLabel implements TableCellRenderer {
+public class AttributeTableRenderer extends JLabel implements TableCellRenderer {
   // This component has HDL support
   public static final String HDL_SUPPORTED = "HDL_SUPPORTED";
   // This component is not HDL supported
@@ -37,7 +37,7 @@ public class HdlColorRenderer extends JLabel implements TableCellRenderer {
 
   protected static final ArrayList<String> CorrectStrings = new ArrayList<>();
 
-  public HdlColorRenderer() {
+  public AttributeTableRenderer() {
     setOpaque(true);
     CorrectStrings.clear();
     CorrectStrings.add(HDL_NOT_SUPPORTED);
